@@ -19,6 +19,7 @@ PDFFILES= $(RSTFILES:.txt=.pdf)
 all: html pdf
 
 html: $(HTMLFILES)
+	cd man && $(MAKE) $@
 latex: $(LATEXFILES)
 pdf: $(PDFFILES)
 
