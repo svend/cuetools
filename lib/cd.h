@@ -110,28 +110,36 @@ Track *cd_get_track (Cd *cd, int i);
  * Track functions
  */
 
+/* filename of data file */
 void track_set_filename (Track *track, char *filename);
 char *track_get_filename (Track *track);
 
+/* track start is starting position in data file */
 void track_set_start (Track *track, long start);
 long track_get_start (Track *track);
 
+/* track length is length of data file to use */
 void track_set_length (Track *track, long length);
 long track_get_length (Track *track);
 
+/* see enum TrackMode */
 void track_set_mode (Track *track, int mode);
 int track_get_mode (Track *track);
 
+/* see enum TrackSubMode */
 void track_set_sub_mode (Track *track, int sub_mode);
 int track_get_sub_mode (Track *track);
 
+/* see enum TrackFlag */
 void track_set_flag (Track *track, int flag);
 void track_clear_flag (Track *track, int flag);
 int track_is_set_flag (Track *track, int flag);
 
+/* zero data pregap */
 void track_set_zero_pre (Track *track, long length);
 long track_get_zero_pre (Track *track);
 
+/* zero data postgap */
 void track_set_zero_post (Track *track, long length);
 long track_get_zero_post (Track *track);
 
