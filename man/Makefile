@@ -24,8 +24,8 @@ install: all
 	done
 
 uninstall:
-	-for i in $(TARGETS) ; do \
-		rm -f $(DESTDIR)$(mandir)/man1/$$i ; \
+	-for i in $(MANFILES) ; do \
+		rm -f $(DESTDIR)$(mandir)/man1/`basename $$i .man`.1 ; \
 	done
 
 clean:
