@@ -58,15 +58,15 @@ char *progname;
 void usage (int status)
 {
 	if (0 == status) {
-		fprintf(stdout, "%s: usage: cueprint [-h] [-i cue|toc] [-n TRACKNUMBER] [-d TEMPLATE] [-t TEMPLATE] [file...]\n", progname);
+		fprintf(stdout, "%s: usage: cueprint [-h] [-i cue|toc] [-n <tracknumer>] [-d <template>] [-t <template>] [file...]\n", progname);
 		fputs("\
 \n\
 OPTIONS\n\
 -h 			print usage\n\
 -i cue|toc		set format of file(s)\n\
--n TRACKNUMBER		only print track information for track TRACKNUMBER\n\
--d TEMPLATE		set disc template (see TEMPLATE EXPANSION)\n\
--t TEMPLATE		set track template (see TEMPLATE EXPANSION)\n\
+-n <tracknumber>	only print track information for track TRACKNUMBER\n\
+-d <template>		set disc template (see TEMPLATE EXPANSION)\n\
+-t <template>		set track template (see TEMPLATE EXPANSION)\n\
 \n\
 Template Expansion\n\
 Disc:\n\
@@ -92,6 +92,7 @@ Track:\n\
 \n\
 Any other %<character> is expanded to that character.  For example, to get a\n\
 '%', use %%.\n\
+\n\
 ", stdout);
 		fprintf(stdout, "default disc template is:\n%s\n", D_TEMPLATE);
 		fprintf(stdout, "default track template is:\n%s\n", T_TEMPLATE);
