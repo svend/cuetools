@@ -65,7 +65,7 @@ CDTEXTFILE
 		a string.
 
 The CD-TEXT file contains encoded CD-TEXT data.  The standard extension for
-CD-TEXT files is ``.cdt``.
+CD-TEXT files is ``.cdt``.  *TODO: describe CD-TEXT file format*
 
 FILE
 ~~~~
@@ -358,7 +358,7 @@ LANGUAGE_MAP
 
 	``language_map``
 		is a mapping of an integer in the range 0-255 to a country
-		code. *TODO*
+		code. *TODO: add description of mapping format*
 
 NO
 ~~
