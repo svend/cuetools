@@ -1,4 +1,4 @@
-AC_INIT(cuetools,1.3pre,sorensen@users.berlios.de)
+AC_INIT(cuetools,1.3,sorensen@users.berlios.de)
 AM_INIT_AUTOMAKE($PACKAGE_NAME,$PACKAGE_VERSION)
 # getting conflicting errors about config.h.in
 #AM_CONFIG_HEADER(config.h)
