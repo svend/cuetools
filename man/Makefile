@@ -3,20 +3,24 @@
 INSTALL= install
 INSTALL_PROGRAM= $(INSTALL)
 INSTALL_DATA= $(INSTALL) -m 644
+GROFF= groff
 
 prefix= /usr/local
 mandir= $(prefix)/man
 DESTDIR=
 
-TARGETS= cuebreakpoints.1 cueconvert.1 cueprint.1
+MANFILES= cuebreakpoints.man cueconvert.man cueprint.man
+HTMLFILES= $(MANFILES:.man=.html)
+
+html: $(HTMLFILES)
 
 all:
 	@true
 
 install: all
 	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
-	for i in $(TARGETS) ; do \
-		$(INSTALL_DATA) $$i $(DESTDIR)$(mandir)/man1/$$i ; \
+	for i in $(MANFILES) ; do \
+		$(INSTALL_DATA) $$i $(DESTDIR)$(mandir)/man1/`basename $$i .man`.1 ; \
 	done
 
 uninstall:
@@ -25,4 +29,7 @@ uninstall:
 	done
 
 clean:
-	@true
+	rm -f *.html
+
+%.html: %.man
+	${GROFF} -man -T html $< > $@
