@@ -37,6 +37,7 @@ nonws		[^ \t\r\n]
 		}
 
 CATALOG		{ BEGIN(NAME); return CATALOG; }
+CDTEXTFILE	{ BEGIN(NAME); return CDTEXTFILE; }
 
 FILE		{ BEGIN(NAME); return FFILE; }
 BINARY		{ return BINARY; }

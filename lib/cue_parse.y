@@ -37,7 +37,8 @@ static char *new_filename = NULL;	/* last file in this track */
 %token <sval> STRING
 
 /* global (header) */
-%token CATALOG 
+%token CATALOG
+%token CDTEXTFILE
 
 %token FFILE
 %token BINARY
@@ -111,6 +112,7 @@ global_statements
 
 global_statement
 	: CATALOG STRING '\n' { cd_set_catalog(cd, $2); }
+	| CDTEXTFILE STRING '\n' { /* ignored */ }
 	| cdtext
 	| track_data
 	| error '\n'
