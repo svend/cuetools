@@ -15,6 +15,10 @@ usage()
 # Vorbis Comments
 vorbis()
 {
+	# FLAC tagging
+	METAFLAC="metaflac --remove-vc-all --import-vc-from=-"
+
+	# Ogg Vorbis tagging
 	# -w to overwrite existing comments
 	# -a to append to existing comments
 	VORBISCOMMENT="vorbiscomment -w -c -"
