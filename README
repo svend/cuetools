@@ -15,3 +15,5 @@ cuebreakpoints
 
 cueprint
 	print disc and track infomation for a cue or toc file
+
+Cuetools is hosted by BerliOS (http://cuetools.berlios.de).
