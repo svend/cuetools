@@ -5,9 +5,9 @@ RST2LATEX= rst2latex.py
 LATEX2PDF= pdflatex
 
 RSTFILES= $(wildcard *.txt)
-HTMLFILES= $(RSTFILES:.rst=.html)
-LATEXFILES= $(RSTFILES:.rst=.tex)
-PDFFILES= $(RSTFILES:.rst=.pdf)
+HTMLFILES= $(RSTFILES:.txt=.html)
+LATEXFILES= $(RSTFILES:.txt=.tex)
+PDFFILES= $(RSTFILES:.txt=.pdf)
 
 all: html pdf
 
