@@ -68,7 +68,7 @@ vorbis()
 				break
 			fi
 		done
-	done) | $VORBISTAG $2
+	done) | $VORBISTAG "$2"
 }
 
 id3()
@@ -104,25 +104,25 @@ id3()
 		if [ -n "$value" ]; then
 			case $field in
 			TITLE)
-				$MP3INFO -t "$value" $2
+				$MP3INFO -t "$value" "$2"
 				;;
 			ALBUM)
-				$MP3INFO -l "$value" $2
+				$MP3INFO -l "$value" "$2"
 				;;
 			ARTIST)
-				$MP3INFO -a "$value" $2
+				$MP3INFO -a "$value" "$2"
 				;;
 			YEAR)
-				$MP3INFO -y "$value" $2
+				$MP3INFO -y "$value" "$2"
 				;;
 			COMMENT)
-				$MP3INFO -c "$value" $2
+				$MP3INFO -c "$value" "$2"
 				;;
 			GENRE)
-				$MP3INFO -g "$value" $2
+				$MP3INFO -g "$value" "$2"
 				;;
 			TRACKNUMBER)
-				$MP3INFO -n "$value" $2
+				$MP3INFO -n "$value" "$2"
 				;;
 			esac
 		fi
