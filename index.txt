@@ -62,7 +62,7 @@ Project Links
 .. _downloads: http://developer.berlios.de/project/showfiles.php?group_id=2130
 .. _Subversion repository: http://developer.berlios.de/svn/?group_id=2130
 .. _browse: http://svn.berlios.de/viewcvs/cuetools
-.. _web interface: http://sorensen.freeshell.org/cuetools/cueconvert.html
+.. _web interface: http://sorensen.freeshell.org/cuetools/cueconvert.cgi
 
 Mailing Lists [1]_
 ------------------

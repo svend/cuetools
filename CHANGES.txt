@@ -5,37 +5,40 @@ cuetools CHANGES
 :Author: Svend Sorensen
 :Contact: sorensen@users.berlios.de
 
-cuebreakpoints was not printing the last track breakpoint.  This has been
-fixed.
+Changes since 1.1
+-----------------
 
-cueprint now prints a zero-length string for undefined values.  Flags, width,
-and precision are applied to conversion characters which have no conversion.
+* cuebreakpoints was not printing the last track breakpoint.  This has been
+  fixed.
 
-Added a tagging script, cuetag.sh, which uses cueprint, vorbiscomment, and
-mp3info to tag Ogg Vorbis and MP3 files.  This needs more testing and
-documentation.
+* cueprint now prints a zero-length string for undefined values.  Flags, width,
+  and precision are applied to conversion characters which have no conversion.
 
-Added a track selection flag to cueprint.
+* Added a tagging script, cuetag.sh, which uses cueprint, vorbiscomment, and
+  mp3info to tag Ogg Vorbis and MP3 files.  This needs more testing and
+  documentation.
 
-1.1
----
+* Added a track selection flag to cueprint.
 
-File formats documentation has been readded and updated (docs/formats.txt).
+Changes since 1.0
+-----------------
 
-CDTEXTFILE is now a recognized (but ignored) keyword.
+* File formats documentation has been readded and updated (docs/formats.txt).
 
-If only a disc or track template is specified on the command line, then only
-the disc or track information is printed, respectively.
+* ``CDTEXTFILE`` is now a recognized (but ignored) keyword.
 
-cueprint now supports flags and width and precision values for template
-expansion (like the printf command).
+* If only a disc or track template is specified on the command line, then only
+  the disc or track information is printed, respectively.
 
-1.0
----
+* cueprint now supports flags and width and precision values for template
+  expansion (like the printf command).
 
-cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc parsing code
-has been reimplemented in lex/yacc.
+Changes since 0.6
+-----------------
 
-cuerename has been replaced by the more general utility cueprint.
+* cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc parsing code
+  has been reimplemented in lex/yacc.
 
-Usage syntax of the utilities has changed.  See the respective man pages.
+* cuerename has been replaced by the more general utility cueprint.
+
+* Usage syntax of the utilities has changed.  See the respective man pages.
