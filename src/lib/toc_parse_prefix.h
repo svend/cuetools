@@ -1,3 +1,10 @@
+/*
+ * toc_parse_prefix.h
+ *
+ * Copyright (C) 2004 Svend Sorensen
+ * For license terms, see the file COPYING in this distribution.
+ */
+
 /* Remap normal yacc names so we can have multiple parsers
  * see http://www.gnu.org/software/automake/manual/html_node/Yacc-and-Lex.html
  */
