@@ -4,7 +4,7 @@ RST2HTML= rst2html.py
 RST2LATEX= rst2latex.py
 LATEX2PDF= pdflatex
 
-RSTFILES= $(wildcard *.rst)
+RSTFILES= $(wildcard *.txt)
 HTMLFILES= $(RSTFILES:.rst=.html)
 LATEXFILES= $(RSTFILES:.rst=.tex)
 PDFFILES= $(RSTFILES:.rst=.pdf)
@@ -15,10 +15,10 @@ html: $(HTMLFILES)
 latex: $(LATEXFILES)
 pdf: $(PDFFILES)
 
-%.html: %.rst
+%.html: %.txt
 	$(RST2HTML) $< > $@
 
-%.tex: %.rst
+%.tex: %.txt
 	$(RST2LATEX) $< > $@
 
 %.pdf: %.tex
