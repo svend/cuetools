@@ -23,6 +23,15 @@ vorbis()
 	# -a to append to existing comments
 	VORBISCOMMENT="vorbiscomment -w -c -"
 
+	case "$2" in
+	*.[Ff][Ll][Aa][Cc])
+		VORBISTAG=$METAFLAC
+		;;
+	*.[Oo][Gg][Gg])
+		VORBISTAG=$VORBISCOMMENT
+		;;
+	esac
+
 	# space seperated list of recomended stardard field names
 	# see http://www.xiph.org/ogg/vorbis/doc/v-comment.html
 	
@@ -57,7 +66,7 @@ vorbis()
 				break
 			fi
 		done
-	done) | $VORBISCOMMENT $2
+	done) | $VORBISTAG $2
 }
 
 id3()
@@ -138,7 +147,7 @@ main()
 	for file in $@; do
 		case $file in
 		*.[Ff][Ll][Aa][Cc])
-			echo "FLAC tagging not supported."
+			vorbis $trackno "$file"
 			;;
 		*.[Oo][Gg][Gg])
 			vorbis $trackno "$file"
