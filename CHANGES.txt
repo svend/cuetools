@@ -5,6 +5,13 @@ cuetools CHANGES
 :Author: Svend Sorensen
 :Contact: sorensen@users.berlios.de
 
+Changes since 1.2
+-----------------
+
+* All tools accept long options.
+
+* Programs exit if --input-format or --output-format is an illegal value.
+
 Changes since 1.1
 -----------------
 
