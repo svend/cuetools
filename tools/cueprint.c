@@ -42,8 +42,6 @@ ISRC (CD-TEXT):	%u\n\
 "
 
 char *progname;
-char *d_template = NULL;	/* disc template */
-char *t_template = NULL;	/* track template */
 
 void usage (int status)
 {
@@ -335,7 +333,7 @@ void cd_printf (char *format, Cd *cd, int trackno)
 	}
 }
 
-int info (char *name, int format)
+int info (char *name, int format, char *d_template, char *t_template)
 {
 	Cd *cd = NULL;
 	int i;		/* track number */
@@ -357,6 +355,8 @@ int info (char *name, int format)
 int main (int argc, char **argv)
 {
 	int format = UNKNOWN;
+	char *d_template = NULL;	/* disc template */
+	char *t_template = NULL;	/* track template */
 	/* getopt () variables */
 	char c;
 	extern char *optarg;
@@ -400,10 +400,10 @@ int main (int argc, char **argv)
 	}
 
 	if (optind == argc) {
-		info("-", format);
+		info("-", format, d_template, t_template);
 	} else {
 		for (; optind < argc; optind++)
-			info(argv[optind], format);
+			info(argv[optind], format, d_template, t_template);
 	}
 
 	return 0;
