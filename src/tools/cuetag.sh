@@ -113,7 +113,7 @@ id3()
 
 	for field in $fields; do
 		value=""
-		for conv in $(eval echo \$field); do
+		for conv in $(eval echo \$$field); do
 			value=$($CUEPRINT -n $1 -t "$conv\n" $cue_file)
 
 			if [ -n "$value" ]; then
