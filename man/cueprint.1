@@ -131,6 +131,14 @@ vertial tab
 NULL
 .SH NOTES
 If no files are specified, stdin is used.  If a filename is specified and the format is not specified, the format will be set based on a ".cue" or ".toc" suffix.
+.SH EXAMPLES
+To display disc and track information (using the default template for both), run:
+.PP
+% cueprint album.cue
+.PP
+To print the number of tracks in a cue file, run:
+.PP
+% cueprint -d '%N\en' album.cue
 .SH AUTHOR
 Svend Sorensen
 .SH "SEE ALSO"
