@@ -53,6 +53,20 @@ CATALOG
 	``catalog_number``
 		an integer consisting of exactly 13 digits.
 
+CDTEXTFILE
+~~~~~~~~~~
+
+:Description: Sets an external file for CD-TEXT data.
+:Section(s): global
+:Format:
+	``CDTEXTFILE <filename>``
+
+	``filename``
+		a string.
+
+The CD-TEXT file contains encoded CD-TEXT data.  The standard extension for
+CD-TEXT files is ``.cdt``.
+
 FILE
 ~~~~
 
