@@ -388,7 +388,6 @@ int main (int argc, char **argv)
 			else if (0 == strcmp("toc", optarg))
 				format = TOC;
 			break;
-		/* TODO add track selection */
 		case 'n':
 			trackno = atoi(optarg);
 			break;

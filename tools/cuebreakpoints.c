@@ -46,7 +46,7 @@ void print_breaks (Cd *cd)
 	long b;
 	Track *track;
 
-	for (i = 1; i < cd_get_ntrack(cd); i++) {
+	for (i = 1; i <= cd_get_ntrack(cd); i++) {
 		track = cd_get_track(cd, i);
 		/* don't print zero indexes */
 		b = track_get_start(track) + track_get_index(track, 1) -  track_get_zero_pre(track);
