@@ -8,6 +8,9 @@ cuetools CHANGES
 Changes since 1.2
 -----------------
 
+* prefix options have been removed from the lib/Makefile for Lex and Yacc (to
+  prepare for automake).
+
 * Added append, prepend, and split pregap modes to cuebreakpoints.
 
 * Fixed possible compilation error with Bison.
