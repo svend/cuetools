@@ -22,9 +22,12 @@ in the global section or a track section.
 Format Notation
 ---------------
 
-* ``<field>`` - a required field
-* ``[field]`` - optional field
-* ``...``     - preceding field may be repeated any number of times
+``<field>``
+	a required field
+``[field]``
+	an optional field
+``...``
+	preceding field may be repeated any number of times
 
 Cuesheet Format
 ===============
@@ -105,7 +108,8 @@ Sets a track index.  ``index_number`` must be a non-negative integer.
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
 
-See `CD-TEXT`_ section for a list of CD-TEXT keywords.
+See `CD-TEXT`_ section for a list of CD-TEXT keywords.  The cue format cannot
+handle binary CD-TEXT.
 
 :Section(s): any
 :Format: ``<CDTEXT_keyword> "<CDTEXT_field>"``
@@ -163,7 +167,7 @@ TRACK
 ~~~~~
 
 :Section(s): track
-:Format: TRACK <track_mode> [sub_channel_mode]
+:Format: ``TRACK <track_mode> [sub_channel_mode]``
 
 NO
 ~~
@@ -296,25 +300,29 @@ Begins a language map block.
 
 Section(s): global
 Subsection(s): CD-TEXT block
-Format: ``LANGUAGE_MAP {}``
+Format: ``LANGUAGE_MAP { language_map }``
 
 LANGUAGE
 ~~~~~~~~
 
-Begins a language block.
+Begins a language block.  ``language_number`` must be an integer in the range
+0-255.  ``cd_text`` is a series of CD-TEXT keyword lines.
 
 :Section(s): track
 :Subsection(s): CD-TEXT block
-:Format: ``LANGUAGE {}``
+:Format: ``LANGUAGE language_number { cd_text }``
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
 
-See `CD-TEXT`_ section for a list of CD-TEXT keywords.
+See `CD-TEXT`_ section for a list of CD-TEXT keywords.  Format1 is for
+character data and Format2 is for binary data.  ``CDTEXT_binary_data`` is a
+comma seperated list of integers in the range 0-255.
 
 :Section(s): any
-:Subsection(s): CD-TEXT block
-:Format: ``<CDTEXT_keyword> "<CDTEXT_field>"``
+:Subsection(s): language block
+:Format1: ``<CDTEXT_keyword> "<CDTEXT_field>"``
+:Format2: ``<CDTEXT_keyword> { CDTEXT_binary_data }``
 
 CD-TEXT
 =======
