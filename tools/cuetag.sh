@@ -36,8 +36,9 @@ vorbis()
 
 	# space seperated list of recomended stardard field names
 	# see http://www.xiph.org/ogg/vorbis/doc/v-comment.html
+	# TRACKTOTAL is not in the Xiph recomendation, but is in common use
 	
-	fields='TITLE VERSION ALBUM TRACKNUMBER ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
+	fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
 
 	# fields' corresponding cueprint conversion characters
 	# seperate alternates with a space
@@ -46,6 +47,7 @@ vorbis()
 	VERSION=''
 	ALBUM='%T'
 	TRACKNUMBER='%n'
+	TRACKTOTAL='%N'
 	ARTIST='%c %p'
 	PERFORMER='%p'
 	COPYRIGHT=''
