@@ -2,6 +2,9 @@
 cuetools CHANGES
 ================
 
+1.1
+---
+
 File formats documentation has been readded and updated (docs/formats.txt).
 
 CDTEXTFILE is now a recognized (but ignored) keyword.
