@@ -16,8 +16,6 @@
 #define D_TEMPLATE "%P \"%T\" (%N tracks)\n"
 #define T_TEMPLATE "%n: %p \"%t\"\n"
 
-#define UNSPECIFIED -1
-
 char *progname;
 char *d_template = D_TEMPLATE;	/* disc template */
 char *t_template = T_TEMPLATE;	/* track template */
