@@ -83,7 +83,7 @@ FILE
 
 ``FILE`` line precedes the beginning of the track section.
 
-.. [#] The cdrtools ``cue.c`` file also has ``file_format`` entries for ``AU``
+.. [#] The cdrtools_ ``cue.c`` file also has ``file_format`` entries for ``AU``
        and ``OGG``.
 
 FLAGS
@@ -398,10 +398,10 @@ comma seperated list of integers in the range 0-255.
 CD-TEXT
 =======
 
-The CD-TEXT specification sets aside 16 CD-TEXT types.  Three are reserved and
-have no corresponding keywords.  One is shared; the keyword depends on whether
-it is for the disc (``UPC_EAN``) or a track (``ISRC``).  CD-TEXT entries are
-either character or binary data.
+mmc-3_ specifies 16 CD-TEXT types.  Three are reserved and have no
+corresponding keywords.  One is shared; the keyword depends on whether it is
+for the disc (``UPC_EAN``) or a track (``ISRC``).  CD-TEXT entries are either
+character or binary data.
 
 Keywords
 --------
@@ -433,6 +433,8 @@ GENRE
 :Description: Genre Identification and Genre information
 :Section: any
 :Format: binary
+
+Genre codes are in the Enhanced CD Specification or cdrtools_ ``cdtext.h`` file.
 
 ISRC
 ~~~~~
@@ -506,3 +508,6 @@ MSF format
 
 frame
 	1/75 of a second.
+
+.. _mmc-3 ftp://ftp.t10.org/t10/drafts/mmc3/
+.. _cdrtools http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
