@@ -1,4 +1,4 @@
-/* 
+/*
  * cueprint.c -- print cd information based on a template
  *
  * Copyright (C) 2004 Svend Sorensen
