@@ -17,7 +17,7 @@ vorbis()
 {
 	# -w to overwrite existing comments
 	# -a to append to existing comments
-	VORBISCOMMENT="vorbiscomment -w"
+	VORBISCOMMENT="vorbiscomment -w -c -"
 
 	# space seperated list of recomended stardard field names
 	# see http://www.xiph.org/ogg/vorbis/doc/v-comment.html
@@ -56,7 +56,7 @@ vorbis()
 		if [ -n "$value" ]; then
 			echo "$field=$value"
 		fi
-	done) | $VORBISCOMMENT -c - $2
+	done) | $VORBISCOMMENT $2
 }
 
 id3()
