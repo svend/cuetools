@@ -1,3 +1,5 @@
+# Makefile.am - process with automake to produce Makefile.in
+
 BUILT_SOURCES = cue_parse.h toc_parse.h
 EXTRA_DIST = $(BUILT_SOURCES)
 AM_YFLAGS = -d
