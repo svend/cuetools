@@ -1,15 +1,6 @@
-================
-cuetools CHANGES
-================
-
-:Author: Svend Sorensen
-:Contact: sorensen@users.berlios.de
-
 Changes since 1.2
------------------
 
-* prefix options have been removed from the lib/Makefile for Lex and Yacc (to
-  prepare for automake).
+* Build system has been rewritten using automake/autoconf.
 
 * Added append, prepend, and split pregap modes to cuebreakpoints.
 
@@ -20,7 +11,6 @@ Changes since 1.2
 * Programs exit if --input-format or --output-format is an illegal value.
 
 Changes since 1.1
------------------
 
 * cuebreakpoints was not printing the last track breakpoint.  This has been
   fixed.
@@ -35,7 +25,6 @@ Changes since 1.1
 * Added a track selection flag to cueprint.
 
 Changes since 1.0
------------------
 
 * File formats documentation has been readded and updated (docs/formats.txt).
 
@@ -48,7 +37,6 @@ Changes since 1.0
   expansion (like the printf command).
 
 Changes since 0.6
------------------
 
 * cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc parsing code
   has been reimplemented in lex/yacc.
