@@ -1,6 +1,5 @@
 * (cue/toc) Line numbers in error messages are off sometimes.
-* (cue/toc) Double quotes must be escaped in a string, otherwise
-  they will not be escaped when printed.
+* (cue/toc) Single quoted strings are not supported.
 * (toc) Binary CD-TEXT data is parsed, but not saved.
 * (toc) Only a single data file is supported.
 * (cue) track_mode does not match cdrtools and CDRWIN docs.
