@@ -17,8 +17,8 @@
 #define T_TEMPLATE "%n: %p \"%t\"\n"
 
 char *progname;
-char *d_template = D_TEMPLATE;	/* disc template */
-char *t_template = T_TEMPLATE;	/* track template */
+char *d_template = NULL;	/* disc template */
+char *t_template = NULL;	/* track template */
 
 void usage (int status)
 {
@@ -360,6 +360,18 @@ int main (int argc, char **argv)
 			usage(1);
 			break;
 		}
+	}
+
+	/* if no disc or track template is set, use the defaults for both */
+	if (NULL == d_template && NULL == t_template) {
+		d_template = D_TEMPLATE;
+		t_template = T_TEMPLATE;
+	} else {
+		if (NULL == d_template)
+			d_template = "";
+
+		if (NULL == t_template)
+			t_template = "";
 	}
 
 	if (optind == argc) {
