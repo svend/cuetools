@@ -1,5 +1,5 @@
 /*
- * cue_parse_prefix.h
+ * cue_parse_prefix.h -- yacc symbol redefinitions (for cue parser)
  *
  *
  * Copyright (C) 2004, 2005 Svend Sorensen
