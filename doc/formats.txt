@@ -266,9 +266,9 @@ COPY
 DATAFILE
 ~~~~~~~~
 
+:Description: *TODO*
 :Section(s): track
-
-*TODO*
+:Format: *TODO*
 
 ISRC
 ~~~~
@@ -284,9 +284,9 @@ ISRC
 FIFO
 ~~~~
 
+:Description: *TODO*
 :Section(s): track
-
-*TODO*
+:Format: *TODO*
 
 FILE
 ~~~~
@@ -365,17 +365,20 @@ PREGAP
 SILENCE
 ~~~~~~~
 
+:Description: *TODO*
 :Section(s): track
-
-*TODO*
+:Format: *TODO*
 
 START
 ~~~~~
 
+:Description: *TODO*
 :Section(s): track
-:Format: ``START <start>``
+:Format:
+	``START <start>``
 
-*TODO*
+	``start``
+		time in MSF format.
 
 TRACK
 ~~~~~
@@ -394,9 +397,9 @@ TWO_CHANNEL_AUDIO
 ZERO
 ~~~~
 
+:Description: *TODO*
 :Section(s): track
-
-*TODO*
+:Format: *TODO*
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
