@@ -346,14 +346,16 @@ int info (char *name, int format, int trackno, char *d_template, char *t_templat
 
 	ntrack = cd_get_ntrack(cd);
 
-	cd_printf(d_template, cd, 0);
+	if (-1 == trackno) {
+		cd_printf(d_template, cd, 0);
 
-	if (0 == trackno) {
 		for (trackno = 1; trackno <= ntrack; trackno++) {
-			cd_printf(t_template, cd, ntrack);
+			cd_printf(t_template, cd, trackno);
 		}
-	} else if (0 < trackno || ntrack >= trackno) {
-		cd_printf(t_template, cd, ntrack);
+	} else if (0 == trackno) {
+		cd_printf(d_template, cd, trackno);
+	} else if (0 < trackno && ntrack >= trackno) {
+		cd_printf(t_template, cd, trackno);
 	} else {
 		fprintf(stderr, "%s: track number out of range\n", progname);
 		return -1;
@@ -365,7 +367,7 @@ int info (char *name, int format, int trackno, char *d_template, char *t_templat
 int main (int argc, char **argv)
 {
 	int format = UNKNOWN;
-	int trackno = 0;		/* track number (0 = all tracks) */
+	int trackno = -1;		/* track number (-1 = unspecified, 0 = disc info) */
 	char *d_template = NULL;	/* disc template */
 	char *t_template = NULL;	/* track template */
 	/* getopt () variables */
