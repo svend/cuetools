@@ -62,4 +62,10 @@ char *cdtext_get (int pti, Cdtext *cdtext);
  */
 const char *cdtext_get_key (int pti, int istrack);
 
+/*
+ * dump all cdtext info
+ * in human readable format (for debugging)
+ */
+void cdtext_dump (Cdtext *cdtext, int istrack);
+
 #endif

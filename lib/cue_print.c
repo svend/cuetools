@@ -133,11 +133,12 @@ void cue_print_cdtext (Cdtext *cdtext, FILE *fp, int istrack)
 	int pti;
 	char *value = NULL;
 
-	for (pti = 0; PTI_END != pti; pti++)
+	for (pti = 0; PTI_END != pti; pti++) {
 		if (NULL != (value = cdtext_get(pti, cdtext))) {
 			fprintf(fp, "%s", cdtext_get_key(pti, istrack));
 			fprintf(fp, " \"%s\"\n", value);
 		}
+	}
 }
 
 void cue_print_index (long i, FILE *fp)
