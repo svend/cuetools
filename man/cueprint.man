@@ -7,7 +7,8 @@ cueprint
 cueprint \- print disc and track infomation for a cue or toc file
 .
 .SH SYNTAX
-cueprint [\-h] [\-i cue|toc] [-n <tracknumber>] [\-d <template>] [\-t <template>] [file...]
+.B cueprint
+[\-h] [\-i cue|toc] [-n <tracknumber>] [\-d <template>] [\-t <template>] [file...]
 .
 .SH OPTIONS
 .TP
