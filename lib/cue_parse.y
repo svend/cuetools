@@ -67,7 +67,7 @@ static char *new_filename = NULL;	/* last file in this track */
 %token <ival> FOUR_CH
 %token <ival> SCMS
 
-%token PREGAP 
+%token PREGAP
 %token INDEX
 %token POSTGAP
 
@@ -82,7 +82,7 @@ static char *new_filename = NULL;	/* last file in this track */
 %token <ival> GENRE
 %token <ival> TOC_INFO1
 %token <ival> TOC_INFO2
-%token <ival> UPC_EAN	
+%token <ival> UPC_EAN
 %token <ival> ISRC
 %token <ival> SIZE_INFO
 
