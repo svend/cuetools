@@ -105,9 +105,10 @@ Sets a track index.  ``index_number`` must be a non-negative integer.
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
 
-See `CD-TEXT`_ section.
+See `CD-TEXT`_ section for a list of CD-TEXT keywords.
 
-Section(s): any
+:Section(s): any
+:Format: ``<CDTEXT_keyword> "<CDTEXT_field>"``
 
 TOC File Format
 ===============
@@ -309,21 +310,20 @@ Begins a language block.
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
 
-See `CD-TEXT`_ section.
+See `CD-TEXT`_ section for a list of CD-TEXT keywords.
 
 :Section(s): any
 :Subsection(s): CD-TEXT block
+:Format: ``<CDTEXT_keyword> "<CDTEXT_field>"``
 
 CD-TEXT
 =======
-
-:Format: ``<CDTEXT_keyword> "<CDTEXT_field>"``
 
 Keywords
 --------
 
 ==========	======
-Keyword		Form
+Keyword		Format
 ==========	======
 TITLE		char
 PERFORMER	char
@@ -331,10 +331,10 @@ SONGWRITER	char
 COMPOSER	char
 ARRANGER	char
 MESSAGE		char
-DISC_ID		char
-GENRE		char
-TOC_INFO	char
-TOC_INFO2	char
+DISC_ID		binary
+GENRE		binary
+TOC_INFO	binary
+TOC_INFO2	binary
 UPC_EAN		char
 ISRC		char
 SIZE_INFO	binary
