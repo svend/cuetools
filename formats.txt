@@ -110,6 +110,9 @@ INDEX
 	``index``
 		time in MSF format.
 
+Having an ``INDEX 00`` and an ``INDEX 01`` defines a pregap using data from the
+``FILE``.
+
 ISRC
 ~~~~
 
@@ -142,6 +145,8 @@ PREGAP
 
 	``pregap``
 		time in MSF format.
+
+The pregap is filled with generated silence.
 
 REM
 ~~~
