@@ -23,7 +23,6 @@ nonws		[^ \t\r\n]
 
 %%
 
-
 \'([^\']|\\\')*\'	|
 \"([^\"]|\\\")*\"	{
 		cue_yylval.sval = strdup(yytext + 1);
