@@ -312,7 +312,7 @@ bytes
 	;
 
 time
-	: NUMBER { $$ = $1; }
+	: NUMBER
 	| NUMBER ':' NUMBER ':' NUMBER { $$ = time_msf_to_frame($1, $3, $5); }
 	;
 
