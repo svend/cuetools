@@ -1,3 +1,8 @@
+Changes since 1.3
+
+* Single quoted string support has been removed.  This was broken, and I am not
+  sure of any software that supports single quoted strings in cue or toc files.
+
 Changes since 1.2
 
 * Build system has been rewritten using automake/autoconf.
