@@ -433,14 +433,25 @@ ZERO
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
 
+:Description: Sets CD-TEXT data.
 :Section(s): any
 :Subsection(s): language block
-:Format1: ``<CDTEXT_keyword> "<CDTEXT_field>"``
-:Format2: ``<CDTEXT_keyword> { CDTEXT_binary_data }``
+:Format1:
+	``<CDTEXT_keyword> "<CDTEXT_field>"``
 
-See `CD-TEXT`_ section for a list of CD-TEXT keywords.  Format1 is for
-character data and Format2 is for binary data.  ``CDTEXT_binary_data`` is a
-comma seperated list of integers in the range 0-255.
+	``CDTEXT_keyword``
+		one of: (see `CD-TEXT`_ section for a list of keywords).
+	``CDTEXT_field``
+		a string.
+
+:Format2:
+	``<CDTEXT_keyword> { CDTEXT_binary_data }``
+
+	``CDTEXT_binary_data``
+		comma separated list of integers in the range 0-255.
+
+Format1 is for character data and Format2 is for binary data.  See `CD-TEXT`_
+section for a list of CD-TEXT keywords.
 
 CD-TEXT
 =======
