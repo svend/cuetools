@@ -18,6 +18,7 @@ usage()
 	echo "ogg, Ogg Vorbis, vorbiscomment"
 	echo "flac, FLAC, metaflac"
 	echo "mp3, MP3, mp3info"
+	echo "txt, Vorbis Comment Text File, tee"
 	echo
 	echo "cuetag.sh uses cueprint, which must be in your path"
 }
@@ -35,12 +36,19 @@ vorbis()
 	# -a appends to existing comments
 	VORBISCOMMENT="vorbiscomment -w -c -"
 
+	# VC text file format
+	# TODO: this also outputs to stdout
+	TXTFILE="tee"
+
 	case "$2" in
 	*.[Ff][Ll][Aa][Cc])
 		VORBISTAG=$METAFLAC
 		;;
 	*.[Oo][Gg][Gg])
 		VORBISTAG=$VORBISCOMMENT
+		;;
+	*.[Tt][Xx][Tt])
+		VORBISTAG=$TXTFILE
 		;;
 	esac
 
@@ -105,7 +113,7 @@ id3()
 
 	for field in $fields; do
 		value=""
-		for conv in $(eval echo \$$field); do
+		for conv in $(eval echo \$field); do
 			value=$($CUEPRINT -n $1 -t "$conv\n" $cue_file)
 
 			if [ -n "$value" ]; then
@@ -168,6 +176,9 @@ main()
 			;;
 		*.[Mm][Pp]3)
 			id3 $trackno "$file"
+			;;
+		*.[Tt][Xx][Tt])
+			vorbis $trackno "$file"
 			;;
 		*)
 			echo "$file: uknown file type"
