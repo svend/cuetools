@@ -32,20 +32,3 @@ Installation
 Building requires GNU Make.  Run ``make install`` to install cuetools into the
 default location of /usr/local.  The Makefiles also support both the prefix and
 DESTDIR variables.
-
-Bugs/Todo
----------
-
-* (cue/toc) Line numbers in error messages are off sometimes.
-* (cue/toc) Strings cannot be quoted with single quotes.
-* (toc) Binary CD-TEXT data is parsed, but not saved.
-* (toc) Only a single data file is supported.
-* (cue) track_mode does not match cdrtools and CDRWIN docs.
-* (cue) Add support for CDTEXTFILE format.
-
-See Also
---------
-
-* Cdrdao website - http://cdrdao.sourceforge.net
-* cdrdao(1) man page - description of toc file format
-* shntool website - http://www.etree.org/shnutils/shntool/
