@@ -96,7 +96,7 @@ void disc_field (char *conv, int length, Cd *cd)
 		printf(conv, cdtext_get(PTI_MESSAGE, cdtext));
 		break;
 	case 'N':
-		*c = 'd';
+		*c = 'd';	/* tracks is an integer */
 		printf(conv, cd_get_ntrack(cd));
 		break;
 	case 'P':
@@ -163,7 +163,7 @@ void track_field (char *conv, int length, Cd *cd, int trackno)
 		printf(conv, cdtext_get(PTI_MESSAGE, cdtext));
 		break;
 	case 'n':
-		*c = 'd';
+		*c = 'd';	/* track number is an integer */
 		printf(conv, trackno);
 		break;
 	case 'p':
@@ -205,15 +205,17 @@ void print_conv (char *start, int length, Cd *cd, int trackno)
 		disc_field(conv, length, cd);
 	else
 		track_field(conv, length, cd, trackno);
+
+	free(conv);
 }
 
-/* print an escaped character
+/* print an single-character escape
  * `c' is the character after the `/'
  * NOTE: this does not handle octal and hexidecimal escapes
+ *       except for \0
  */
 int print_esc (char *c)
 {
-	/* ?, ', " are handled by the default */
 	switch (*c) {
 		case 'a':
 			putchar('\a');
@@ -240,6 +242,7 @@ int print_esc (char *c)
 			putchar('\0');
 			break;
 		default:
+			/* ?, ', " are handled by the default */
 			putchar(*c);
 			break;
 	}
