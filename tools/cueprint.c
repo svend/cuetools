@@ -180,9 +180,13 @@ void print_info (Cd *cd)
 
 	for (i = 1; i <= cd_get_ntrack(cd); i++) {
 		for (c = t_template; '\0' != *c; c++) {
+			/* TODO: should apply escapes and width to disc
+			 * template as well
+			 */
 			if ('\\' == *c) {
 				c++;
 
+				/* TODO: add more (all?) escapes */
 				switch (*c) {
 				case 'n':
 					putchar('\n');
@@ -198,6 +202,7 @@ void print_info (Cd *cd)
 				c++;
 
 				/* parse flags */
+				/* TODO: zero-padding does nothing */
 				do {
 					switch (*c) {
 					case '0':	/* zero-padding */
