@@ -44,8 +44,7 @@ Keywords
 CATALOG
 ~~~~~~~
 
-Sets the catalog number of the CD.
-
+:Description: Sets the catalog number of the CD.
 :Section(s): global
 :Format:
 	``CATALOG <catalog_number>``
@@ -56,9 +55,7 @@ Sets the catalog number of the CD.
 FILE
 ~~~~
 
-Sets a new input file.  ``FILE`` line precedes the beginning of the track
-section.
-
+:Description: Sets a new input file.
 :Section(s): track
 :Format:
 	``FILE <filename> [file_format]``
@@ -69,11 +66,12 @@ section.
 		one of: ``BINARY``, ``MOTOROLA``, ``AIFF``, ``WAVE``, or
 		``MP3``.
 
+``FILE`` line precedes the beginning of the track section.
+
 FLAGS
 ~~~~~
 
-Sets track flags.
-
+:Description: Sets track flags.
 :Section(s): track
 :Format:
 	``FLAGS [flag]...``
@@ -84,8 +82,7 @@ Sets track flags.
 INDEX
 ~~~~~
 
-Sets a track index.
-
+:Description: Sets a track index.
 :Section(s): track
 :Format:
 	``INDEX <index_number> <index>``
@@ -98,8 +95,7 @@ Sets a track index.
 ISRC
 ~~~~
 
-Sets track ISRC number.
-
+:Description: Sets track ISRC number.
 :Section(s): track
 :Format:
 	``ISRC <ISRC_number>``
@@ -110,8 +106,7 @@ Sets track ISRC number.
 POSTGAP
 ~~~~~~~
 
-Sets track postgap.
-
+:Description: Sets track postgap.
 :Section(s): track
 :Format:
 	``POSTGAP <postgap>``
@@ -122,8 +117,7 @@ Sets track postgap.
 PREGAP
 ~~~~~~
 
-Sets track pregap.
-
+:Description: Sets track pregap.
 :Section(s): track
 :Format:
 	``PREGAP <pregap>``
@@ -134,8 +128,7 @@ Sets track pregap.
 REM
 ~~~
 
-Begins a comment line.
-
+:Description: Begins a comment line.
 :Section(s): any
 :Format:
 	``REM [comments]``
@@ -143,8 +136,7 @@ Begins a comment line.
 TRACK
 ~~~~~
 
-Starts a new track.
-
+:Description: Starts a new track.
 :Section(s): track
 :Format:
 	``TRACK <track_number> <track_mode>``
@@ -159,9 +151,7 @@ Starts a new track.
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
 
-Sets CD-TEXT data. The cue format does not have native support for binary
-CD-TEXT.
-
+:Description: Sets CD-TEXT data.
 :Section(s): any
 :Format:
 	``<CDTEXT_keyword> <CDTEXT_field>``
@@ -170,6 +160,8 @@ CD-TEXT.
 		one of: (see `CD-TEXT`_ section for a list of keywords).
 	``CDTEXT_field``
 		a string.
+
+The cue format does not have native support for binary CD-TEXT.
 
 TOC File Format
 ===============
