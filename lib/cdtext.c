@@ -1,7 +1,7 @@
 /* 
  * cdtext.c -- cdtext data structure and functions
  *
- * Copyright (C) 2004 Svend Sorensen <sorensen@freeshell.org>
+ * Copyright (C) 2004 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.
  */
 

@@ -1,5 +1,8 @@
 /*
  * cue.h -- cue function declarations
+ *
+ * Copyright (C) 2004 Svend Sorensen
+ * For license terms, see the file COPYING in this distribution.
  */
 
 Cd *cue_parse (FILE *fp);

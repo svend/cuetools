@@ -1,5 +1,8 @@
 /*
  * toc.h -- toc function declarations
+ *
+ * Copyright (C) 2004 Svend Sorensen
+ * For license terms, see the file COPYING in this distribution.
  */
 
 Cd *toc_parse (FILE *fp);
