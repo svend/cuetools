@@ -7,7 +7,7 @@
 
 #include "cd.h"
 
-enum {CUE, TOC, UNKNOWN};
+enum Format {CUE, TOC, UNKNOWN};
 
 typedef struct Cue Cue;
 
