@@ -14,7 +14,12 @@
 
 char *progname;
 
-enum {APPEND, PREPEND, SPLIT};
+/* pregap correction modes
+ * APPEND - append pregap to previous track (except for first track)
+ * PREPEND - prefix pregap to current track
+ * SPLIT - print breakpoints for beginning and end of pregap
+ */
+enum GapMode {APPEND, PREPEND, SPLIT};
 
 void usage (int status)
 {
