@@ -41,6 +41,18 @@ title:		%t\n\
 ISRC (CD-TEXT):	%u\n\
 "
 
+/* default string to print for unset (NULL) values */
+#define VALUE_UNSET ""
+
+/*
+ * *_get_* functions can return an int or char *
+ */
+typedef union {
+	int ival;
+	char *sval;
+	char cval;
+} Value;
+
 char *progname;
 
 void usage (int status)
@@ -91,7 +103,7 @@ Any other %<character> is expanded to that character.  For example, to get a\n\
 	exit (status);
 }
 
-void disc_field (char *conv, int length, Cd *cd)
+void disc_field (char *conv, int length, Cd *cd, Value *value)
 {
 	char *c;	/* pointer to conversion character */
 
@@ -100,54 +112,61 @@ void disc_field (char *conv, int length, Cd *cd)
 
 	c = conv + length - 1;
 
+	/*
+	 * after setting value, set *c to specify value type
+	 * 'd' integer
+	 * 's' string
+	 * 'c' character
+	 */
 	switch (*c) {
 	case 'A':
+		value->sval = cdtext_get(PTI_ARRANGER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_ARRANGER, cdtext));
 		break;
 	case 'C':
+		value->sval = cdtext_get(PTI_COMPOSER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_COMPOSER, cdtext));
 		break;
 	case 'G':
+		value->sval = cdtext_get(PTI_GENRE, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_GENRE, cdtext));
 		break;
 	case 'M':
+		value->sval = cdtext_get(PTI_MESSAGE, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_MESSAGE, cdtext));
 		break;
 	case 'N':
-		*c = 'd';	/* tracks is an integer */
-		printf(conv, cd_get_ntrack(cd));
+		value->ival = cd_get_ntrack(cd);
+		*c = 'd';
 		break;
 	case 'P':
+		value->sval = cdtext_get(PTI_PERFORMER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_PERFORMER, cdtext));
 		break;
 	case 'R':
+		value->sval = cdtext_get(PTI_ARRANGER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_ARRANGER, cdtext));
 		break;
 	case 'S':
+		value->sval = cdtext_get(PTI_SONGWRITER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_SONGWRITER, cdtext));
 		break;
 	case 'T':
+		value->sval = cdtext_get(PTI_TITLE, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_TITLE, cdtext));
 		break;
 	case 'U':
+		value->sval = cdtext_get(PTI_UPC_ISRC, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_UPC_ISRC, cdtext));
 		break;
 	default:
-		putchar(*c);
+		value->cval = *c;
+		*c = 'c';
 		break;
 	}
 }
 
-void track_field (char *conv, int length, Cd *cd, int trackno)
+void track_field (char *conv, int length, Cd *cd, int trackno, Value *value)
 {
 	char *c;	/* pointer to conversion character */
 
@@ -161,53 +180,54 @@ void track_field (char *conv, int length, Cd *cd, int trackno)
 
 	switch (*c) {
 	case 'a':
+		value->sval = cdtext_get(PTI_ARRANGER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_ARRANGER, cdtext));
 		break;
 	case 'c':
+		value->sval = cdtext_get(PTI_COMPOSER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_COMPOSER, cdtext));
 		break;
 	case 'f':
+		value->sval = track_get_filename(track);
 		*c = 's';
-		printf(conv, track_get_filename(track));
 		break;
 	case 'g':
+		value->sval = cdtext_get(PTI_GENRE, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_GENRE, cdtext));
 		break;
 	case 'i':
+		value->sval = track_get_isrc(track);
 		*c = 's';
-		printf(conv, track_get_isrc(track));
 		break;
 	case 'm':
+		value->sval = cdtext_get(PTI_MESSAGE, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_MESSAGE, cdtext));
 		break;
 	case 'n':
-		*c = 'd';	/* track number is an integer */
-		printf(conv, trackno);
+		value->ival = trackno;
+		*c = 'd';
 		break;
 	case 'p':
+		value->sval = cdtext_get(PTI_PERFORMER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_PERFORMER, cdtext));
 		break;
 	case 's':
+		value->sval = cdtext_get(PTI_SONGWRITER, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_SONGWRITER, cdtext));
 		break;
 	case 't':
+		value->sval = cdtext_get(PTI_TITLE, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_TITLE, cdtext));
 		break;
 	case 'u':
+		value->sval = cdtext_get(PTI_UPC_ISRC, cdtext);
 		*c = 's';
-		printf(conv, cdtext_get(PTI_UPC_ISRC, cdtext));
 		break;
 	default:
-		disc_field(conv, length, cd);
+		disc_field(conv, length, cd, value);
 		break;
 	}
+
 }
 
 /* print a % conversion specification
@@ -216,6 +236,8 @@ void track_field (char *conv, int length, Cd *cd, int trackno)
 void print_conv (char *start, int length, Cd *cd, int trackno)
 {
 	char *conv;	/* copy of conversion specification */
+	Value value;
+	char *c;	/* pointer to conversion-char */
 
 	/* TODO: use strndup? */
 	conv = malloc ((unsigned) (length + 1));
@@ -224,9 +246,29 @@ void print_conv (char *start, int length, Cd *cd, int trackno)
 
 	/* conversion character */
 	if (0 == trackno)
-		disc_field(conv, length, cd);
+		disc_field(conv, length, cd, &value);
 	else
-		track_field(conv, length, cd, trackno);
+		track_field(conv, length, cd, trackno, &value);
+
+	c = conv + length - 1;
+
+	switch (*c) {
+	case 'c':
+		printf(conv, value.cval);
+		break;
+	case 'd':
+		printf(conv, value.ival);
+		break;
+	case 's':
+		if (NULL == value.sval)
+			printf(conv, VALUE_UNSET);
+		else
+			printf(conv, value.sval);
+		break;
+	default:
+		printf("%d: ", strlen(conv));
+		printf("%s", conv);
+	}
 
 	free(conv);
 }
