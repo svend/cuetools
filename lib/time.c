@@ -4,6 +4,7 @@
  * Copyright (C) 2004 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 
