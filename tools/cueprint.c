@@ -310,27 +310,21 @@ void cd_printf (char *format, Cd *cd, int trackno)
 	}
 }
 
-void print_info (Cd *cd)
-{
-	int i;		/* track */
-
-	cd_printf(d_template, cd, 0);
-
-	for (i = 1; i <= cd_get_ntrack(cd); i++) {
-		cd_printf(t_template, cd, i);
-	}
-}
-
 int info (char *name, int format)
 {
 	Cd *cd = NULL;
+	int i;		/* track number */
 
 	if (NULL == (cd = cf_parse(name, &format))) {
 		fprintf(stderr, "%s: input file error\n", name);
 		return -1;
 	}
 
-	print_info(cd);
+	cd_printf(d_template, cd, 0);
+
+	for (i = 1; i <= cd_get_ntrack(cd); i++) {
+		cd_printf(t_template, cd, i);
+	}
 
 	return 0;
 }
