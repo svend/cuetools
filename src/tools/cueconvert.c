@@ -11,6 +11,12 @@
 #include <getopt.h>
 #include "cuefile.h"
 
+#if HAVE_CONFIG_H
+#include "config.h"
+#else
+#define PACKAGE_STRING "cuebreakpoints"
+#endif
+
 char *progname;
 
 void usage (int status)
@@ -23,12 +29,20 @@ OPTIONS\n\
 -h, --help 			print usage\n\
 -i, --input-format cue|toc	set format of input file\n\
 -o, --output-format cue|toc	set format of output file\n\
+-V, --version			print version information\n\
 ", stdout);
 	} else {
 		fprintf(stderr, "run `%s --help' for usage\n", progname);
 	}
 
 	exit (status);
+}
+
+void version ()
+{
+	printf("%s\n", PACKAGE_STRING);
+
+	exit(0);
 }
 
 int convert (char *iname, int iformat, char *oname, int oformat)
@@ -72,12 +86,13 @@ int main (int argc, char **argv)
 		{"help", no_argument, NULL, 'h'},
 		{"input-format", required_argument, NULL, 'i'},
 		{"output-format", required_argument, NULL, 'o'},
+		{"version", no_argument, NULL, 'V'},
 		{NULL, 0, NULL, 0}
 	};
 
 	progname = *argv;
 
-	while (-1 != (c = getopt_long(argc, argv, "hi:o:", longopts, NULL))) {
+	while (-1 != (c = getopt_long(argc, argv, "hi:o:V", longopts, NULL))) {
 		switch (c) {
 		case 'h':
 			usage(0);
@@ -101,6 +116,9 @@ int main (int argc, char **argv)
 				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
 				usage(1);
 			}
+			break;
+		case 'V':
+			version();
 			break;
 		default:
 			usage(1);

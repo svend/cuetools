@@ -12,6 +12,12 @@
 #include <ctype.h>		/* isdigit() */
 #include "cuefile.h"
 
+#if HAVE_CONFIG_H
+#include "config.h"
+#else
+#define PACKAGE_STRING "cuebreakpoints"
+#endif
+
 /* default templates */
 
 #define D_TEMPLATE "\
@@ -67,6 +73,7 @@ OPTIONS\n\
 -n, --track-number <number>	only print track information for single track\n\
 -d, --disc-template <template>	set disc template (see TEMPLATE EXPANSION)\n\
 -t, --track-template <template>	set track template (see TEMPLATE EXPANSION)\n\
+-V, --version			print version information\n\
 \n\
 Template Expansion\n\
 Disc:\n\
@@ -101,6 +108,13 @@ Any other %<character> is expanded to that character.  For example, to get a\n\
 	}
 
 	exit (status);
+}
+
+void version ()
+{
+	printf("%s\n", PACKAGE_STRING);
+
+	exit(0);
 }
 
 void disc_field (char *conv, int length, Cd *cd, Value *value)
@@ -435,12 +449,13 @@ int main (int argc, char **argv)
 		{"track-number", required_argument, NULL, 'n'},
 		{"disc-template", required_argument, NULL, 'd'},
 		{"track-template", required_argument, NULL, 't'},
+		{"version", no_argument, NULL, 'V'},
 		{NULL, 0, NULL, 0}
 	};
 
 	progname = *argv;
 
-	while (-1 != (c = getopt_long(argc, argv, "hi:n:d:t:", longopts, NULL))) {
+	while (-1 != (c = getopt_long(argc, argv, "hi:n:d:t:V", longopts, NULL))) {
 		switch (c) {
 		case 'h':
 			usage(0);
@@ -463,6 +478,9 @@ int main (int argc, char **argv)
 			break;
 		case 't':
 			t_template = optarg;
+			break;
+		case 'V':
+			version();
 			break;
 		default:
 			usage(1);

@@ -12,6 +12,12 @@
 #include "cuefile.h"
 #include "time.h"
 
+#if HAVE_CONFIG_H
+#include "config.h"
+#else
+#define PACKAGE_STRING "cuebreakpoints"
+#endif
+
 char *progname;
 
 /* pregap correction modes
@@ -33,12 +39,20 @@ OPTIONS\n\
 --append-gaps			append pregaps to previous track (default)\n\
 --prepend-gaps			prefix pregaps to track\n\
 --split-gaps			split at beginning and end of pregaps\n\
+-V, --version			print version information\n\
 ", stdout);
 	} else {
 		fprintf(stderr, "run `%s --help' for usage\n", progname);
 	}
 
 	exit (status);
+}
+
+void version ()
+{
+	printf("%s\n", PACKAGE_STRING);
+
+	exit(0);
 }
 
 void print_m_ss_ff (long frame)
@@ -119,12 +133,13 @@ int main (int argc, char **argv)
 		{"append-gaps", no_argument, NULL, 'a'},
 		{"prepend-gaps", no_argument, NULL, 'p'},
 		{"split-gaps", no_argument, NULL, 's'},
+		{"version", no_argument, NULL, 'V'},
 		{NULL, 0, NULL, 0}
 	};
 
 	progname = *argv;
 
-	while (-1 != (c = getopt_long(argc, argv, "hi:", longopts, NULL))) {
+	while (-1 != (c = getopt_long(argc, argv, "hi:V", longopts, NULL))) {
 		switch (c) {
 		case 'h':
 			usage(0);
@@ -147,6 +162,9 @@ int main (int argc, char **argv)
 			break;
 		case 's':
 			gaps = SPLIT;
+			break;
+		case 'V':
+			version();
 			break;
 		default:
 			usage(1);
