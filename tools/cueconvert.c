@@ -71,7 +71,7 @@ int main (int argc, char **argv)
 
 	progname = *argv;
 
-	while (-1 != (c = getopt(argc, argv, "hi:o:"))) {	
+	while (-1 != (c = getopt(argc, argv, "hi:o:"))) {
 		switch (c) {
 		case 'h':
 			usage(0);
