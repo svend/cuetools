@@ -377,32 +377,34 @@ comma seperated list of integers in the range 0-255.
 CD-TEXT
 =======
 
+CD-TEXT entries are either character or binary data.
+
 Keywords
 --------
 
-==========	======
-Keyword		Format
-==========	======
-TITLE		char
-PERFORMER	char
-SONGWRITER	char
-COMPOSER	char
-ARRANGER	char
-MESSAGE		char
-DISC_ID		binary
-GENRE		binary
-TOC_INFO	binary
-TOC_INFO2	binary
-UPC_EAN		char
-ISRC		char
-SIZE_INFO	binary
-==========	======
+==========	======	==========
+Keyword		Format	Section
+==========	======	==========
+TITLE		char	disc/track
+PERFORMER	char	disc/track
+SONGWRITER	char	disc/track
+COMPOSER	char	disc/track
+ARRANGER	char	disc/track
+MESSAGE		char	disc/track
+DISC_ID		binary	disc/track
+GENRE		binary	disc/track
+TOC_INFO	binary	disc/track
+TOC_INFO2	binary	disc/track
+UPC_EAN		char	disc
+ISRC		char	track
+SIZE_INFO	binary	disc/track
+==========	======	==========
 
 Definitions
 ===========
 
 MSF format
 	a representation of time in the form ``mm:ss:ff``.  ``mm`` is minutes,
-	``ss`` is seconds, and ``ff`` is frames
+	``ss`` is seconds, and ``ff`` is frames.
 frame
-	1/74 of a second
+	1/74 of a second.
