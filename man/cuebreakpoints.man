@@ -6,7 +6,7 @@ cuebreakpoints
 .SH DESCRIPTION
 cuebreakpoints \- print the breakpoints from a cue or toc file
 .
-.SH SYNTAX
+.SH SYNOPSIS
 .B cuebreakpoints
 [\-h] [\-i cue|toc] [file...]
 .

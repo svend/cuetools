@@ -6,7 +6,7 @@ cueconvert
 .SH DESCRIPTION
 cueconvert \- convert between the cue and toc formats
 .
-.SH SYNTAX
+.SH SYNOPSIS
 .B cueconvert
 [\-h] [\-i cue|toc] [\-o cue|toc] [infile [outfile]]
 .
