@@ -1,7 +1,7 @@
 # Makefile
 
-INSTALL= install
-INSTALL_PROGRAM= $(INSTALL) -c
+INSTALL= install -c
+INSTALL_PROGRAM= $(INSTALL)
 INSTALL_DATA= $(INSTALL) -m 644
 GROFF= groff
 
