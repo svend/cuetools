@@ -1,16 +1,22 @@
 cuetools README
-cuetools is a set of utilites for working with cue and toc files.
+cuetools is a set of utilities for working with cue and toc files.
 
 RELEASE NOTES
 * cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc parsing code
-  has been reimplimented in lex/yacc.
+  has been reimplemented in lex/yacc.
 * cuerename has been replaced by the more general utility cueprint.
-* Usage syntax of the utilites has changed.  See the respective man pages.
+* Usage syntax of the utilities has changed.  See the respective man pages.
 
 INSTALL
 Building requires GNU Make.  Run `make install' to install cuetools into the
 default location of /usr/local.  The Makefiles also support both the prefix and
 DESTDIR variables.
+
+BUGS/TODO
+* (cue/toc) Line numbers in error messages are off sometimes.
+* (toc) Binary CD-TEXT data is parsed, but not saved.
+* (toc) Only a single data file is supported.
+* (cueprint) Allow specifying zero padding for numbers.
 
 AUTHOR
 Svend Sorensen <ssorensen@freeshell.org>
