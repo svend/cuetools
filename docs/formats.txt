@@ -79,9 +79,12 @@ FILE
 		a string.
 	``file_format``
 		one of: ``BINARY``, ``MOTOROLA``, ``AIFF``, ``WAVE``, or
-		``MP3``.
+		``MP3`` [#]_.
 
 ``FILE`` line precedes the beginning of the track section.
+
+.. [#] The cdrtools ``cue.c`` file also has ``file_format`` entries for ``AU``
+and ``OGG``.
 
 FLAGS
 ~~~~~
@@ -159,9 +162,8 @@ TRACK
 	``track_number``
 		a positive integer in the range 1-99.
 	``track_mode``
-		one of: ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``,
-		``MODE2/2048``, ``MODE2/2324``, ``MODE2/2336``, or
-		``MODE2/2352``.
+		one of: ``AUDIO``, ``CDG``, ``MODE1/2048``, ``MODE1/2352``,
+		``MODE2/2336``, ``MODE2/2352``, ``CDI/2336``, or ``CDI/2352``.
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
