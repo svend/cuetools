@@ -83,22 +83,24 @@ int main (int argc, char **argv)
 			usage(0);
 			break;
 		case 'i':
-			if (0 == strcmp("cue", optarg))
+			if (0 == strcmp("cue", optarg)) {
 				iformat = CUE;
-			else if (0 == strcmp("toc", optarg))
+			} else if (0 == strcmp("toc", optarg)) {
 				iformat = TOC;
-			else
+			} else {
 				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
 				usage(1);
+			}
 			break;
 		case 'o':
-			if (0 == strcmp("cue", optarg))
+			if (0 == strcmp("cue", optarg)) {
 				oformat = CUE;
-			else if (0 == strcmp("toc", optarg))
+			} else if (0 == strcmp("toc", optarg)) {
 				oformat = TOC;
-			else
+			} else {
 				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
 				usage(1);
+			}
 			break;
 		default:
 			usage(1);

@@ -245,10 +245,11 @@ void print_conv (char *start, int length, Cd *cd, int trackno)
 	conv[length] = '\0';
 
 	/* conversion character */
-	if (0 == trackno)
+	if (0 == trackno) {
 		disc_field(conv, length, cd, &value);
-	else
+	} else {
 		track_field(conv, length, cd, trackno, &value);
+	}
 
 	c = conv + length - 1;
 
@@ -445,13 +446,14 @@ int main (int argc, char **argv)
 			usage(0);
 			break;
 		case 'i':
-			if (0 == strcmp("cue", optarg))
+			if (0 == strcmp("cue", optarg)) {
 				format = CUE;
-			else if (0 == strcmp("toc", optarg))
+			} else if (0 == strcmp("toc", optarg)) {
 				format = TOC;
-			else
+			} else {
 				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
 				usage(1);
+			}
 			break;
 		case 'n':
 			trackno = atoi(optarg);
@@ -474,11 +476,13 @@ int main (int argc, char **argv)
 		d_template = strdup(D_TEMPLATE);
 		t_template = strdup(T_TEMPLATE);
 	} else {
-		if (NULL == d_template)
+		if (NULL == d_template) {
 			d_template = strdup("");
+		}
 
-		if (NULL == t_template)
+		if (NULL == t_template) {
 			t_template = strdup("");
+		}
 	}
 
 	/* translate escape sequences */
@@ -488,8 +492,9 @@ int main (int argc, char **argv)
 	if (optind == argc) {
 		info("-", format, trackno, d_template, t_template);
 	} else {
-		for (; optind < argc; optind++)
+		for (; optind < argc; optind++) {
 			info(argv[optind], format, trackno, d_template, t_template);
+		}
 	}
 
 	return 0;

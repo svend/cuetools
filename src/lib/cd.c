@@ -107,8 +107,9 @@ int cd_get_mode (Cd *cd)
 
 void cd_set_catalog (Cd *cd, char *catalog)
 {
-	if (cd->catalog)
+	if (cd->catalog) {
 		free(cd->catalog);
+	}
 
 	cd->catalog = strdup(catalog);
 }
@@ -125,10 +126,11 @@ Cdtext *cd_get_cdtext (Cd *cd)
 
 Track *cd_add_track (Cd *cd)
 {
-	if (MAXTRACK - 1 > cd->ntrack)
+	if (MAXTRACK - 1 > cd->ntrack) {
 		cd->ntrack++;
-	else
+	} else {
 		fprintf(stderr, "too many tracks\n");
+	}
 
 	/* this will reinit last track if there were too many */
 	cd->track[cd->ntrack - 1] = track_init();
@@ -144,8 +146,9 @@ int cd_get_ntrack (Cd *cd)
 
 Track *cd_get_track (Cd *cd, int i)
 {
-	if (0 < i <= cd->ntrack)
+	if (0 < i <= cd->ntrack) {
 		return cd->track[i - 1];
+	}
 
 	return NULL;
 }
@@ -156,8 +159,9 @@ Track *cd_get_track (Cd *cd, int i)
 
 void track_set_filename (Track *track, char *filename)
 {
-	if (track->file.name)
+	if (track->file.name) {
 		free(track->file.name);
+	}
 
 	track->file.name = strdup(filename);
 }
@@ -243,8 +247,9 @@ long track_get_zero_post (Track *track)
 }
 void track_set_isrc (Track *track, char *isrc)
 {
-	if (track->isrc)
+	if (track->isrc) {
 		free(track->isrc);
+	}
 
 	track->isrc = strdup(isrc);
 }
@@ -261,10 +266,11 @@ Cdtext *track_get_cdtext (Track *track)
 
 void track_add_index (Track *track, long index)
 {
-	if (MAXTRACK - 1 > track->nindex)
+	if (MAXTRACK - 1 > track->nindex) {
 		track->nindex++;
-	else
+	} else {
 		fprintf(stderr, "too many indexes\n");
+	}
 
 	/* this will overwrite last index if there were too many */
 	track->index[track->nindex - 1] = index;
@@ -277,8 +283,9 @@ int track_get_nindex (Track *track)
 
 long track_get_index (Track *track, int i)
 {
-	if (0 <= i < track->nindex)
+	if (0 <= i < track->nindex) {
 		return track->index[i];
+	}
 
 	return -1;
 }
@@ -301,8 +308,9 @@ void cd_track_dump (Track *track)
 	printf("isrc: %s\n", track->isrc);
 	printf("indexes: %d\n", track->nindex);
 
-	for (i = 0; i < track->nindex; ++i)
+	for (i = 0; i < track->nindex; ++i) {
 		printf("index %d: %ld\n", i, track->index[i]);
+	}
 
 	if (NULL != track->cdtext) {
 		printf("cdtext:\n");

@@ -16,11 +16,12 @@ Cd *cf_parse (char *name, int *format)
 	FILE *fp = NULL;
 	Cd *cd = NULL;
 
-	if (UNKNOWN == *format)
+	if (UNKNOWN == *format) {
 		if (UNKNOWN == (*format = cf_format_from_suffix(name))) {
 			fprintf(stderr, "%s: unknown format\n", name);
 			return NULL;
 		}
+	}
 
 	if (0 == strcmp("-", name)) {
 		fp = stdin;
@@ -38,8 +39,9 @@ Cd *cf_parse (char *name, int *format)
 		break;
 	}
 
-	if(stdin != fp)
+	if(stdin != fp) {
 		fclose(fp);
+	}
 
 	return cd;
 }
@@ -48,11 +50,12 @@ int cf_print (char *name, int *format, Cd *cd)
 {
 	FILE *fp = NULL;
 
-	if (UNKNOWN == *format)
+	if (UNKNOWN == *format) {
 		if (UNKNOWN == (*format = cf_format_from_suffix(name))) {
 			fprintf(stderr, "%s: unknown format\n", name);
 			return -1;
 		}
+	}
 
 	if (0 == strcmp("-", name)) {
 		fp = stdout;
@@ -70,8 +73,9 @@ int cf_print (char *name, int *format, Cd *cd)
 		break;
 	}
 
-	if(stdout != fp)
+	if(stdout != fp) {
 		fclose(fp);
+	}
 
 	return 0;
 }
@@ -80,10 +84,11 @@ int cf_format_from_suffix (char *name)
 {
 	char *suffix;
 	if (0 != (suffix = strrchr(name, '.'))) {
-		if (0 == strcasecmp(".cue", suffix))
+		if (0 == strcasecmp(".cue", suffix)) {
 			return CUE;
-		else if (0 == strcasecmp(".toc", suffix))
+		} else if (0 == strcasecmp(".toc", suffix)) {
 			return TOC;
+		}
 	}
 
 	return UNKNOWN;

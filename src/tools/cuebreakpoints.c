@@ -52,8 +52,9 @@ void print_m_ss_ff (long frame)
 void print_breakpoint (long b)
 {
 	/* do not print zero breakpoints */
-	if (0 != b)
+	if (0 != b) {
 		print_m_ss_ff(b);
+	}
 }
 
 void print_breaks (Cd *cd, int gaps)
@@ -129,13 +130,14 @@ int main (int argc, char **argv)
 			usage(0);
 			break;
 		case 'i':
-			if (0 == strcmp("cue", optarg))
+			if (0 == strcmp("cue", optarg)) {
 				format = CUE;
-			else if (0 == strcmp("toc", optarg))
+			} else if (0 == strcmp("toc", optarg)) {
 				format = TOC;
-			else
+			} else {
 				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
 				usage(1);
+			}
 			break;
 		case 'a':
 			gaps = APPEND;
@@ -155,8 +157,9 @@ int main (int argc, char **argv)
 	if (optind == argc) {
 		breaks("-", format, gaps);
 	} else {
-		for (; optind < argc; optind++)
+		for (; optind < argc; optind++) {
 			breaks(argv[optind], format, gaps);
+		}
 	}
 
 	return 0;

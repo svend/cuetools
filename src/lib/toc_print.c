@@ -31,8 +31,9 @@ void toc_print (FILE *fp, Cd *cd)
 	       	break;
 	}
 
-	if (NULL != cd_get_catalog(cd))
+	if (NULL != cd_get_catalog(cd)) {
 		fprintf(fp, "CATALOG \"%s\"\n", cd_get_catalog(cd));
+	}
 
 	if(0 != cdtext_is_empty(cdtext)) {
 		fprintf(fp, "CD_TEXT {\n");
@@ -81,15 +82,19 @@ void toc_print_track (FILE *fp, Track *track)
 	}
 	fprintf(fp, "\n");
 
-	if (0 != track_is_set_flag(track, FLAG_PRE_EMPHASIS))
+	if (0 != track_is_set_flag(track, FLAG_PRE_EMPHASIS)) {
 		fprintf(fp, "PRE_EMPHASIS\n");
-	if (0 != track_is_set_flag(track, FLAG_COPY_PERMITTED))
+	}
+	if (0 != track_is_set_flag(track, FLAG_COPY_PERMITTED)) {
 		fprintf(fp, "COPY\n");
-	if (0 != track_is_set_flag(track, FLAG_FOUR_CHANNEL))
+	}
+	if (0 != track_is_set_flag(track, FLAG_FOUR_CHANNEL)) {
 		fprintf(fp, "FOUR_CHANNEL_AUDIO\n");
+	}
 
-	if (NULL != track_get_isrc(track))
+	if (NULL != track_get_isrc(track)) {
 		fprintf(fp, "ISRC \"%s\"\n", track_get_isrc(track));
+	}
 
 	if (0 != cdtext_is_empty(cdtext)) {
 		fprintf(fp, "CD_TEXT {\n");
@@ -107,12 +112,14 @@ void toc_print_track (FILE *fp, Track *track)
 		
 	fprintf(fp, "FILE ");
 	fprintf(fp, "\"%s\" ", track_get_filename(track));
-	if (0 == track_get_start(track))
+	if (0 == track_get_start(track)) {
 		fprintf(fp, "0");
-	else
+	} else {
 		fprintf(fp, "%s", time_frame_to_mmssff(track_get_start(track)));
-	if (0 != track_get_length(track))
+	}
+	if (0 != track_get_length(track)) {
 		fprintf(fp, " %s", time_frame_to_mmssff(track_get_length(track)));
+	}
 	fprintf(fp, "\n");
 
 	if (0 != track_get_zero_post(track)) {
@@ -120,7 +127,7 @@ void toc_print_track (FILE *fp, Track *track)
 		fprintf(fp, "%s", time_frame_to_mmssff(track_get_zero_post(track)));
 		fprintf(fp, "\n");
 	}
-		
+
 	if (track_get_index(track, 1) != 0) {
 		fprintf(fp, "START ");
 		fprintf(fp, "%s\n", time_frame_to_mmssff(track_get_index(track, 1)));

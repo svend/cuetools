@@ -24,8 +24,9 @@ void cue_print (FILE *fp, Cd *cd)
 	Track *track = NULL;
 
 	/* print global information */
-	if (NULL != cd_get_catalog(cd))
+	if (NULL != cd_get_catalog(cd)) {
 		fprintf(fp, "CATALOG %s\n", cd_get_catalog(cd));
+	}
 
 	cue_print_cdtext(cdtext, fp, 0);
 
@@ -52,10 +53,11 @@ void cue_print_track (FILE *fp, Track *track, int trackno)
 			fprintf(fp, "FILE \"%s\" ", filename);
 
 			/* NOTE: what to do with other formats (MP3, etc)? */
-			if (MODE_AUDIO == track_get_mode(track))
+			if (MODE_AUDIO == track_get_mode(track)) {
 				fprintf(fp, "WAVE\n");
-			else
+			} else {
 				fprintf(fp, "BINARY\n");
+			}
 		}
 	}
 
@@ -91,28 +93,35 @@ void cue_print_track (FILE *fp, Track *track, int trackno)
 
 	if (0 != track_is_set_flag(track, FLAG_ANY)) {
 		fprintf(fp, "FLAGS");
-		if (0 != track_is_set_flag(track, FLAG_PRE_EMPHASIS))
+		if (0 != track_is_set_flag(track, FLAG_PRE_EMPHASIS)) {
 			fprintf(fp, " PRE");
-		if (0 != track_is_set_flag(track, FLAG_COPY_PERMITTED))
+		}
+		if (0 != track_is_set_flag(track, FLAG_COPY_PERMITTED)) {
 			fprintf(fp, " DCP");
-		if (0 != track_is_set_flag(track, FLAG_FOUR_CHANNEL))
+		}
+		if (0 != track_is_set_flag(track, FLAG_FOUR_CHANNEL)) {
 			fprintf(fp, " 4CH");
-		if (0 != track_is_set_flag(track, FLAG_SCMS))
+		}
+		if (0 != track_is_set_flag(track, FLAG_SCMS)) {
 			fprintf(fp, " SCMS");
+		}
 		fprintf(fp, "\n");
 	}
 
-	if (NULL != track_get_isrc(track))
+	if (NULL != track_get_isrc(track)) {
 		fprintf(fp, "ISRC %s\n", track_get_isrc(track));
+	}
 
-	if (0 != track_get_zero_pre(track))
+	if (0 != track_get_zero_pre(track)) {
 		fprintf (fp, "PREGAP %s\n", time_frame_to_mmssff(track_get_zero_pre(track)));
+	}
 
 	/* don't print index 0 if index 1 = 0 */
-	if (track_get_index(track, 1) == 0)
+	if (track_get_index(track, 1) == 0) {
 		i = 1;
-	else
+	} else { 
 		i = 0;
+	}
 
 	for (; i < track_get_nindex(track); i++) {
 		fprintf(fp, "INDEX %02d ", i);
@@ -122,8 +131,9 @@ void cue_print_track (FILE *fp, Track *track, int trackno)
 		- track_get_zero_pre(track) , fp);
 	}
 
-	if (0 != track_get_zero_post(track))
+	if (0 != track_get_zero_post(track)) {
 		fprintf (fp, "POSTGAP %s\n", time_frame_to_mmssff(track_get_zero_post(track)));
+	}
 
 	prev_length = track_get_length(track);
 }
