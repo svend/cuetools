@@ -27,6 +27,7 @@ cueprint
 Installation
 ------------
 
-Building requires GNU Make.  Run ``make install`` to install cuetools into the
-default location of /usr/local.  The Makefiles also support both the prefix and
-DESTDIR variables.
+Building requires GNU Make, Lex, and Yacc.
+
+Run ``make install`` to install cuetools into the default location of
+/usr/local.  The Makefiles also support both the prefix and DESTDIR variables.
