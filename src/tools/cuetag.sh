@@ -73,7 +73,7 @@ vorbis()
 	(for field in $fields; do
 		value=""
 		for conv in $(eval echo \\$$field); do
-			value=$(CUEPRINT -n $1 -t "$conv\n" $cue_file)
+			value=$($CUEPRINT -n $1 -t "$conv\n" $cue_file)
 
 			if [ -n "$value" ]; then
 				echo "$field=$value"
@@ -106,7 +106,7 @@ id3()
 	for field in $fields; do
 		value=""
 		for conv in $(eval echo \\$$field); do
-			value=$(CUEPRINT -n $1 -t "$conv\n" $cue_file)
+			value=$($CUEPRINT -n $1 -t "$conv\n" $cue_file)
 
 			if [ -n "$value" ]; then
 				break
