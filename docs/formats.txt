@@ -501,7 +501,8 @@ Definitions
 ===========
 
 MSF format
-	a representation of time in the form ``mm:ss:ff``.  ``mm`` is minutes,
-	``ss`` is seconds, and ``ff`` is frames.
+	a representation of time in the form ``m:s:f``.  ``m`` is minutes,
+	``s`` is seconds, and ``f`` is frames.  Fields may be zero padded.
+
 frame
-	1/74 of a second.
+	1/75 of a second.
