@@ -40,9 +40,8 @@ Bugs/Todo
 * (cue/toc) Strings cannot be quoted with single quotes.
 * (toc) Binary CD-TEXT data is parsed, but not saved.
 * (toc) Only a single data file is supported.
-* (cue) CDTEXTFILE (a CDRWIN extension) is not recognized.
 * (cue) track_mode does not match cdrtools and CDRWIN docs.
-* (cue) Handle CDTEXTFILE for binary CD-TEXT.
+* (cue) Add support for CDTEXTFILE format.
 
 License
 -------
