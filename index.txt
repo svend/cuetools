@@ -75,8 +75,8 @@ cuetools-users_
 .. _cuetools-users: https://lists.berlios.de/pipermail/cuetools-users
 .. _cuetools-announce: https://lists.berlios.de/pipermail/cuetools-announce
 
-See Also
---------
+Other Links
+-----------
 
 * Cdrdao_
 * cdrdao(1) man page - description of toc file format
