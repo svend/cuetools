@@ -4,7 +4,7 @@ cueprint
 .SH DESCRIPTION
 cueprint \- print disc and track infomation for a cue or toc file
 .SH SYNTAX
-cueprint [\-h] [\-i cue|toc] [\-d TEMPLATE] [\-t TEMPLATE] [file...]
+cueprint [\-h] [\-i cue|toc] [-n TRACKNUMBER] [\-d TEMPLATE] [\-t TEMPLATE] [file...]
 .SH OPTIONS
 .TP
 .B \-h
@@ -12,6 +12,8 @@ print usage information
 .TP
 .B \-i cue|toc
 set format of file(s)
+.B \-n TRACKNUMBER
+only print track information for track TRACKNUMBER.  The default is to print information for all tracks.
 .TP
 .B \-d TEMPLATE
 set disc template (see TEMPLATE EXPANSION)
