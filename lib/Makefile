@@ -1,15 +1,19 @@
 YFLAGS+= -d
+LEX=flex
 
+TARGETS= libcuefile.a
 OBJS= cd.o cdtext.o time.o cuefile.o
 CUE_OBJS= cue_parse.o cue_scan.o cue_print.o
 TOC_OBJS= toc_parse.o toc_scan.o toc_print.o
+
+# There are multiple scanners/parsers
+# so we need a prefix to aviod conflicts.
+# (NOTE: these lines require GNU Make)
 
 toc_scan.c: LFLAGS+= -Ptoc_yy
 cue_scan.c: LFLAGS+= -Pcue_yy
 toc_parse.c: YFLAGS+= -p toc_yy
 cue_parse.c: YFLAGS+= -p cue_yy
-
-TARGETS= libcuefile.a
 
 all: $(TARGETS)
 
