@@ -9,7 +9,9 @@ cue_file=""
 # Vorbis Comments
 vorbis()
 {
-	VORBISCOMMENT=vorbiscomment
+	# -w to overwrite existing comments
+	# -a to append to existing comments
+	VORBISCOMMENT="vorbiscomment -w"
 
 	# space seperated list of recomended stardard field names
 	# see http://www.xiph.org/ogg/vorbis/doc/v-comment.html
@@ -35,7 +37,7 @@ vorbis()
 	CONTACT=''
 	ISRC='%i %u'
 
-	for field in $fields; do
+	(for field in $fields; do
 		value=""
 		for conv in `eval echo \\$$field`; do
 			value=`$CUEPRINT -n $1 -t "$conv\n" $cue_file`
@@ -46,9 +48,9 @@ vorbis()
 		done
 
 		if [ -n "$value" ]; then
-			echo $VORBISCOMMENT -t "$field=$value" $2
+			echo "$field=$value"
 		fi
-	done
+	done) | $VORBISCOMMENT -c - $2
 }
 
 id3()
