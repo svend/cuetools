@@ -25,7 +25,6 @@ nonws		[^ \t\r\n]
 
 %%
 
-\'([^\']|\\\')*\'	|
 \"([^\"]|\\\")*\"	{
 		yylval.sval = strdup(yytext + 1);
 		yylval.sval[strlen(yylval.sval) - 1] = '\0';
