@@ -210,6 +210,8 @@ AUDIOFILE
 :Format:
 	``AUDIOFILE "<filename>" <start> [length]``
 
+	``filename``
+		a string.
 	``start``
 		time in MSF format.
 	``length``
@@ -270,6 +272,8 @@ DATAFILE
 :Format:
 	``DATAFILE "<filename>" [length]``
 
+	``filename``
+		a string.
 	``length``
 		time in MSF format.
 
@@ -303,6 +307,8 @@ FILE
 :Format:
 	``FILE "<filename>" <start> [length]``
 
+	``filename``
+		a string.
 	``start``
 		time in MSF format.
 	``length``
