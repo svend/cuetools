@@ -7,9 +7,19 @@
 CUEPRINT=cueprint
 cue_file=""
 
+# print usage instructions
 usage()
 {
 	echo "usage: cuetag.sh <cuefile|tocfile> [file]..."
+	echo
+	echo "cuetag.sh adds tags to autofiles based on cue or toc information"
+	echo
+	echo "Supported formats (format extension, format name, tagging utility):"
+	echo "ogg, Ogg Vorbis, vorbiscomment"
+	echo "flac, FLAC, metaflac"
+	echo "mp3, MP3, mp3info"
+	echo
+	echo "cuetag.sh uses cueprint, which must be in your path"
 }
 
 # Vorbis Comments
