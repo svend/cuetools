@@ -48,7 +48,7 @@ CATALOG
 ~~~~~~~
 
 :Section(s): global
-:Format: ``CATALOG "<catalog_number>"``
+:Format: ``CATALOG <catalog_number>``
 
 Sets the catalog number  of the CD.  The ``catalog_number`` must be exactly 13
 digits.
