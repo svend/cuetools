@@ -23,8 +23,8 @@ nonws		[^ \t\r\n]
 
 %%
 
-\'(\\.|[^\\'])*\'	|
-\"(\\.|[^\\"])*\"	{
+\'([^\']|\\\')*\'	|
+\"([^\"]|\\\")*\"	{
 		toc_yylval.sval = strdup(yytext + 1);
 		toc_yylval.sval[strlen(toc_yylval.sval) - 1] = '\0';
 		BEGIN(INITIAL);

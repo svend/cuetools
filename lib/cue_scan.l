@@ -24,8 +24,8 @@ nonws		[^ \t\r\n]
 %%
 
 
-\'(\\.|[^\\'])*\'	|
-\"(\\.|[^\\"])*\"	{
+\'([^\']|\\\')*\'	|
+\"([^\"]|\\\")*\"	{
 		cue_yylval.sval = strdup(yytext + 1);
 		cue_yylval.sval[strlen(cue_yylval.sval) - 1] = '\0';
 		BEGIN(INITIAL);
