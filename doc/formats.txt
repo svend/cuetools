@@ -212,7 +212,6 @@ AUDIOFILE
 
 	``start``
 		time in MSF format.
-
 	``length``
 		time in MSF format.
 
@@ -306,7 +305,6 @@ FILE
 
 	``start``
 		time in MSF format.
-
 	``length``
 		time in MSF format.
 
