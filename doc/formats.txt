@@ -290,7 +290,7 @@ FIFO
 :Description: Add data from FIFO to current track.
 :Section(s): track
 :Format:
-	``FIFO "<fifoname>" <length>"
+	``FIFO "<fifoname>" <length>"``
 
 	``length``
 		time in MSF format.
