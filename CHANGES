@@ -2,6 +2,18 @@
 cuetools CHANGES
 ================
 
+cuebreakpoints was not printing the last track breakpoint.  This has been
+fixed.
+
+cueprint now prints a zero-length string for undefined values.  Flags, width,
+and precision are applied to conversion characters which have no conversion.
+
+Added a tagging script, cuetag.sh, which uses cueprint, vorbiscomment, and
+mp3info to tag Ogg Vorbis and MP3 files.  This needs more testing and
+documentation.
+
+Added a track selection flag to cueprint.
+
 1.1
 ---
 
