@@ -381,7 +381,7 @@ comma seperated list of integers in the range 0-255.
 CD-TEXT
 =======
 
-The CD-TEXT specification set aside 16 CD-TEXT types.  Three are reserved and
+The CD-TEXT specification sets aside 16 CD-TEXT types.  Three are reserved and
 have no corresponding keywords.  One is shared; the keyword depends on whether
 it is for the disc (``UPC_EAN``) or a track (``ISRC``).  CD-TEXT entries are
 either character or binary data.
