@@ -47,7 +47,7 @@ width is the minimum field width.  precision is the maximum width for strings.
 .PP
 Disc template expansion characters are valid for both the disc and track templates.
 .PP
-Disc:
+.B Disc Conversion Specifiers
 .TP
 .B A
 album arranger
@@ -76,7 +76,7 @@ album title
 .B U
 album UPC/EAN
 .PP
-Track:
+.B Track Conversion Specifiers
 .TP
 .B a
 track arranger
