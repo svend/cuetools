@@ -80,7 +80,7 @@ typedef struct Track Track;
 Cd *cd_init ();
 
 /* dump all info from CD structure
- * in human readable format (for debugging
+ * in human readable format (for debugging)
  */
 void cd_dump (Cd *cd);
 

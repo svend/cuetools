@@ -151,3 +151,16 @@ const char *cdtext_get_key (int pti, int istrack)
 
 	return key;
 }
+
+void cdtext_dump (Cdtext *cdtext, int istrack)
+{
+	int pti;
+	char *value = NULL;
+
+	for (pti = 0; PTI_END != pti; pti++) {
+		if (NULL != (value = cdtext_get(pti, cdtext))) {
+			printf("%s: ", cdtext_get_key(pti, istrack));
+			printf("%s\n", value);
+		}
+	}
+}

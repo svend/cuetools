@@ -306,7 +306,7 @@ void cd_track_dump (Track *track)
 
 	if (NULL != track->cdtext) {
 		printf("cdtext:\n");
-		/* cdtext_print(stdout, track->cdtext); */
+		cdtext_dump(track->cdtext, 1);
 	}
 }
 
@@ -319,7 +319,7 @@ void cd_dump (Cd *cd)
 	printf("catalog: %s\n", cd->catalog);
 	if (NULL != cd->cdtext) {
 		printf("cdtext:\n");
-		/* cdtext_print(stdout, cd->cdtext); */
+		cdtext_dump(cd->cdtext, 0);
 	}
 
 	for (i = 0; i < cd->ntrack; ++i) {
