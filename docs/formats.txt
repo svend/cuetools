@@ -1,6 +1,6 @@
-============================================
-Description of the Cuesheet/TOC File Formats
-============================================
+===========================================================
+Description of the Cue Sheet/Table of Contents File Formats
+===========================================================
 
 :Author: Svend Sorensen
 :Contact: sorensen@users.berlios.de
@@ -8,13 +8,14 @@ Description of the Cuesheet/TOC File Formats
 
 .. contents::
 
-The Cuesheet (cue) and TOC (toc) file formats both describe the layout of a CD.
+The Cue Sheet (cue) and Table of Contents (toc) file formats both describe the
+layout of a CD.
 
 Notes
 =====
 
-A Cuesheet or TOC file has an (optional) global section, followed by any number
-of track sections.
+A cue or toc file has an (optional) global section, followed by any number of
+track sections.
 
 Lines (with a few exceptions for the toc format) begin with a keyword, which
 may be followed by whitespace separated fields.  Some keywords are only allowed
@@ -33,10 +34,10 @@ contains whitespace, it must be enclosed in quotation marks.
 ``...``
 	preceding field may be repeated any number of times
 
-Cuesheet Format
-===============
+Cue Sheet Format
+================
 
-The standard file suffix for a cuesheet file is ``.cue``.
+The standard file suffix for a cue file is ``.cue``.
 
 Keywords
 --------
@@ -163,10 +164,10 @@ TRACK
 
 The cue format does not have native support for binary CD-TEXT.
 
-TOC File Format
-===============
+Table of Contents File Format
+=============================
 
-The standard file suffix for a TOC file is ``.toc``.
+The standard file suffix for a toc file is ``.toc``.
 
 Certain keywords begin a block, which must be enclosed between ``{`` and ``}``
 brackets.
