@@ -214,7 +214,7 @@ void print_conv (char *start, int length, Cd *cd, int trackno)
  * NOTE: this does not handle octal and hexidecimal escapes
  *       except for \0
  */
-int print_esc (char *c)
+void print_esc (char *c)
 {
 	switch (*c) {
 		case 'a':
@@ -315,7 +315,6 @@ void cd_printf (char *format, Cd *cd, int trackno)
 void print_info (Cd *cd)
 {
 	int i;		/* track */
-	char *c;
 
 	cd_printf(d_template, cd, 0);
 
