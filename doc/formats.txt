@@ -266,9 +266,13 @@ COPY
 DATAFILE
 ~~~~~~~~
 
-:Description: *TODO*
+:Description: Add data from file to current track.
 :Section(s): track
-:Format: *TODO*
+:Format:
+	``DATAFILE "<filename>" [length]``
+
+	``length``
+		time in MSF format.
 
 ISRC
 ~~~~
@@ -284,14 +288,18 @@ ISRC
 FIFO
 ~~~~
 
-:Description: *TODO*
+:Description: Add data from FIFO to current track.
 :Section(s): track
-:Format: *TODO*
+:Format:
+	``FIFO "<fifoname>" <length>"
+
+	``length``
+		time in MSF format.
 
 FILE
 ~~~~
 
-:Description: Add file to current track.
+:Description: Add data from file to current track.
 :Section(s): track
 :Format:
 	``FILE "<filename>" <start> [length]``
@@ -365,14 +373,18 @@ PREGAP
 SILENCE
 ~~~~~~~
 
-:Description: *TODO*
+:Description: Add zero (silent) audio data to current track.
 :Section(s): track
-:Format: *TODO*
+:Format:
+	``SILENCE <length>``
+
+	``length``
+		time in MSF format.
 
 START
 ~~~~~
 
-:Description: *TODO*
+:Description: Sets the length of the pregap.
 :Section(s): track
 :Format:
 	``START <start>``
@@ -397,9 +409,13 @@ TWO_CHANNEL_AUDIO
 ZERO
 ~~~~
 
-:Description: *TODO*
+:Description: Add zero data to current track.
 :Section(s): track
-:Format: *TODO*
+:Format:
+	``ZERO <length>``
+
+	``length``
+		time in MSF format.
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
