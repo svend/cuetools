@@ -1,4 +1,4 @@
-# ReStructuredText Makefile
+# reStructuredText Makefile
 
 RST2HTML= rst2html.py
 RST2LATEX= rst2latex.py
