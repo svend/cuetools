@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
 # cueconvert.cgi - use HTML form to drive cueconvert
-# ./cueconvert should be the cueconvert binary, or a link to it
 
 import os
 import cgi
 # error reporting
 #import cgitb; cgitb.enable()
+
+# cueconvert path
+CUECONVERT = "./cueconvert"
 
 def print_form(iformat, oformat, text, errors):
 	# input format radio buttons
@@ -66,7 +68,7 @@ def convert(iformat, oformat, text):
 
 	returns converted text, and any error messages"""
 
-	command = "./cueconvert"
+	command = CUECONVERT
 
 	# append flags to command
 	if iformat == "cue":
@@ -86,10 +88,10 @@ def convert(iformat, oformat, text):
 	errors = efile.read()
 	ofile.close()
 	efile.close()
-	
+
 	return text, errors
 
-if __name__ == '__main__':
+def main():
 	iformat = "cue"		# input format
 	oformat = "toc"		# output format
 	text = ""		# input file content
@@ -106,3 +108,6 @@ if __name__ == '__main__':
 		iformat, oformat = oformat, iformat
 
 	print_form(iformat, oformat, text, errors)
+
+if __name__ == '__main__':
+	main()
