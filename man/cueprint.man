@@ -12,6 +12,7 @@ print usage information
 .TP
 .B \-i cue|toc
 set format of file(s)
+.TP
 .B \-n TRACKNUMBER
 only print track information for track TRACKNUMBER.  The default is to print information for all tracks.
 .TP
