@@ -33,6 +33,8 @@ Format Notation
 Cuesheet Format
 ===============
 
+The standard file suffix for a cuesheet file is ``.cue``.
+
 Keywords
 --------
 
@@ -50,8 +52,8 @@ CATALOG
 :Section(s): global
 :Format: ``CATALOG <catalog_number>``
 
-Sets the catalog number  of the CD.  The ``catalog_number`` must be exactly 13
-digits.
+Sets the catalog number  of the CD.  The ``catalog_number`` is an integer
+consisting of exactly 13 digits.
 
 FILE
 ~~~~
@@ -69,9 +71,10 @@ TRACK
 :Section(s): track
 :Format: ``TRACK <track_number> <track_mode>``
 
-Starts a new track.  ``track_number`` must be a positive integer.  Allowable
-``track_mode`` entries are ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``,
-``MODE2/2048``, ``MODE2/2324``, ``MODE2/2336``, or ``MODE2/2352``.
+Starts a new track.  ``track_number`` must be a positive integer in the range
+1-99.  Allowable ``track_mode`` entries are ``MODE1/2048``, ``MODE1/2352``,
+``MODE2/2336``, ``MODE2/2048``, ``MODE2/2324``, ``MODE2/2336``, or
+``MODE2/2352``.
 
 FLAGS
 ~~~~~
@@ -104,8 +107,8 @@ INDEX
 :Section(s): track
 :Format: ``INDEX <index_number> <index>``
 
-Sets a track index.  ``index_number`` must be a non-negative integer.
-``index`` must be in MSF format.
+Sets a track index.  ``index_number`` must be a non-negative integer in the
+range 0-99.  ``index`` must be in MSF format.
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
@@ -118,6 +121,8 @@ handle binary CD-TEXT.
 
 TOC File Format
 ===============
+
+The standard file suffix for a TOC file is ``.toc``.
 
 Certain keywords begin a block, which must be enclosed between ``{`` and ``}``
 brackets.
