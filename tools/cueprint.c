@@ -109,46 +109,47 @@ void disc_field (char *c, Cd *cd)
 	}
 }
 
-void track_field (char *c, Cd *cd, int trackno)
+void track_field (char *c, Cd *cd, int trackno, int width)
 {
 	Track *track = NULL;
 	Cdtext *cdtext = NULL;
+
 	track = cd_get_track(cd, trackno);
 	cdtext = track_get_cdtext(track);
 
 	switch (*c) {
 	case 'a':
-		printf("%s", cdtext_get(PTI_ARRANGER, cdtext));
+		printf("%*s", width, cdtext_get(PTI_ARRANGER, cdtext));
 		break;
 	case 'c':
-		printf("%s", cdtext_get(PTI_COMPOSER, cdtext));
+		printf("%*s", width, cdtext_get(PTI_COMPOSER, cdtext));
 		break;
 	case 'f':
-		printf("%s", track_get_filename(track));
+		printf("%*s", width, track_get_filename(track));
 		break;
 	case 'g':
-		printf("%s", cdtext_get(PTI_GENRE, cdtext));
+		printf("%*s", width, cdtext_get(PTI_GENRE, cdtext));
 		break;
 	case 'i':
-		printf("%s", track_get_isrc(track));
+		printf("%*s", width, track_get_isrc(track));
 		break;
 	case 'm':
-		printf("%s", cdtext_get(PTI_MESSAGE, cdtext));
+		printf("%*s", width, cdtext_get(PTI_MESSAGE, cdtext));
 		break;
 	case 'n':
-		printf("%0*d", 2, trackno);
+		printf("%0*d", width, trackno);
 		break;
 	case 'p':
-		printf("%s", cdtext_get(PTI_PERFORMER, cdtext));
+		printf("%*s", width, cdtext_get(PTI_PERFORMER, cdtext));
 		break;
 	case 's':
-		printf("%s", cdtext_get(PTI_SONGWRITER, cdtext));
+		printf("%*s", width, cdtext_get(PTI_SONGWRITER, cdtext));
 		break;
 	case 't':
-		printf("%s", cdtext_get(PTI_TITLE, cdtext));
+		printf("%*s", width, cdtext_get(PTI_TITLE, cdtext));
 		break;
 	case 'u':
-		printf("%s", cdtext_get(PTI_UPC_ISRC, cdtext));
+		printf("%*s", width, cdtext_get(PTI_UPC_ISRC, cdtext));
 		break;
 	default:
 		disc_field(c, cd);
@@ -161,6 +162,13 @@ void print_info (Cd *cd)
 	int i;		/* track */
 	char *c;
 
+	/* field flags */
+	int flag = 1;	/* flags remain */
+	int zeropad = 0;
+
+	/* field width */
+	int width;
+
 	for (c = d_template; '\0' != *c; c++) {
 		if ('%' == *c) {
 			c++;
@@ -172,9 +180,42 @@ void print_info (Cd *cd)
 
 	for (i = 1; i <= cd_get_ntrack(cd); i++) {
 		for (c = t_template; '\0' != *c; c++) {
-			if ('%' == *c) {
+			if ('\\' == *c) {
 				c++;
-				track_field(c, cd, i);
+
+				switch (*c) {
+				case 'n':
+					putchar('\n');
+					break;
+				case 't':
+					putchar('\t');
+					break;
+				default:
+					putchar(*c);
+					break;
+				}
+			} else if ('%' == *c) {
+				c++;
+
+				/* parse flags */
+				do {
+					switch (*c) {
+					case '0':	/* zero-padding */
+						c++;
+						zeropad = 1;
+						break;
+					default:
+						flag = 0;
+					}
+				} while (0 != flag);
+
+				/* parse width */
+				width = 0;
+				while (0 != isdigit(*c)) {
+					width = width * 10 + *c++ - '0';
+				}
+
+				track_field(c, cd, i, width);
 			} else {
 				putchar(*c);
 			}
