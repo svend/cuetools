@@ -206,90 +206,91 @@ Keywords
 CATALOG
 ~~~~~~~
 
+:Description: Sets the catalog number of the CD.
 :Section(s): global
-:Format: ``CATALOG "<catalog_number>"``
+:Format:
+	``CATALOG "<catalog_number>"``
 
-Sets the catalog number  of the CD.  ``catalog_number`` must be exactly 13
-digits.
+	``catalog_number``
+		13 digit number
 
 CD_DA
 ~~~~~
 
+:Description: Sets the CD format to audio.
 :Section(s): global
 :Format: ``CD_DA``
-
-Sets the CD format to audio.
 
 CD_ROM
 ~~~~~~
 
+:Description: Sets the CD format to data.
 :Section(s): global
 :Format: ``CD_ROM``
-
-Sets the CD format to data.
 
 CD_ROM_XA
 ~~~~~~~~~
 
+:Description: Sets the CD format to mixed.
 :Section(s): global
 :Format: ``CD_ROM_XA``
-
-Sets the CD format to mixed.
 
 TRACK
 ~~~~~
 
+:Description: Starts a new track.
 :Section(s): track
 :Format: ``TRACK <track_mode> [sub_channel_mode]``
 
 NO
 ~~
-
+:Description: Negates (clears) track flags.
 :Section(s): track
-:Format: ``NO <flag>``
+:Format:
+	``NO <flag>``
 
-Negates (clears) track flags.  Allowable ``flag`` entries  are ``COPY`` and
-``PRE_EMPHASIS``.
+	``flag``
+		  one of: ``COPY`` or ``PRE_EMPHASIS``.
 
 COPY
 ~~~~
 
+:Description: Sets the copy permitted flag.
 :Section(s): track
 :Format: ``COPY``
-
-Sets the copy permitted flag.
 
 PRE_EMPHASIS
 ~~~~~~~~~~~~
 
+:Description: Sets the pre-emphasis flag.
 :Section(s): track
 :Format: ``PRE_EMPHASIS``
-
-Sets the pre-emphasis flag.
 
 TWO_CHANNEL_AUDIO
 ~~~~~~~~~~~~~~~~~
 
+:Description: Sets the two channel audio flag.
 :Section(s): track
 :Format: ``TWO_CHANNEL_AUDIO``
 
-Sets the two channel audio flag.
 
 FOUR_CHANNEL_AUDIO
 ~~~~~~~~~~~~~~~~~~
 
+:Description: Sets the four channel audio flag.
 :Section(s): track
 :Format: ``FOUR_CHANNEL_AUDIO``
-
-Sets the four channel audio flag.
 
 ISRC
 ~~~~
 
+:Description: Sets track ISRC number.
 :Section(s): track
-:Format: ``ISRC "<ISRC_number>"``
+:Format:
+	``ISRC "<ISRC_number>"``
 
-Sets track ISRC number.  ``ISRC_number`` must be of the format CCOOOOYYSSSSS.
+	``ISRC_number``
+		a string with the format CCOOOOYYSSSSS.
 
 SILENCE
 ~~~~~~~
@@ -308,18 +309,30 @@ ZERO
 FILE
 ~~~~
 
+:Description: Add file to current track.
 :Section(s): track
-:Format: ``FILE "<filename>" <start> [length]``
+:Format:
+	``FILE "<filename>" <start> [length]``
 
-Add file to current track.  ``start`` and ``length`` must be in MSF format.
+	``start``
+		time in MSF format.
+
+	``length``
+		time in MSF format.
 
 AUDIOFILE
 ~~~~~~~~~
 
+:Description: Add file to current track.
 :Section(s): track
-:Format: ``AUDIOFILE "<filename>" <start> [length]``
+:Format:
+	``AUDIOFILE "<filename>" <start> [length]``
 
-Add file to current track.  ``start`` and ``length`` must be in MSF format.
+	``start``
+		time in MSF format.
+
+	``length``
+		time in MSF format.
 
 DATAFILE
 ~~~~~~~~
@@ -346,19 +359,25 @@ START
 PREGAP
 ~~~~~~
 
-Section(s): track
-Format: ``PREGAP <pregap>``
+:Description: Sets track pregap.
+:Section(s): track
+:Format:
+	``PREGAP <pregap>``
 
-Sets track pregap.  ``pregap`` must be in MSF format.
+	``pregap``
+		time in MSF format.
 
 INDEX
 ~~~~~
 
+:Description: Sets a track index.
 :Section(s): track
 :Format: ``INDEX <index_number> <index_time>``
 
-Sets a track index.  ``index_number`` must be a non-negative integer.
-``index_time`` must be in MSF format.
+	``index_number``
+		a non-negative integer.
+	``index_time``
+		time in MSF format.
 
 CD_TEXT
 ~~~~~~~
@@ -507,12 +526,17 @@ SIZE_INFO
 Definitions
 ===========
 
+frame
+	1/75 of a second.
+
+International Standard Recording Code (ISRC)
+	A 12 character identification code for sound recordings.  See
+	`ISRC intro`_ for details.
+
 MSF format
 	a representation of time in the form ``m:s:f``.  ``m`` is minutes,
 	``s`` is seconds, and ``f`` is frames.  Fields may be zero padded.
 
-frame
-	1/75 of a second.
-
 .. _MMC-3: ftp://ftp.t10.org/t10/drafts/mmc3/
 .. _cdrtools: http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
+.. _ISRC intro: http://www.ifpi.org/site-content/online/isrc_intro.html
