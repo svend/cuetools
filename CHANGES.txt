@@ -8,6 +8,10 @@ cuetools CHANGES
 Changes since 1.2
 -----------------
 
+* Added append, prepend, and split pregap modes to cuebreakpoints.
+
+* Fixed possible compilation error with Bison.
+
 * All tools accept long options.
 
 * Programs exit if --input-format or --output-format is an illegal value.
