@@ -33,7 +33,7 @@ static Cdtext *cdtext = NULL;
 %token <sval> STRING
 
 /* global (header) */
-%token CATALOG 
+%token CATALOG
 
 %token <ival> CD_DA
 %token <ival> CD_ROM
@@ -65,7 +65,7 @@ static Cdtext *cdtext = NULL;
 %token DATAFILE
 %token FIFO
 %token START
-%token PREGAP 
+%token PREGAP
 %token INDEX
 
 /* CD-TEXT */
@@ -153,7 +153,7 @@ track_def
 	;
 
 track_modes
-	: track_mode 
+	: track_mode
 	| track_mode track_sub_mode { track_set_sub_mode(track, $2); }
 	;
 

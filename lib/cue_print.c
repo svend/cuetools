@@ -43,7 +43,7 @@ void cue_print_track (FILE *fp, Track *track, int trackno)
 	int i; 	/* index */
 
 	if (NULL != track_get_filename(track)) {
-		/* 
+		/*
 		 * always print filename for track 1, afterwards only
 		 * print filename if it differs from the previous track
 		 */

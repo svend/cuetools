@@ -1,4 +1,4 @@
-/* 
+/*
  * cuefile.h -- cue/toc public declarations
  *
  * Copyright (C) 2004 Svend Sorensen

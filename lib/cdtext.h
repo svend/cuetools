@@ -46,7 +46,7 @@ Cdtext *cdtext_init ();
 /* release a Cdtext */
 void cdtext_delete (Cdtext *cdtext);
 
-/* returns non-zero if there are no CD-TEXT fields set, zero otherwise */ 
+/* returns non-zero if there are no CD-TEXT fields set, zero otherwise */
 int cdtext_is_empty (Cdtext *cdtext);
 
 /* set CD-TEXT field to value for PTI pti */

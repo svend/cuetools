@@ -44,7 +44,7 @@ Cd *cf_parse (char *name, int *format)
 	return cd;
 }
 
-int cf_print (char *name, int *format, Cd *cd) 
+int cf_print (char *name, int *format, Cd *cd)
 {
 	FILE *fp = NULL;
 

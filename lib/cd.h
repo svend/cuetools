@@ -1,4 +1,4 @@
-/* 
+/*
  * cd.h -- cd structure
  *
  * Copyright (C) 2004 Svend Sorensen
@@ -79,7 +79,7 @@ Cd *cd_init ();
 void cd_dump (Cd *cd);
 
 /*
- * Cd functions 
+ * Cd functions
  */
 
 void cd_set_mode (Cd *cd, int mode);
@@ -88,7 +88,7 @@ int cd_get_mode (Cd *cd);
 void cd_set_catalog (Cd *cd, char *catalog);
 char *cd_get_catalog (Cd *cd);
 
-/* 
+/*
  * return pointer to cd's Cdtext
  */
 Cdtext *cd_get_cdtext (Cd *cd);

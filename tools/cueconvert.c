@@ -105,7 +105,7 @@ int main (int argc, char **argv)
 			break;
 		}
 	}
- 
+
 	if (optind == argc) {
 		convert("-", iformat, "-", oformat);
 	} else if (optind == argc - 1) {

@@ -1,4 +1,4 @@
-/* 
+/*
  * cdtext.c -- cdtext data structure and functions
  *
  * Copyright (C) 2004 Svend Sorensen

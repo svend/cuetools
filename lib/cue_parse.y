@@ -17,7 +17,7 @@
 extern int cue_yylex();
 void yyerror (char *s);
 
-static Cd *cd = NULL; 
+static Cd *cd = NULL;
 static Track *track = NULL;
 static Track *prev_track = NULL;
 static Cdtext *cdtext = NULL;
