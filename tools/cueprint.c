@@ -13,8 +13,33 @@
 #include "cuefile.h"
 
 /* default templates */
-#define D_TEMPLATE "%P \"%T\" (%N tracks)\n"
-#define T_TEMPLATE "%n: %p \"%t\"\n"
+
+#define D_TEMPLATE "\
+Disc Information\n\
+arranger:	%A\n\
+composer:	%C\n\
+genre:		%G\n\
+message:	%M\n\
+no. of tracks:	%N\n\
+performer:	%P\n\
+songwriter:	%S\n\
+title:		%T\n\
+UPC/EAN:	%U\n\
+"
+
+#define T_TEMPLATE "\
+\n\
+Track %n Information\n\
+arranger:	%a\n\
+composer:	%c\n\
+genre:		%g\n\
+ISRC:		%i\n\
+message:	%m\n\
+track number:	%n\n\
+perfomer:	%p\n\
+title:		%t\n\
+ISRC (CD-TEXT):	%u\n\
+"
 
 char *progname;
 char *d_template = NULL;	/* disc template */
@@ -57,8 +82,8 @@ Track:\n\
 Any other %<character> is expanded to that character.  For example, to get a\n\
 '%', use %%.\n\
 ", stdout);
-		fprintf(stdout, "default disc template is:\n\"%s\"\n", D_TEMPLATE);
-		fprintf(stdout, "default track template is:\n\"%s\"\n", T_TEMPLATE);
+		fprintf(stdout, "default disc template is:\n%s\n", D_TEMPLATE);
+		fprintf(stdout, "default track template is:\n%s\n", T_TEMPLATE);
 	} else {
 		fprintf(stderr, "%s: syntax error\n", progname);
 		fprintf(stderr, "run `%s -h' for usage\n", progname);
