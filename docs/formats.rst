@@ -47,10 +47,11 @@ CATALOG
 Sets the catalog number of the CD.
 
 :Section(s): global
-:Format: ``CATALOG <catalog_number>``
+:Format:
+	``CATALOG <catalog_number>``
 
-``catalog_number``
-	an integer consisting of exactly 13 digits.
+	``catalog_number``
+		an integer consisting of exactly 13 digits.
 
 FILE
 ~~~~
@@ -59,12 +60,14 @@ Sets a new input file.  ``FILE`` line precedes the beginning of the track
 section.
 
 :Section(s): track
-:Format: ``FILE <filename> [file_format]``
+:Format:
+	``FILE <filename> [file_format]``
 
-``filename``
-	a string.
-``file_format``
-	one of: ``BINARY``, ``MOTOROLA``, ``AIFF``, ``WAVE``, or ``MP3``.
+	``filename``
+		a string.
+	``file_format``
+		one of: ``BINARY``, ``MOTOROLA``, ``AIFF``, ``WAVE``, or
+		``MP3``.
 
 FLAGS
 ~~~~~
@@ -72,10 +75,11 @@ FLAGS
 Sets track flags.
 
 :Section(s): track
-:Format: ``FLAGS [flag]...``
+:Format:
+	``FLAGS [flag]...``
 
-``flag``
-	one of: ``PRE``, ``DCP``, ``4CH``, or ``SCMS``.
+	``flag``
+		one of: ``PRE``, ``DCP``, ``4CH``, or ``SCMS``.
 
 INDEX
 ~~~~~
@@ -83,12 +87,13 @@ INDEX
 Sets a track index.
 
 :Section(s): track
-:Format: ``INDEX <index_number> <index>``
+:Format:
+	``INDEX <index_number> <index>``
 
-``index_number``
-	an integer in the range 0-99.
-``index``
-	time in MSF format.
+	``index_number``
+		an integer in the range 0-99.
+	``index``
+		time in MSF format.
 
 ISRC
 ~~~~
@@ -96,10 +101,11 @@ ISRC
 Sets track ISRC number.
 
 :Section(s): track
-:Format: ``ISRC <ISRC_number>``
+:Format:
+	``ISRC <ISRC_number>``
 
-``ISRC_number``
-	a string with the format CCOOOOYYSSSSS.
+	``ISRC_number``
+		a string with the format CCOOOOYYSSSSS.
 
 POSTGAP
 ~~~~~~~
@@ -107,10 +113,11 @@ POSTGAP
 Sets track postgap.
 
 :Section(s): track
-:Format: ``POSTGAP <postgap>``
+:Format:
+	``POSTGAP <postgap>``
 
-``postgap``
-	time in MSF format.
+	``postgap``
+		time in MSF format.
 
 PREGAP
 ~~~~~~
@@ -118,10 +125,11 @@ PREGAP
 Sets track pregap.
 
 :Section(s): track
-:Format: ``PREGAP <pregap>``
+:Format:
+	``PREGAP <pregap>``
 
-``pregap``
-	time in MSF format.
+	``pregap``
+		time in MSF format.
 
 REM
 ~~~
@@ -129,7 +137,8 @@ REM
 Begins a comment line.  All lines beginning with ``REM`` are ignored.
 
 :Section(s): any
-:Format: ``REM [comments]``
+:Format:
+	``REM [comments]``
 
 TRACK
 ~~~~~
@@ -137,13 +146,15 @@ TRACK
 Starts a new track.
 
 :Section(s): track
-:Format: ``TRACK <track_number> <track_mode>``
+:Format:
+	``TRACK <track_number> <track_mode>``
 
-``track_number``
-	a positive integer in the range 1-99.
-``track_mode``
-	one of: ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``, ``MODE2/2048``,
-	``MODE2/2324``, ``MODE2/2336``, or ``MODE2/2352``.
+	``track_number``
+		a positive integer in the range 1-99.
+	``track_mode``
+		one of: ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``,
+		``MODE2/2048``, ``MODE2/2324``, ``MODE2/2336``, or
+		``MODE2/2352``.
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
@@ -152,12 +163,13 @@ Sets CD-TEXT data. The cue format does not have native support for binary
 CD-TEXT.
 
 :Section(s): any
-:Format: ``<CDTEXT_keyword> <CDTEXT_field>``
+:Format:
+	``<CDTEXT_keyword> <CDTEXT_field>``
 
-``CDTEXT_keyword``
-	one of: (see `CD-TEXT`_ section for a list of CD-TEXT keywords).
-``CDTEXT_field``
-	a string.
+	``CDTEXT_keyword``
+		one of: (see `CD-TEXT`_ section for a list of keywords).
+	``CDTEXT_field``
+		a string.
 
 TOC File Format
 ===============
@@ -377,7 +389,10 @@ comma seperated list of integers in the range 0-255.
 CD-TEXT
 =======
 
-CD-TEXT entries are either character or binary data.
+The CD-TEXT specification set aside 16 CD-TEXT types.  Three are reserved and
+have no corresponding keywords.  One is shared; the keyword depends on whether
+it is for the disc (``UPC_EAN``) or a track (``ISRC``).  CD-TEXT entries are
+either character or binary data.
 
 Keywords
 --------
@@ -385,78 +400,91 @@ Keywords
 ARRANGER
 ~~~~~~~~
 
+:Description: Name(s) of the arranger(s)
 :Section: any
 :Format: character
 
 COMPOSER
 ~~~~~~~~
 
+:Description: Name(s) of the composer(s)
 :Section: any
 :Format: character
 
 DISC_ID
 ~~~~~~~
 
+:Description: Disc Identification information
 :Section: any
 :Format: binary
 
 GENRE
 ~~~~~
 
+:Description: Genre Identification and Genre information
 :Section: any
 :Format: binary
 
 ISRC
 ~~~~~
 
+:Description: ISRC Code of each track
 :Section: track
 :Format: character
 
 MESSAGE
 ~~~~~~~
 
+:Description: Message from the content provider and/or artist
 :Section: any
 :Format: character
 
 PERFORMER
 ~~~~~~~~~
 
+:Description: Name(s) of the performer(s)
 :Section: any
 :Format: character
 
 SONGWRITER
 ~~~~~~~~~~
 
+:Description: Name(s) of the songwriter(s)
 :Section: any
 :Format: character
 
 TITLE
 ~~~~~
 
+:Description: Title of album name or Track Titles
 :Section: any
 :Format: character
 
 TOC_INFO
 ~~~~~~~~~
 
+:Description: Table of Content information
 :Section: any
 :Format: binary
 
 TOC_INFO2
 ~~~~~~~~~
 
+:Description: Second Table of Content information
 :Section: any
 :Format: binary
 
 UPC_EAN
 ~~~~~~~
 
+:Description: UPC/EAN code of the album
 :Section: disc
 :Format: character
 
 SIZE_INFO
 ~~~~~~~~~
 
+:Description: Size information of the Block
 :Section: any
 :Format: binary
 
