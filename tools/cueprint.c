@@ -64,7 +64,7 @@ void usage (int status)
 OPTIONS\n\
 -h 			print usage\n\
 -i cue|toc		set format of file(s)\n\
--n <tracknumber>	only print track information for track TRACKNUMBER\n\
+-n <tracknumber>	only print track information for track tracknumer\n\
 -d <template>		set disc template (see TEMPLATE EXPANSION)\n\
 -t <template>		set track template (see TEMPLATE EXPANSION)\n\
 \n\
