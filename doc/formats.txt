@@ -83,8 +83,8 @@ FILE
 
 ``FILE`` line precedes the beginning of the track section.
 
-.. [#] The cdrtools_ ``cue.c`` file also has ``file_format`` entries for ``AU``
-       and ``OGG``.
+.. [#] ``file_fomat`` differs between software packages.  The cdrtools_
+``cue.c`` file also has ``file_format`` entries for ``AU`` and ``OGG``.
 
 FLAGS
 ~~~~~
