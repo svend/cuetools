@@ -247,14 +247,14 @@ Add file to current track.  ``start`` and ``length`` must be in MSF format.
 DATAFILE
 ~~~~~~~~
 
-TODO
+*TODO*
 
 :Section(s): track
 
 FIFO
 ~~~~
 
-TODO
+*TODO*
 
 :Section(s): track
 
