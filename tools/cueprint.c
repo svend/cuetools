@@ -281,34 +281,34 @@ void print_conv (char *start, int length, Cd *cd, int trackno)
 void print_esc (char *c)
 {
 	switch (*c) {
-		case 'a':
-			putchar('\a');
-			break;
-		case 'b':
-			putchar('\b');
-			break;
-		case 'f':
-			putchar('\f');
-			break;
-		case 'n':
-			putchar('\n');
-			break;
-		case 'r':
-			putchar('\r');
-			break;
-		case 't':
-			putchar('\t');
-			break;
-		case 'v':
-			putchar('\v');
-			break;
-		case '0':
-			putchar('\0');
-			break;
-		default:
-			/* ?, ', " are handled by the default */
-			putchar(*c);
-			break;
+	case 'a':
+		putchar('\a');
+		break;
+	case 'b':
+		putchar('\b');
+		break;
+	case 'f':
+		putchar('\f');
+		break;
+	case 'n':
+		putchar('\n');
+		break;
+	case 'r':
+		putchar('\r');
+		break;
+	case 't':
+		putchar('\t');
+		break;
+	case 'v':
+		putchar('\v');
+		break;
+	case '0':
+		putchar('\0');
+		break;
+	default:
+		/* ?, ', " are handled by the default */
+		putchar(*c);
+		break;
 	}
 }
 
