@@ -1,1 +1,1 @@
-SUBDIRS = doc lib
+SUBDIRS = doc lib tools

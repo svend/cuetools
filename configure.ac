@@ -7,5 +7,5 @@ AM_PROG_LEX
 AC_PROG_YACC
 AC_PROG_LIBTOOL
 
-AC_CONFIG_FILES([Makefile doc/Makefile lib/Makefile])
+AC_CONFIG_FILES([Makefile doc/Makefile lib/Makefile tools/Makefile])
 AC_OUTPUT
