@@ -1,10 +1,16 @@
 #! /bin/sh
 
-# cuetag - tag files based on cue/toc file information
+# cuetag.sh - tag files based on cue/toc file information
 # uses cueprint output
+# usage: cuetag.sh <cuefile|tocfile> [file]...
 
 CUEPRINT=cueprint
 cue_file=""
+
+usage()
+{
+	echo "usage: cuetag.sh <cuefile|tocfile> [file]..."
+}
 
 # Vorbis Comments
 vorbis()
@@ -113,6 +119,11 @@ id3()
 
 main()
 {
+	if [ $# -lt 1 ]; then
+		usage
+		exit
+	fi
+
 	cue_file=$1
 	shift
 
@@ -120,7 +131,7 @@ main()
 	trackno=1
 
 	if [ $# -ne $ntrack ]; then
-		echo "Number of files does not match number of tracks."
+		echo "warning: number of files does not match number of tracks"
 	fi
 
 	for file in $@; do
