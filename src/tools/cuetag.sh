@@ -12,7 +12,7 @@ usage()
 {
 	echo "usage: cuetag.sh <cuefile|tocfile> [file]..."
 	echo
-	echo "cuetag.sh adds tags to autofiles based on cue or toc information"
+	echo "cuetag.sh adds tags to files based on cue or toc information"
 	echo
 	echo "Supported formats (format extension, format name, tagging utility):"
 	echo "ogg, Ogg Vorbis, vorbiscomment"
