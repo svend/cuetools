@@ -2,6 +2,9 @@
 cuetools CHANGES
 ================
 
+:Author: Svend Sorensen
+:Contact: sorensen@users.berlios.de
+
 cuebreakpoints was not printing the last track breakpoint.  This has been
 fixed.
 

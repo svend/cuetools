@@ -55,13 +55,13 @@ Project Links
 
 * cuetools `project page`_ [1]_
 * cuetools `downloads`_ [1]_
-* cuetools `Subversion repository`_ (ViewCVS_) [1]_
+* cuetools `Subversion repository`_ (browse_) [1]_
 * cueconvert `web interface`_
 
 .. _project page: http://developer.berlios.de/projects/cuetools/
 .. _downloads: http://developer.berlios.de/project/showfiles.php?group_id=2130
 .. _Subversion repository: http://developer.berlios.de/svn/?group_id=2130
-.. _ViewCVS: http://svn.berlios.de/viewcvs/cuetools
+.. _browse: http://svn.berlios.de/viewcvs/cuetools
 .. _web interface: http://sorensen.freeshell.org/cuetools/cueconvert.html
 
 Mailing Lists [1]_

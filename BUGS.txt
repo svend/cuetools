@@ -2,6 +2,9 @@
 cuetools Bugs/TODO
 ==================
 
+:Author: Svend Sorensen
+:Contact: sorensen@users.berlios.de
+
 * (cue/toc) Line numbers in error messages are off sometimes.
 * (cue/toc) Strings cannot be quoted with single quotes.
 * (toc) Binary CD-TEXT data is parsed, but not saved.
