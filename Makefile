@@ -16,8 +16,6 @@ HTMLFILES= $(RSTFILES:.txt=.html)
 LATEXFILES= $(RSTFILES:.txt=.tex)
 PDFFILES= $(RSTFILES:.txt=.pdf)
 
-all: html pdf
-
 html: $(HTMLFILES)
 	cd man && $(MAKE) $@
 latex: $(LATEXFILES)
