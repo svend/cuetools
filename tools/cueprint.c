@@ -46,12 +46,13 @@ char *progname;
 void usage (int status)
 {
 	if (0 == status) {
-		fprintf(stdout, "%s: usage: cueprint [-h] [-i cue|toc] [-d TEMPLATE] [-t TEMPLATE] [file...]\n", progname);
+		fprintf(stdout, "%s: usage: cueprint [-h] [-i cue|toc] [-n TRACKNUMBER] [-d TEMPLATE] [-t TEMPLATE] [file...]\n", progname);
 		fputs("\
 \n\
 OPTIONS\n\
 -h 			print usage\n\
 -i cue|toc		set format of file(s)\n\
+-n TRACKNUMBER		only print track information for track TRACKNUMBER\n\
 -d TEMPLATE		set disc template (see TEMPLATE EXPANSION)\n\
 -t TEMPLATE		set track template (see TEMPLATE EXPANSION)\n\
 \n\
@@ -333,20 +334,29 @@ void cd_printf (char *format, Cd *cd, int trackno)
 	}
 }
 
-int info (char *name, int format, char *d_template, char *t_template)
+int info (char *name, int format, int trackno, char *d_template, char *t_template)
 {
 	Cd *cd = NULL;
-	int i;		/* track number */
+	int ntrack;
 
 	if (NULL == (cd = cf_parse(name, &format))) {
 		fprintf(stderr, "%s: input file error\n", name);
 		return -1;
 	}
 
+	ntrack = cd_get_ntrack(cd);
+
 	cd_printf(d_template, cd, 0);
 
-	for (i = 1; i <= cd_get_ntrack(cd); i++) {
-		cd_printf(t_template, cd, i);
+	if (0 == trackno) {
+		for (trackno = 1; trackno <= ntrack; trackno++) {
+			cd_printf(t_template, cd, ntrack);
+		}
+	} else if (0 < trackno || ntrack >= trackno) {
+		cd_printf(t_template, cd, ntrack);
+	} else {
+		fprintf(stderr, "%s: track number out of range\n", progname);
+		return -1;
 	}
 
 	return 0;
@@ -355,6 +365,7 @@ int info (char *name, int format, char *d_template, char *t_template)
 int main (int argc, char **argv)
 {
 	int format = UNKNOWN;
+	int trackno = 0;		/* track number (0 = all tracks) */
 	char *d_template = NULL;	/* disc template */
 	char *t_template = NULL;	/* track template */
 	/* getopt () variables */
@@ -364,7 +375,7 @@ int main (int argc, char **argv)
 
 	progname = *argv;
 
-	while (-1 != (c = getopt(argc, argv, "hi:d:t:"))) {
+	while (-1 != (c = getopt(argc, argv, "hi:n:d:t:"))) {
 		switch (c) {
 		case 'h':
 			usage(0);
@@ -376,6 +387,9 @@ int main (int argc, char **argv)
 				format = TOC;
 			break;
 		/* TODO add track selection */
+		case 'n':
+			trackno = atoi(optarg);
+			break;
 		case 'd':
 			d_template = optarg;
 			break;
@@ -401,10 +415,10 @@ int main (int argc, char **argv)
 	}
 
 	if (optind == argc) {
-		info("-", format, d_template, t_template);
+		info("-", format, trackno, d_template, t_template);
 	} else {
 		for (; optind < argc; optind++)
-			info(argv[optind], format, d_template, t_template);
+			info(argv[optind], format, trackno, d_template, t_template);
 	}
 
 	return 0;
