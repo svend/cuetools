@@ -1,28 +1,74 @@
-cuetools README
-cuetools - a set of utilities for working with cue and toc files.
+================
+README: cuetools
+================
 
-RELEASE NOTES
-* cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc parsing code
-  has been reimplemented in lex/yacc.
+:Author: Svend Sorensen
+:Contact: ``sorensen@freeshell.org``
+:Website: http://cuetools.sourceforge.net
+
+.. contents::
+
+Description
+-----------
+
+cuetools is a set of utilities for working with cue and toc files.  It
+includes:
+
+cueconvert
+	convert between the cue and toc formats
+
+cuebreakpoints
+	print the breakpoints from a cue or toc file
+
+cueprint
+	print disc and track infomation for a cue or toc file
+
+Release Notes
+-------------
+
+* cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc
+  parsing code has been reimplemented in lex/yacc.
 * cuerename has been replaced by the more general utility cueprint.
-* Usage syntax of the utilities has changed.  See the respective man pages.
+* Usage syntax of the utilities has changed.  See the respective man
+  pages.
 
-INSTALL
-Building requires GNU Make.  Run `make install' to install cuetools into the
-default location of /usr/local.  The Makefiles also support both the prefix and
-DESTDIR variables.
+Installation
+------------
 
-BUGS/TODO
+Building requires GNU Make.  Run ``make install`` to install cuetools
+into the default location of /usr/local.  The Makefiles also support
+both the prefix and DESTDIR variables.
+
+Bugs/Todo
+---------
+
 * (cue/toc) Line numbers in error messages are off sometimes.
 * (toc) Binary CD-TEXT data is parsed, but not saved.
 * (toc) Only a single data file is supported.
 * (cueprint) Allow specifying zero padding for numbers.
 
-AUTHOR
-Svend Sorensen <sorensen@freeshell.org>
+License
+-------
 
-SEE ALSO
-cuetools website - http://cuetools.sourceforge.net
-Cdrdao website - http://cdrdao.sourceforge.net
-cdrdao(1) man page - description of toc file format
-shntool website - http://www.etree.org/shnutils/shntool/
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+For license terms, see the file ``COPYING`` in this distribution.
+
+See Also
+--------
+
+* Cdrdao website - http://cdrdao.sourceforge.net
+* cdrdao(1) man page - description of toc file format
+* shntool website - http://www.etree.org/shnutils/shntool/
