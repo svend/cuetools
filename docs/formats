@@ -296,11 +296,12 @@ Begins a CD-TEXT block.
 LANGUAGE_MAP
 ~~~~~~~~~~~~
 
-Begins a language map block.
+Begins a language map block.  ``language_map`` is a mapping of an integer in
+the range 0-255 to a country code.
 
-Section(s): global
-Subsection(s): CD-TEXT block
-Format: ``LANGUAGE_MAP { language_map }``
+:Section(s): global
+:Subsection(s): CD-TEXT block
+:Format: ``LANGUAGE_MAP { language_map... }``
 
 LANGUAGE
 ~~~~~~~~
