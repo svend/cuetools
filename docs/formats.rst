@@ -156,7 +156,7 @@ CD-TEXT.
 
 ``CDTEXT_keyword``
 	one of: (see `CD-TEXT`_ section for a list of CD-TEXT keywords).
-``CDTEXT_keyword``
+``CDTEXT_field``
 	a string.
 
 TOC File Format
