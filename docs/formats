@@ -56,8 +56,8 @@ FILE
 ~~~~
 
 Sets a new input file.  ``FILE`` line precedes the beginning of the track
-section.  Allowable ``file_format`` entries are BINARY, MOTOROLA, AIFF, WAVE,
-or MP3.
+section.  Allowable ``file_format`` entries are ``BINARY``, ``MOTOROLA``,
+``AIFF``, ``WAVE``, or ``MP3``.
 
 :Section(s): track
 :Format: ``FILE "<filename>" [file_format]``
@@ -66,8 +66,8 @@ TRACK
 ~~~~~
 
 Starts a new track.  ``track_number`` must be a positive integer.  Allowable
-``track_mode`` entries are MODE1/2048, MODE1/2352, MODE2/2336, MODE2/2048,
-MODE2/2324, MODE2/2336, or MODE2/2352.
+``track_mode`` entries are ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``,
+``MODE2/2048``, ``MODE2/2324``, ``MODE2/2336``, or ``MODE2/2352``.
 
 :Section(s): track
 :Format: ``TRACK <track_number> <track_mode>``
@@ -75,7 +75,8 @@ MODE2/2324, MODE2/2336, or MODE2/2352.
 FLAGS
 ~~~~~
 
-Sets track flags.  Allowable ``flag`` entries are PRE, DCP, 4CH, and SCMS.
+Sets track flags.  Allowable ``flag`` entries are ``PRE``, ``DCP``, ``4CH``,
+and ``SCMS``.
 
 :Section(s): track
 :Format: ``FLAGS [flag]...``
@@ -172,7 +173,7 @@ TRACK
 NO
 ~~
 
-Negates (clears) track flags.  Allowable flags are ``COPY`` and
+Negates (clears) track flags.  Allowable ``flag`` entries  are ``COPY`` and
 ``PRE_EMPHASIS``.
 
 :Section(s): track
