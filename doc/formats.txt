@@ -225,7 +225,7 @@ CATALOG
 	``CATALOG "<catalog_number>"``
 
 	``catalog_number``
-		13 digit number
+		an integer consisting of exactly 13 digits.
 
 CD_DA
 ~~~~~
