@@ -11,8 +11,10 @@ cuetools README
 Description
 -----------
 
-cuetools is a set of utilities for working with cue and toc files.  It
-includes:
+cuetools is a set of utilities for working with Cue Sheet (cue) and Table of
+Contents (toc) files.
+
+It includes:
 
 cueconvert
 	convert between the cue and toc formats
@@ -27,9 +29,9 @@ cueprint
 Installation
 ------------
 
-Building requires GNU Make.  Run ``make install`` to install cuetools
-into the default location of /usr/local.  The Makefiles also support
-both the prefix and DESTDIR variables.
+Building requires GNU Make.  Run ``make install`` to install cuetools into the
+default location of /usr/local.  The Makefiles also support both the prefix and
+DESTDIR variables.
 
 Bugs/Todo
 ---------
