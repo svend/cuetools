@@ -264,7 +264,7 @@ languages
 	;
 
 language
-	: NUMBER ':' NUMBER opt_nl
+	: NUMBER ':' NUMBER opt_nl { /* not implemented */ }
 	;
 
 cdtext_langs
