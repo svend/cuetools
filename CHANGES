@@ -2,6 +2,8 @@
 cuetools CHANGES
 ================
 
+File formats documentation has been readded and updated (docs/formats.txt).
+
 CDTEXTFILE is now a recognized (but ignored) keyword.
 
 If only a disc or track template is specified on the command line, then only
