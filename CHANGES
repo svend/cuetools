@@ -2,6 +2,8 @@
 cuetools CHANGES
 ================
 
+CDTEXTFILE is now a recognized (but ignored) keyword.
+
 If only a disc or track template is specified on the command line, then only
 the disc or track information is printed, respectively.
 
