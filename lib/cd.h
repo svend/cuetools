@@ -72,10 +72,16 @@ enum DataType {
 	DATA_ZERO
 };
 
+/* ADTs */
 typedef struct Cd Cd;
 typedef struct Track Track;
 
+/* return pointer to CD structure */
 Cd *cd_init ();
+
+/* dump all info from CD structure
+ * in human readable format (for debugging
+ */
 void cd_dump (Cd *cd);
 
 /*
