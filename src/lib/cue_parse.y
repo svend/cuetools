@@ -155,13 +155,15 @@ new_track
 		cdtext = track_get_cdtext(track);
 
 		cur_filename = new_filename;
-		if (NULL != cur_filename)
+		if (NULL != cur_filename) {
 			prev_filename = cur_filename;
+		}
 
-		if (NULL == prev_filename)
+		if (NULL == prev_filename) {
 			yyerror("no file specified for track");
-		else
+		} else {
 			track_set_filename(track, prev_filename);
+		}
 
 		new_filename = NULL;
 	}
@@ -209,10 +211,11 @@ track_statement
 			}
 		}
 
-		for (; i <= $2; i++)
+		for (; i <= $2; i++) {
 			track_add_index(track, \
 			track_get_zero_pre(track) + $3 \
 			- track_get_start(track));
+		}
 	}
 	| POSTGAP time '\n' { track_set_zero_post(track, $2); }
 	| track_data
@@ -273,8 +276,9 @@ Cd *cue_parse (FILE *fp)
 	cue_yyin = fp;
 	yydebug = 0;
 
-	if (0 == yyparse())
+	if (0 == yyparse()) {
 		return cd;
+	}
 
 	return NULL;
 }

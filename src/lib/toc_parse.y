@@ -135,8 +135,9 @@ track_list
 
 track
 	: new_track track_def track_statements {
-		while (2 > track_get_nindex(track))
+		while (2 > track_get_nindex(track)) {
 			track_add_index(track, 0);
+		}
 	}
 	;
 
@@ -208,10 +209,11 @@ track_clear_flag
 
 track_data
 	: zero_data time '\n' {
-		if (NULL == track_get_filename(track))
+		if (NULL == track_get_filename(track)) {
 			track_set_zero_pre(track, $2);
-		else
+		} else {
 			track_set_zero_post(track, $2);
+		}
 	}
 	| AUDIOFILE STRING time '\n' {
 		track_set_filename(track, $2);
@@ -339,8 +341,9 @@ Cd *toc_parse (FILE *fp)
 	toc_yyin = fp;
 	yydebug = 0;
 
-	if (0 == yyparse())
+	if (0 == yyparse()) {
 		return cd;
+	}
 
 	return NULL;
 }
