@@ -8,19 +8,19 @@ cueconvert \- convert between the cue and toc formats
 .
 .SH SYNOPSIS
 .B cueconvert
-[\-h] [\-i cue|toc] [\-o cue|toc] [infile [outfile]]
+[option...] [infile [outfile]]
 .
 .SH OPTIONS
 .TP
-.B \-h
+.B \-h, \--help
 print usage information
 .
 .TP
-.B \-i cue|toc
+.B \-i, \--input-format cue|toc
 set format of input file
 .
 .TP
-.B \-o cue|toc
+.B \-o, \--output-format cue|toc
 set format of output file
 .
 .SH NOTES

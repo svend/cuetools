@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>		/* exit() */
 #include <string.h>		/* strcmp() */
-#include <unistd.h>		/* getopt() */
+#include <getopt.h>
 #include <ctype.h>		/* isdigit() */
 #include "cuefile.h"
 
@@ -58,15 +58,15 @@ char *progname;
 void usage (int status)
 {
 	if (0 == status) {
-		fprintf(stdout, "%s: usage: cueprint [-h] [-i cue|toc] [-n <tracknumer>] [-d <template>] [-t <template>] [file...]\n", progname);
+		fprintf(stdout, "%s: usage: cueprint [option...] [file...]\n", progname);
 		fputs("\
 \n\
 OPTIONS\n\
--h 			print usage\n\
--i cue|toc		set format of file(s)\n\
--n <tracknumber>	only print track information for track tracknumer\n\
--d <template>		set disc template (see TEMPLATE EXPANSION)\n\
--t <template>		set track template (see TEMPLATE EXPANSION)\n\
+-h, --help 			print usage\n\
+-i, --input-format cue|toc	set format of file(s)\n\
+-n, --track-number <number>	only print track information for single track\n\
+-d, --disc-template <template>	set disc template (see TEMPLATE EXPANSION)\n\
+-t, --track-template <template>	set track template (see TEMPLATE EXPANSION)\n\
 \n\
 Template Expansion\n\
 Disc:\n\
@@ -97,8 +97,7 @@ Any other %<character> is expanded to that character.  For example, to get a\n\
 		fprintf(stdout, "default disc template is:\n%s\n", D_TEMPLATE);
 		fprintf(stdout, "default track template is:\n%s\n", T_TEMPLATE);
 	} else {
-		fprintf(stderr, "%s: syntax error\n", progname);
-		fprintf(stderr, "run `%s -h' for usage\n", progname);
+		fprintf(stderr, "run `%s --help' for usage\n", progname);
 	}
 
 	exit (status);
@@ -424,14 +423,23 @@ int main (int argc, char **argv)
 	int trackno = -1;		/* track number (-1 = unspecified, 0 = disc info) */
 	char *d_template = NULL;	/* disc template */
 	char *t_template = NULL;	/* track template */
-	/* getopt () variables */
+	/* getopt_long() variables */
 	char c;
 	extern char *optarg;
 	extern int optind;
 
+	static struct option longopts[] = {
+		{"help", no_argument, NULL, 'h'},
+		{"input-format", required_argument, NULL, 'i'},
+		{"track-number", required_argument, NULL, 'n'},
+		{"disc-template", required_argument, NULL, 'd'},
+		{"track-template", required_argument, NULL, 't'},
+		{NULL, 0, NULL, 0}
+	};
+
 	progname = *argv;
 
-	while (-1 != (c = getopt(argc, argv, "hi:n:d:t:"))) {
+	while (-1 != (c = getopt_long(argc, argv, "hi:n:d:t:", longopts, NULL))) {
 		switch (c) {
 		case 'h':
 			usage(0);
@@ -441,6 +449,9 @@ int main (int argc, char **argv)
 				format = CUE;
 			else if (0 == strcmp("toc", optarg))
 				format = TOC;
+			else
+				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
+				usage(1);
 			break;
 		case 'n':
 			trackno = atoi(optarg);

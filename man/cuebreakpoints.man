@@ -8,15 +8,15 @@ cuebreakpoints \- print the breakpoints from a cue or toc file
 .
 .SH SYNOPSIS
 .B cuebreakpoints
-[\-h] [\-i cue|toc] [file...]
+[option...] [file...]
 .
 .SH OPTIONS
 .TP
-.B \-h
+.B \-h, \--help
 print usage information
 .
 .TP
-.B \-i cue|toc
+.B \-i, \--input-format cue|toc
 set format of file(s)
 .
 .SH NOTES
