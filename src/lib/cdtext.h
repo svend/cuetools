@@ -1,5 +1,5 @@
 /*
- * cdtext.h
+ * cdtext.h -- CD-TEXT declarations
  *
  * Copyright (C) 2004, 2005 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.

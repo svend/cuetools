@@ -1,4 +1,5 @@
-/* time.h -- time declarations
+/*
+ * time.h -- time declarations
  *
  * Copyright (C) 2004, 2005 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.

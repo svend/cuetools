@@ -1,5 +1,5 @@
 /*
- * cdtext.c -- cdtext data structure and functions
+ * cdtext.c -- CD-TEXT data structure and functions
  *
  * Copyright (C) 2004, 2005 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.
