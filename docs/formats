@@ -41,18 +41,10 @@ The standard file suffix for a cuesheet file is ``.cue``.
 Keywords
 --------
 
-REM
-~~~
-
-Begin a comment line.  All lines beginning with ``REM`` are ignored.
-
-:Section(s): any
-:Format: ``REM [comments]``
-
 CATALOG
 ~~~~~~~
 
-Sets the catalog number  of the CD.
+Sets the catalog number of the CD.
 
 :Section(s): global
 :Format: ``CATALOG <catalog_number>``
@@ -74,20 +66,6 @@ section.
 ``file_format``
 	one of: ``BINARY``, ``MOTOROLA``, ``AIFF``, ``WAVE``, or ``MP3``.
 
-TRACK
-~~~~~
-
-Starts a new track.
-
-:Section(s): track
-:Format: ``TRACK <track_number> <track_mode>``
-
-``track_number``
-	a positive integer in the range 1-99.
-``track_mode``
-	one of: ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``, ``MODE2/2048``,
-	``MODE2/2324``, ``MODE2/2336``, or ``MODE2/2352``.
-
 FLAGS
 ~~~~~
 
@@ -98,6 +76,19 @@ Sets track flags.
 
 ``flag``
 	one of: ``PRE``, ``DCP``, ``4CH``, or ``SCMS``.
+
+INDEX
+~~~~~
+
+Sets a track index.
+
+:Section(s): track
+:Format: ``INDEX <index_number> <index>``
+
+``index_number``
+	an integer in the range 0-99.
+``index``
+	time in MSF format.
 
 ISRC
 ~~~~
@@ -121,18 +112,38 @@ Sets track pregap.
 ``pregap``
 	time in MSF format.
 
-INDEX
-~~~~~
+POSTGAP
+~~~~~~~
 
-Sets a track index.
+Sets track postgap.
 
 :Section(s): track
-:Format: ``INDEX <index_number> <index>``
+:Format: ``POSTGAP <postgap>``
 
-``index_number``
-	an integer in the range 0-99.
-``index``
+``postgap``
 	time in MSF format.
+
+REM
+~~~
+
+Begins a comment line.  All lines beginning with ``REM`` are ignored.
+
+:Section(s): any
+:Format: ``REM [comments]``
+
+TRACK
+~~~~~
+
+Starts a new track.
+
+:Section(s): track
+:Format: ``TRACK <track_number> <track_mode>``
+
+``track_number``
+	a positive integer in the range 1-99.
+``track_mode``
+	one of: ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``, ``MODE2/2048``,
+	``MODE2/2324``, ``MODE2/2336``, or ``MODE2/2352``.
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
@@ -144,7 +155,7 @@ CD-TEXT.
 :Format: ``<CDTEXT_keyword> <CDTEXT_field>``
 
 ``CDTEXT_keyword``
-	(see `CD-TEXT`_ section for a list of CD-TEXT keywords)
+	one of: (see `CD-TEXT`_ section for a list of CD-TEXT keywords).
 ``CDTEXT_keyword``
 	a string.
 
