@@ -457,17 +457,19 @@ int main (int argc, char **argv)
 	}
 
 	/* if no disc or track template is set, use the defaults for both */
+	/* TODO: alternative to strdup to get variable strings? */
 	if (NULL == d_template && NULL == t_template) {
 		d_template = strdup(D_TEMPLATE);
 		t_template = strdup(T_TEMPLATE);
 	} else {
 		if (NULL == d_template)
-			d_template = "";
+			d_template = strdup("");
 
 		if (NULL == t_template)
-			t_template = "";
+			t_template = strdup("");
 	}
 
+	/* translate escape sequences */
 	translate_escapes(d_template);
 	translate_escapes(t_template);
 
