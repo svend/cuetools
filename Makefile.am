@@ -1,1 +1,1 @@
-SUBDIRS = man lib tools
+SUBDIRS = man
