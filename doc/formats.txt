@@ -45,7 +45,7 @@ Keywords
 CATALOG
 ~~~~~~~
 
-:Description: Sets the catalog number of the CD.
+:Description: Sets the media catalog number of the CD.
 :Section(s): global
 :Format:
 	``CATALOG <catalog_number>``
@@ -222,7 +222,7 @@ AUDIOFILE
 CATALOG
 ~~~~~~~
 
-:Description: Sets the catalog number of the CD.
+:Description: Sets the media catalog number of the CD.
 :Section(s): global
 :Format:
 	``CATALOG "<catalog_number>"``
@@ -574,6 +574,9 @@ frame
 International Standard Recording Code (ISRC)
 	A 12 character identification code for sound recordings.  See
 	`ISRC intro`_ for details.
+
+Media Catalog Number (MCN)
+	A 13 digit UPC/EAN code for the disc.
 
 MSF format
 	a representation of time in the form ``m:s:f``.  ``m`` is minutes,
