@@ -11,10 +11,11 @@
 #include <string.h>
 #include "cd.h"
 #include "time.h"
+#include "cue_parse_prefix.h"
 
 #define YYDEBUG 1
 
-extern int cue_yylex();
+extern int yylex();
 void yyerror (char *s);
 
 static Cd *cd = NULL;
@@ -259,7 +260,7 @@ time
 
 /* lexer interface */
 extern int cue_lineno;
-extern int cue_yydebug;
+extern int yydebug;
 extern FILE *cue_yyin;
 
 void yyerror (char *s)
@@ -270,9 +271,9 @@ void yyerror (char *s)
 Cd *cue_parse (FILE *fp)
 {
 	cue_yyin = fp;
-	cue_yydebug = 0;
+	yydebug = 0;
 
-	if (0 == cue_yyparse())
+	if (0 == yyparse())
 		return cd;
 
 	return NULL;

@@ -10,10 +10,13 @@ TOC_OBJS= toc_parse.o toc_scan.o toc_print.o
 # so we need a prefix to aviod conflicts.
 # (NOTE: these lines require GNU Make)
 
-toc_scan.c: LFLAGS+= -Ptoc_yy
-cue_scan.c: LFLAGS+= -Pcue_yy
-toc_parse.c: YFLAGS+= -p toc_yy
-cue_parse.c: YFLAGS+= -p cue_yy
+# these have been moved to the source files to prepare for automake
+# for flex, used %option prefix="cue_yy"
+#toc_scan.c: LFLAGS+= -Ptoc_yy
+#cue_scan.c: LFLAGS+= -Pcue_yy
+# for yacc, used cue_parse_prefix.h with defines
+#toc_parse.c: YFLAGS+= -p toc_yy
+#cue_parse.c: YFLAGS+= -p cue_yy
 
 all: $(TARGETS)
 

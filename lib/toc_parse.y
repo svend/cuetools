@@ -11,10 +11,11 @@
 #include <string.h>
 #include "cd.h"
 #include "time.h"
+#include "toc_parse_prefix.h"
 
 #define YYDEBUG 1
 
-extern int toc_yylex();
+extern int yylex();
 void yyerror (char *s);
 
 static Cd *cd = NULL;
@@ -325,7 +326,7 @@ opt_nl
 
 /* lexer interface */
 extern int toc_lineno;
-extern int toc_yydebug;
+extern int yydebug;
 extern FILE *toc_yyin;
 
 void yyerror (char *s)
@@ -336,9 +337,9 @@ void yyerror (char *s)
 Cd *toc_parse (FILE *fp)
 {
 	toc_yyin = fp;
-	toc_yydebug = 0;
+	yydebug = 0;
 
-	if (0 == toc_yyparse())
+	if (0 == yyparse())
 		return cd;
 
 	return NULL;
