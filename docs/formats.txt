@@ -401,7 +401,7 @@ CD-TEXT
 mmc-3_ specifies 16 CD-TEXT types.  Three are reserved and have no
 corresponding keywords.  One is shared; the keyword depends on whether it is
 for the disc (``UPC_EAN``) or a track (``ISRC``).  CD-TEXT entries are either
-character or binary data.
+character or binary data.  All descriptions taken from mmc-3_.
 
 Keywords
 --------
@@ -509,5 +509,5 @@ MSF format
 frame
 	1/75 of a second.
 
-.. _mmc-3 ftp://ftp.t10.org/t10/drafts/mmc3/
-.. _cdrtools http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
+.. _mmc-3: ftp://ftp.t10.org/t10/drafts/mmc3/
+.. _cdrtools: http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
