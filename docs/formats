@@ -101,17 +101,6 @@ Sets track ISRC number.
 ``ISRC_number``
 	a string with the format CCOOOOYYSSSSS.
 
-PREGAP
-~~~~~~
-
-Sets track pregap.
-
-:Section(s): track
-:Format: ``PREGAP <pregap>``
-
-``pregap``
-	time in MSF format.
-
 POSTGAP
 ~~~~~~~
 
@@ -121,6 +110,17 @@ Sets track postgap.
 :Format: ``POSTGAP <postgap>``
 
 ``postgap``
+	time in MSF format.
+
+PREGAP
+~~~~~~
+
+Sets track pregap.
+
+:Section(s): track
+:Format: ``PREGAP <pregap>``
+
+``pregap``
 	time in MSF format.
 
 REM
