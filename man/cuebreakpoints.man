@@ -19,8 +19,22 @@ print usage information
 .B \-i, \--input-format cue|toc
 set format of file(s)
 .
+.TP
+.B \--append-gaps
+append pregaps to previous track (default)
+.
+.TP
+.B \--prepend-gaps
+prefix pregaps to track
+.
+.TP
+.B \--split-gaps
+split at beginning and end of pregaps
+.
 .SH NOTES
-The breakpoints are in a format usable by shnsplit (part of the shntool package).  A track breakpoint is at index 1.
+The breakpoints are in a format usable by shnsplit (part of the shntool package).
+.PP
+The first track's pregap cannot be appended to the previous track, so it is prefixed to the track in both append and prepend modes.  If you want the track without it, use the split mode.
 .PP
 If no files are specified, stdin is used.  If a filename is specified and the format is not specified, the format will be set based on a ".cue" or ".toc" suffix.
 .
