@@ -1,6 +1,8 @@
 AC_INIT(cuetools, 1.2-dev)
 AM_INIT_AUTOMAKE
-#AM_CONFIG_HEADER([config.h])
+# getting conflicting errors about config.h.in
+#AM_CONFIG_HEADER(config.h)
+#AC_CONFIG_HEADERS([config.h])
 
 AC_PROG_INSTALL
 AC_PROG_RANLIB
