@@ -161,7 +161,6 @@ Sets the CD format to mixed.
 TRACK
 ~~~~~
 
-
 :Section(s): track
 :Format: TRACK <track_mode> [sub_channel_mode]
 
@@ -260,7 +259,6 @@ FIFO
 
 START
 ~~~~~
-
 
 :Section(s): track
 :Format: ``START <start>``
