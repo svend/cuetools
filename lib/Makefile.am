@@ -1,6 +1,5 @@
 BUILT_SOURCES = cue_parse.h toc_parse.h
 AM_YFLAGS = -d
-#AM_LFLAGS = -i
 AM_LFLAGS = -olex.yy.c
 noinst_HEADERS = cd.h cdtext.h cuefile.h cue.h time.h toc.h
 noinst_LIBRARIES = libcuefile.a
