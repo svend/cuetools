@@ -48,6 +48,10 @@ void print_breaks (Cd *cd)
 	/* start on track 2 */
 	for (i = 2; i <= cd_get_ntrack(cd); i++) {
 		track = cd_get_track(cd, i);
+		/* breakpoint is at index 1 */
+		/* TODO: make option for breakpoint at index 0,
+		 * and option for breakpoints a index 0 and 1
+		 */
 		b = track_get_start(track) + track_get_index(track, 1) -  track_get_zero_pre(track);
 		/* don't print zero indexes */
 		if (0 != b)
