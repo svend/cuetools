@@ -16,6 +16,8 @@
 #define D_TEMPLATE "%P \"%T\" (%N tracks)\n"
 #define T_TEMPLATE "%n: %p \"%t\"\n"
 
+#define UNSPECIFIED -1
+
 char *progname;
 char *d_template = D_TEMPLATE;	/* disc template */
 char *t_template = T_TEMPLATE;	/* track template */
@@ -67,41 +69,55 @@ Any other %<character> is expanded to that character.  For example, to get a\n\
 	exit (status);
 }
 
-void disc_field (char *c, Cd *cd)
+void disc_field (char *conv, int length, Cd *cd)
 {
+	char *c;	/* pointer to conversion character */
+
 	Cdtext *cdtext = NULL;
 	cdtext = cd_get_cdtext(cd);
 
+	c = conv + length - 1;
+
 	switch (*c) {
 	case 'A':
-		printf("%s", cdtext_get(PTI_ARRANGER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_ARRANGER, cdtext));
 		break;
 	case 'C':
-		printf("%s", cdtext_get(PTI_COMPOSER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_COMPOSER, cdtext));
 		break;
 	case 'G':
-		printf("%s", cdtext_get(PTI_GENRE, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_GENRE, cdtext));
 		break;
 	case 'M':
-		printf("%s", cdtext_get(PTI_MESSAGE, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_MESSAGE, cdtext));
 		break;
 	case 'N':
-		printf("%0*d", 2, cd_get_ntrack(cd));
+		*c = 'd';
+		printf(conv, cd_get_ntrack(cd));
 		break;
 	case 'P':
-		printf("%s", cdtext_get(PTI_PERFORMER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_PERFORMER, cdtext));
 		break;
 	case 'R':
-		printf("%s", cdtext_get(PTI_ARRANGER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_ARRANGER, cdtext));
 		break;
 	case 'S':
-		printf("%s", cdtext_get(PTI_SONGWRITER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_SONGWRITER, cdtext));
 		break;
 	case 'T':
-		printf("%s", cdtext_get(PTI_TITLE, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_TITLE, cdtext));
 		break;
 	case 'U':
-		printf("%s", cdtext_get(PTI_UPC_ISRC, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_UPC_ISRC, cdtext));
 		break;
 	default:
 		putchar(*c);
@@ -109,122 +125,199 @@ void disc_field (char *c, Cd *cd)
 	}
 }
 
-void track_field (char *c, Cd *cd, int trackno, int width)
+void track_field (char *conv, int length, Cd *cd, int trackno)
 {
+	char *c;	/* pointer to conversion character */
+
 	Track *track = NULL;
 	Cdtext *cdtext = NULL;
 
 	track = cd_get_track(cd, trackno);
 	cdtext = track_get_cdtext(track);
 
+	c = conv + length - 1;
+
 	switch (*c) {
 	case 'a':
-		printf("%*s", width, cdtext_get(PTI_ARRANGER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_ARRANGER, cdtext));
 		break;
 	case 'c':
-		printf("%*s", width, cdtext_get(PTI_COMPOSER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_COMPOSER, cdtext));
 		break;
 	case 'f':
-		printf("%*s", width, track_get_filename(track));
+		*c = 's';
+		printf(conv, track_get_filename(track));
 		break;
 	case 'g':
-		printf("%*s", width, cdtext_get(PTI_GENRE, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_GENRE, cdtext));
 		break;
 	case 'i':
-		printf("%*s", width, track_get_isrc(track));
+		*c = 's';
+		printf(conv, track_get_isrc(track));
 		break;
 	case 'm':
-		printf("%*s", width, cdtext_get(PTI_MESSAGE, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_MESSAGE, cdtext));
 		break;
 	case 'n':
-		printf("%0*d", width, trackno);
+		*c = 'd';
+		printf(conv, trackno);
 		break;
 	case 'p':
-		printf("%*s", width, cdtext_get(PTI_PERFORMER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_PERFORMER, cdtext));
 		break;
 	case 's':
-		printf("%*s", width, cdtext_get(PTI_SONGWRITER, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_SONGWRITER, cdtext));
 		break;
 	case 't':
-		printf("%*s", width, cdtext_get(PTI_TITLE, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_TITLE, cdtext));
 		break;
 	case 'u':
-		printf("%*s", width, cdtext_get(PTI_UPC_ISRC, cdtext));
+		*c = 's';
+		printf(conv, cdtext_get(PTI_UPC_ISRC, cdtext));
 		break;
 	default:
-		disc_field(c, cd);
+		disc_field(conv, length, cd);
 		break;
 	}
 }
 
-void print_info (Cd *cd) 
+/* print a % conversion specification
+ * %[flag(s)][width][.precision]<conversion-char>
+ */
+void print_conv (char *start, int length, Cd *cd, int trackno)
+{
+	char *conv;	/* copy of conversion specification */
+
+	/* TODO: use strndup? */
+	conv = malloc ((unsigned) (length + 1));
+	strncpy(conv, start, length);
+	conv[length] = '\0';
+
+	/* conversion character */
+	if (0 == trackno)
+		disc_field(conv, length, cd);
+	else
+		track_field(conv, length, cd, trackno);
+}
+
+/* print an escaped character
+ * `c' is the character after the `/'
+ * NOTE: this does not handle octal and hexidecimal escapes
+ */
+int print_esc (char *c)
+{
+	/* ?, ', " are handled by the default */
+	switch (*c) {
+		case 'a':
+			putchar('\a');
+			break;
+		case 'b':
+			putchar('\b');
+			break;
+		case 'f':
+			putchar('\f');
+			break;
+		case 'n':
+			putchar('\n');
+			break;
+		case 'r':
+			putchar('\r');
+			break;
+		case 't':
+			putchar('\t');
+			break;
+		case 'v':
+			putchar('\v');
+			break;
+		case '0':
+			putchar('\0');
+			break;
+		default:
+			putchar(*c);
+			break;
+	}
+}
+
+void cd_printf (char *format, Cd *cd, int trackno)
+{
+	char *c;	/* pointer into format */
+	char *conv_start;
+	int conv_length;
+
+	for (c = format; '\0' != *c; c++) {
+		switch (*c) {
+		case '%':
+			conv_start = c;
+			conv_length = 1;
+			c++;
+
+			/* flags */
+			while ( \
+				'-' == *c \
+				|| '+' == *c \
+				|| ' ' == *c \
+				|| '0' == *c \
+				|| '#' == *c \
+			) {
+				conv_length++;
+				c++;
+			}
+
+			/* field width */
+			/* '*' not recognized */
+			while (0 != isdigit(*c)) {
+				conv_length++;
+				c++;
+			}
+			
+			/* precision */
+			/* '*' not recognized */
+			if ('.' == *c) {
+				conv_length++;
+				c++;
+
+				while (0 != isdigit(*c)) {
+					conv_length++;
+					c++;
+				}
+			}
+
+			/* length modifier (h, l, or L) */
+			/* not recognized */
+
+			/* conversion character */
+			conv_length++;
+
+			print_conv(conv_start, conv_length, cd, trackno);
+			break;
+		case '\\':
+			c++;
+
+			print_esc(c);
+			break;
+		default:
+			putchar(*c);
+			break;
+		}
+	}
+}
+
+void print_info (Cd *cd)
 {
 	int i;		/* track */
 	char *c;
 
-	/* field flags */
-	int flag = 1;	/* flags remain */
-	int zeropad = 0;
-
-	/* field width */
-	int width;
-
-	for (c = d_template; '\0' != *c; c++) {
-		if ('%' == *c) {
-			c++;
-			disc_field(c, cd);
-		} else {
-			putchar(*c);
-		}
-	}
+	cd_printf(d_template, cd, 0);
 
 	for (i = 1; i <= cd_get_ntrack(cd); i++) {
-		for (c = t_template; '\0' != *c; c++) {
-			/* TODO: should apply escapes and width to disc
-			 * template as well
-			 */
-			if ('\\' == *c) {
-				c++;
-
-				/* TODO: add more (all?) escapes */
-				switch (*c) {
-				case 'n':
-					putchar('\n');
-					break;
-				case 't':
-					putchar('\t');
-					break;
-				default:
-					putchar(*c);
-					break;
-				}
-			} else if ('%' == *c) {
-				c++;
-
-				/* parse flags */
-				/* TODO: zero-padding does nothing */
-				do {
-					switch (*c) {
-					case '0':	/* zero-padding */
-						c++;
-						zeropad = 1;
-						break;
-					default:
-						flag = 0;
-					}
-				} while (0 != flag);
-
-				/* parse width */
-				width = 0;
-				while (0 != isdigit(*c)) {
-					width = width * 10 + *c++ - '0';
-				}
-
-				track_field(c, cd, i, width);
-			} else {
-				putchar(*c);
-			}
-		}
+		cd_printf(t_template, cd, i);
 	}
 }
 
