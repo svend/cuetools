@@ -136,6 +136,9 @@ main()
 
 	for file in $@; do
 		case $file in
+		*.[Ff][Ll][Aa][Cc])
+			echo "Flac tagging not supported."
+			;;
 		*.[Oo][Gg][Gg])
 			vorbis $trackno "$file"
 			;;
