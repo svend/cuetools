@@ -27,7 +27,8 @@ cueprint
 Installation
 ------------
 
-Building requires GNU Make, Lex, and Yacc.
+Building requires GNU Make, Lex, and Yacc.  GNU Bison works in Yacc mode
+(``make YACC="bison -y"``).
 
 Run ``make install`` to install cuetools into the default location of
 /usr/local.  The Makefiles also support both the prefix and DESTDIR variables.
