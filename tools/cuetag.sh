@@ -53,13 +53,10 @@ vorbis()
 			value=`$CUEPRINT -n $1 -t "$conv\n" $cue_file`
 
 			if [ -n "$value" ]; then
+				echo "$field=$value"
 				break
 			fi
 		done
-
-		if [ -n "$value" ]; then
-			echo "$field=$value"
-		fi
 	done) | $VORBISCOMMENT $2
 }
 
