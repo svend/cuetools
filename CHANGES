@@ -1,0 +1,19 @@
+================
+cuetools CHANGES
+================
+
+If only a disc or track template is specified on the command line, then only
+the disc or track information is printed, respectively.
+
+cueprint now supports flags and width and precision values for template
+expansion (like the printf command).
+
+1.0
+---
+
+cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc parsing code
+has been reimplemented in lex/yacc.
+
+cuerename has been replaced by the more general utility cueprint.
+
+Usage syntax of the utilities has changed.  See the respective man pages.
