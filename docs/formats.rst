@@ -134,7 +134,7 @@ Sets track pregap.
 REM
 ~~~
 
-Begins a comment line.  All lines beginning with ``REM`` are ignored.
+Begins a comment line.
 
 :Section(s): any
 :Format:
