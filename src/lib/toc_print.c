@@ -1,7 +1,7 @@
 /*
  * toc_print.c -- print toc file
  *
- * Copyright (C) 2004 Svend Sorensen
+ * Copyright (C) 2004, 2005 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.
  */
 

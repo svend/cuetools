@@ -2,7 +2,7 @@
 /*
  * toc_parse.y -- parser for toc files
  *
- * Copyright (C) 2004 Svend Sorensen
+ * Copyright (C) 2004, 2005 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.
  */
 
