@@ -1,0 +1,89 @@
+.TH cuetools 1
+.SH NAME
+cueprint
+.SH DESCRIPTION
+cueprint \- print disc and track infomation for a cue or toc file
+.SH SYNTAX
+cueprint [\-h] [\-i cue|toc] [\-d TEMPLATE] [\-t TEMPLATE] [file...]
+.SH OPTIONS
+.TP
+.B \-h
+print usage information
+.TP
+.B \-i cue|toc
+set format of file(s)
+.TP
+.B -d TEMPLATE
+set disc template (see TEMPLATE EXPANSION)
+.TP
+.B -t TEMPLATE
+set track template (see TEMPLATE EXPANSION)
+.SH TEMPLATE EXPANSION
+Disc template expansion characters are valid for both the disc and track templates.
+.PP
+Disc:
+.TP
+.B %A
+album arranger
+.TP
+.B %C
+album composer
+.TP
+.B %G
+album genre
+.TP
+.B %M
+album message
+.TP
+.B %N
+number of tracks
+.TP
+.B %P
+album performer
+.TP
+.B %S
+album songwriter
+.TP
+.B %T
+album title
+.TP
+.B %U
+album UPC/EAN
+.PP
+Track:
+.TP
+.B %a
+track arranger
+.TP
+.B %c
+track composer
+.TP
+.B %g
+track genre
+.TP
+.B %i
+track ISRC
+.TP
+.B %m
+track message
+.TP
+.B %n
+track number
+.TP
+.B %p
+track perfomer
+.TP
+.B %t
+track title
+.TP
+.B %u
+track ISRC (CD-TEXT)
+.PP
+Any other %<character> is expanded to that character.  For example, %% expands to a literal `%'.
+.SH NOTES
+If no files are specified, stdin is used.  If a filename is specified and the format is not specified, the format will be set based on a ".cue" or ".toc" suffix.
+.SH AUTHOR
+Svend Sorensen <sorensen@freeshell.org>
+.SH "SEE ALSO"
+cueconvert(1),
+cuebreakpoints(1)

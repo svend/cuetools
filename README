@@ -1,0 +1,22 @@
+cuetools README
+cuetools is a set of utilites for working with cue and toc files.
+
+RELEASE NOTES
+* cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc parsing code 
+has been reimplimented in lex/yacc.
+* cuerename has been replaced by the more general utility cueprint.
+* Usage syntax of the utilites has changed.  See the respective man pages.
+
+INSTALL
+Building requires GNU Make.  Run `make install' to install cuetools into the 
+default location of /usr/local.  The Makefiles also support both the prefix and 
+DESTDIR variables.
+
+AUTHOR
+Svend Sorensen <ssorensen@freeshell.org>
+
+SEE ALSO
+cuetools website - http://cuetools.sourceforge.net
+Cdrdao website - http://cdrdao.sourceforge.net
+cdrdao(1) man page - description of toc file format
+shntool website - http://www.etree.org/shnutils/shntool/

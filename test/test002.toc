@@ -1,0 +1,208 @@
+CD_DA
+
+CATALOG "0075994590127"
+CD_TEXT {
+  LANGUAGE_MAP {
+    0: 9
+  }
+  LANGUAGE 0 {
+    TITLE "Jagged Little Pill"
+    PERFORMER "Alanis Morissette"
+    MESSAGE "1995"
+  }
+}
+
+// Track 1
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "All I Really Want"
+    PERFORMER "Alanis Morissette"
+  }
+}
+SILENCE 00:00:32
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 0 04:43:28
+START 00:00:32
+
+
+// Track 2
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "You Oughta Know"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 04:43:28 04:09:00
+START 00:01:20
+
+
+// Track 3
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Perfect"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 08:52:28 03:07:65
+START 00:01:35
+
+
+// Track 4
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Hand in My Pocket"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 12:00:18 03:40:35
+START 00:01:37
+
+
+// Track 5
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Right Through You"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 15:40:53 02:57:00
+START 00:02:55
+
+
+// Track 6
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Forgiven"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 18:37:53 05:00:02
+START 00:01:42
+
+
+// Track 7
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "You Learn"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 23:37:55 04:00:33
+START 00:01:60
+
+
+// Track 8
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Head Over Feet"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 27:38:13 04:25:40
+START 00:01:00
+
+
+// Track 9
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Mary Jane"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 32:03:53 04:41:57
+START 00:02:55
+
+
+// Track 10
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Ironic"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 36:45:35 03:50:03
+START 00:01:45
+
+
+// Track 11
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Not the Doctor"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 40:35:38 03:46:25
+START 00:01:20
+
+
+// Track 12
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Wake Up"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 44:21:63 04:56:03
+START 00:02:40
+
+
+// Track 13
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "You Oughta Know (Alternate Take)"
+    PERFORMER "Alanis Morissette"
+  }
+}
+FILE "alanis_morissette-1998-jagged_little_pill-kmf.wav" 49:17:66 08:13:19
+START 00:00:22

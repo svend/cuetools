@@ -1,0 +1,336 @@
+CD_DA
+
+CATALOG "0008811307523"
+
+CD_TEXT {
+  LANGUAGE_MAP {
+    0: 9
+  }
+  LANGUAGE 0 {
+    TITLE "Red Hot + Riot"
+    PERFORMER "Various Artists"
+    MESSAGE "Net Profits from the sale of this album will suport Red Jot's AIDS prevention and relief efforts in Africa and around the world.  Produced By: John Carlin, Paul Heck and Andr\351s Levin"
+  }
+}
+
+// Track 1
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214001"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "[intro] Fela Mentality"
+    PERFORMER "Mix Master Mike and Mario Caldato, Jr."
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 0 01:09:45
+
+
+// Track 2
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214002"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Kalakuta Show"
+    PERFORMER "Mix Master Mike, Lateef, and The Gift Of Gab"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 01:09:45 02:31:17
+
+
+// Track 3
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214003"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "[interlude] Live at Kalakuta"
+    PERFORMER "Posma, Remedies, Taiwo, Segun, Tosin, Andres Levin"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 03:40:62 00:32:15
+
+
+// Track 4
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214004"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Shuffering and Shmiling"
+    PERFORMER "Dead Prez, Jorge Ben Jor, Talib Kweli, Bilal and Postive Force"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 04:13:02 07:50:05
+
+
+// Track 5
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214005"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "[interlude] Gimme Shit"
+    PERFORMER "Mix Master Mike and Mario Caldato, Jr."
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 12:03:07 00:31:43
+
+
+// Track 6
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214006"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Water Get No Enemy [intro]"
+    PERFORMER "D'Angelo and Femi Kuti"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 12:34:50 04:04:30
+
+
+// Track 7
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214007"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Water Get No Enemy"
+    PERFORMER "D'Angelo, Femi Kuti, and Macy Gray featuring Roy Hargrove, Nile Rodgers, The Soultronics, and Positive Force"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 16:39:05 06:05:70
+
+
+// Track 8
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214007"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Gentleman"
+    PERFORMER "Meshell Ndegeocello and Yerba Buena! featuring Ron Blake"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 22:45:00 07:02:70
+
+
+// Track 9
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214009"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Tears and Sorrow"
+    PERFORMER "Common, Meshell Ndegeocello, and Djelimady Tounkara"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 29:47:70 01:31:27
+
+
+// Track 10
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214010"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Shakara Lady (part one)"
+    PERFORMER "Cheikh Lo"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 31:19:22 02:20:05
+
+
+// Track 11
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214011"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Shakara Lady (part two)"
+    PERFORMER "Cheikh Lo, Les Nubians, and Manu Dibango featuring Chateau Flight"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 33:39:27 04:47:13
+
+
+// Track 12
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214012"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "[interlude] Don't Worry About My Mouth-O"
+    PERFORMER "Monoaural"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 38:26:40 01:03:32
+
+
+// Track 13
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214013"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Zombie (part one)"
+    PERFORMER "Bugz in the Attic featuring Wunmi"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 39:29:72 02:51:70
+
+
+// Track 14
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214014"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Zombie (part two)"
+    PERFORMER "Nile Rodgers, Roy Hargrove, and Money Mark"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 42:21:67 04:27:38
+
+
+// Track 15
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214015"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "No Agreement"
+    PERFORMER "Tony Allen, Res, Ray Lema, Baaba Maal, Postive Black Soul, and Archie Shepp"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 46:49:30 08:12:02
+
+
+// Track 16
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214015"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "So Be It"
+    PERFORMER "Kelis"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 55:01:32 03:52:15
+
+
+// Track 17
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214016"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "[interlude] This is an Ashanti Proverb"
+    PERFORMER "Monoaural"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 58:53:47 00:09:58
+
+
+// Track 18
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "GBBBM0002184"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "By Your Side (Cottonbelly's Fola Mix Edit)"
+    PERFORMER "Sade"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 59:03:30 04:39:67
+
+
+// Track 19
+TRACK AUDIO RW_RAW
+COPY
+PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214019"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Colonial Mentality"
+    PERFORMER "Yerba Buena! and Lenine"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 63:43:22 01:34:10
+START 00:00:01
+INDEX 00:10:01
+
+
+// Track 20
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+ISRC "USRH20214020"
+CD_TEXT {
+  LANGUAGE 0 {
+    TITLE "Trouble Sleep Yanga Wake Am"
+    PERFORMER "Baaba Maal and Taj Mahal featuring Kaouding Cissoko and Antibalas"
+    MESSAGE ""
+  }
+}
+FILE "data.bin" 65:17:32 10:38:20
+

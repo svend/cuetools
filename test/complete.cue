@@ -1,0 +1,52 @@
+CATALOG 1234567890123
+TITLE "Album Title"
+PERFORMER "Album Performer"
+SONGWRITER "Album Songwriter"
+COMPOSER "Album Composer"
+ARRANGER "Album Arranger"
+MESSAGE "Album Message"
+UPC_EAN "Album UPC/EAN"
+
+FILE "track1.wav" WAVE
+TRACK 01 AUDIO
+TITLE "Track 1 Title"
+PERFORMER "Track 1 Performer"
+SONGWRITER "Track 1 Songwriter"
+COMPOSER "Track 1 Composer"
+ARRANGER "Track 1 Arranger"
+MESSAGE "Track 1 Message"
+ISRC "CC-OWNR-99-12345"
+ISRC CCOWNR9912345
+FLAGS PRE DCP 4CH SCMS
+INDEX 01 00:00:00
+
+REM zero data pregap with index pregap
+TRACK 02 AUDIO
+TITLE "Track 2 Title"
+PERFORMER "Track 2 Performer"
+SONGWRITER "Track 2 Songwriter"
+COMPOSER "Track 2 Composer"
+ARRANGER "Track 2 Arranger"
+MESSAGE "Track 2 Message"
+ISRC "CC-OWNR-99-12345"
+ISRC CCOWNR9912345
+FLAGS PRE DCP 4CH SCMS
+PREGAP 00:00:02
+INDEX 00 05:00:00
+INDEX 01 05:02:00
+
+REM new file
+FILE "track3.wav" WAVE
+TRACK 03 AUDIO
+TITLE "Track 3 Title"
+PERFORMER "Track 3 Performer"
+SONGWRITER "Track 3 Songwriter"
+COMPOSER "Track 3 Composer"
+ARRANGER "Track 3 Arranger"
+MESSAGE "Track 3 Message"
+ISRC "CC-OWNR-99-12345"
+ISRC CCOWNR9912345
+FLAGS PRE DCP 4CH SCMS
+INDEX 00 00:00:00
+INDEX 01 00:03:00
+POSTGAP 00:00:02
