@@ -395,7 +395,15 @@ TRACK
 
 :Description: Starts a new track.
 :Section(s): track
-:Format: ``TRACK <track_mode> [sub_channel_mode]``
+:Format:
+	``TRACK <track_mode> [sub_channel_mode]``
+
+	``track_mode``
+		one of: ``AUDIO``, ``MODE1``, ``MODE1_RAW``, ``MODE2``,
+		``MODE2_FORM1``, ``MODE2_FORM2``, ``MODE2_FORM_MIX``,
+		``MODE2_RAW``
+	``sub_channel_mode``
+		one of: ``RW``, ``RW_RAW``
 
 TWO_CHANNEL_AUDIO
 ~~~~~~~~~~~~~~~~~
