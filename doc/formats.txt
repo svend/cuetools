@@ -330,22 +330,29 @@ INDEX
 LANGUAGE
 ~~~~~~~~
 
+:Description: Begins a language block.
 :Section(s): track
 :Subsection(s): CD-TEXT block
-:Format: ``LANGUAGE language_number { cd_text }``
+:Format:
+	``LANGUAGE language_number { cd_text }``
 
-Begins a language block.  ``language_number`` must be an integer in the range
-0-255.  ``cd_text`` is a series of CD-TEXT keyword lines.
+	``language_number``
+		an integer in the range 0-255.
+	``cd_text``
+		a series of CD-TEXT keyword lines.
 
 LANGUAGE_MAP
 ~~~~~~~~~~~~
 
+:Description: Begins a language map block.
 :Section(s): global
 :Subsection(s): CD-TEXT block
-:Format: ``LANGUAGE_MAP { language_map... }``
+:Format:
+	``LANGUAGE_MAP { language_map... }``
 
-Begins a language map block.  ``language_map`` is a mapping of an integer in
-the range 0-255 to a country code.
+	``language_map``
+		is a mapping of an integer in the range 0-255 to a country
+		code. *TODO*
 
 NO
 ~~
