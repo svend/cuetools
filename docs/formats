@@ -38,82 +38,82 @@ Keywords
 REM
 ~~~
 
-Begin a comment line.  All lines beginning with ``REM`` are ignored.
-
 :Section(s): any
 :Format: ``REM [comments]``
+
+Begin a comment line.  All lines beginning with ``REM`` are ignored.
 
 CATALOG
 ~~~~~~~
 
-Sets the catalog number  of the CD.  The ``catalog_number`` must be exactly 13
-digits.
-
 :Section(s): global
 :Format: ``CATALOG "<catalog_number>"``
 
+Sets the catalog number  of the CD.  The ``catalog_number`` must be exactly 13
+digits.
+
 FILE
 ~~~~
+
+:Section(s): track
+:Format: ``FILE "<filename>" [file_format]``
 
 Sets a new input file.  ``FILE`` line precedes the beginning of the track
 section.  Allowable ``file_format`` entries are ``BINARY``, ``MOTOROLA``,
 ``AIFF``, ``WAVE``, or ``MP3``.
 
-:Section(s): track
-:Format: ``FILE "<filename>" [file_format]``
-
 TRACK
 ~~~~~
+
+:Section(s): track
+:Format: ``TRACK <track_number> <track_mode>``
 
 Starts a new track.  ``track_number`` must be a positive integer.  Allowable
 ``track_mode`` entries are ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``,
 ``MODE2/2048``, ``MODE2/2324``, ``MODE2/2336``, or ``MODE2/2352``.
 
-:Section(s): track
-:Format: ``TRACK <track_number> <track_mode>``
-
 FLAGS
 ~~~~~
-
-Sets track flags.  Allowable ``flag`` entries are ``PRE``, ``DCP``, ``4CH``,
-and ``SCMS``.
 
 :Section(s): track
 :Format: ``FLAGS [flag]...``
 
+Sets track flags.  Allowable ``flag`` entries are ``PRE``, ``DCP``, ``4CH``,
+and ``SCMS``.
+
 ISRC
 ~~~~
-
-Sets track ISRC number.  ``ISRC_number`` must be of the format CCOOOOYYSSSSS.
 
 :Section(s): track
 :Format: ``ISRC <ISRC_number>``
 
+Sets track ISRC number.  ``ISRC_number`` must be of the format CCOOOOYYSSSSS.
+
 PREGAP
 ~~~~~~
-
-Sets track pregap.  ``pregap`` must be in MSF format.
 
 :Section(s): track
 :Format: ``PREGAP <pregap>``
 
+Sets track pregap.  ``pregap`` must be in MSF format.
+
 INDEX
 ~~~~~
-
-Sets a track index.  ``index_number`` must be a non-negative integer.
-``index`` must be in MSF format.
 
 :Section(s): track
 :Format: ``INDEX <index_number> <index>``
 
+Sets a track index.  ``index_number`` must be a non-negative integer.
+``index`` must be in MSF format.
+
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
 
-See `CD-TEXT`_ section for a list of CD-TEXT keywords.  The cue format cannot
-handle binary CD-TEXT.
-
 :Section(s): any
 :Format: ``<CDTEXT_keyword> "<CDTEXT_field>"``
+
+See `CD-TEXT`_ section for a list of CD-TEXT keywords.  The cue format cannot
+handle binary CD-TEXT.
 
 TOC File Format
 ===============
@@ -134,35 +134,35 @@ Keywords
 CATALOG
 ~~~~~~~
 
-Sets the catalog number  of the CD.  ``catalog_number`` must be exactly 13
-digits.
-
 :Section(s): global
 :Format: ``CATALOG "<catalog_number>"``
+
+Sets the catalog number  of the CD.  ``catalog_number`` must be exactly 13
+digits.
 
 CD_DA
 ~~~~~
 
-Sets the CD format to audio.
-
 :Section(s): global
 :Format: ``CD_DA``
+
+Sets the CD format to audio.
 
 CD_ROM
 ~~~~~~
 
-Sets the CD format to data.
-
 :Section(s): global
 :Format: ``CD_ROM``
+
+Sets the CD format to data.
 
 CD_ROM_XA
 ~~~~~~~~~
 
-Sets the CD format to mixed.
-
 :Section(s): global
 :Format: ``CD_ROM_XA``
+
+Sets the CD format to mixed.
 
 TRACK
 ~~~~~
@@ -173,95 +173,95 @@ TRACK
 NO
 ~~
 
-Negates (clears) track flags.  Allowable ``flag`` entries  are ``COPY`` and
-``PRE_EMPHASIS``.
-
 :Section(s): track
 :Format: ``NO <flag>``
+
+Negates (clears) track flags.  Allowable ``flag`` entries  are ``COPY`` and
+``PRE_EMPHASIS``.
 
 COPY
 ~~~~
 
-Sets the copy permitted flag.
-
 :Section(s): track
 :Format: ``COPY``
+
+Sets the copy permitted flag.
 
 PRE_EMPHASIS
 ~~~~~~~~~~~~
 
-Sets the pre-emphasis flag.
-
 :Section(s): track
 :Format: ``PRE_EMPHASIS``
+
+Sets the pre-emphasis flag.
 
 TWO_CHANNEL_AUDIO
 ~~~~~~~~~~~~~~~~~
 
-Sets the two channel audio flag.
-
 :Section(s): track
 :Format: ``TWO_CHANNEL_AUDIO``
+
+Sets the two channel audio flag.
 
 FOUR_CHANNEL_AUDIO
 ~~~~~~~~~~~~~~~~~~
 
-Sets the four channel audio flag.
-
 :Section(s): track
 :Format: ``FOUR_CHANNEL_AUDIO``
+
+Sets the four channel audio flag.
 
 ISRC
 ~~~~
 
-Sets track ISRC number.  ``ISRC_number`` must be of the format CCOOOOYYSSSSS.
-
 :Section(s): track
-:Format: ISRC "<ISRC_number>"
+:Format: ``ISRC "<ISRC_number>"``
+
+Sets track ISRC number.  ``ISRC_number`` must be of the format CCOOOOYYSSSSS.
 
 SILENCE
 ~~~~~~~
 
-*TODO*
-
 :Section(s): track
+
+*TODO*
 
 ZERO
 ~~~~
 
-*TODO*
-
 :Section(s): track
+
+*TODO*
 
 FILE
 ~~~~
 
-Add file to current track.  ``start`` and ``length`` must be in MSF format.
-
 :Section(s): track
 :Format: ``FILE "<filename>" <start> [length]``
+
+Add file to current track.  ``start`` and ``length`` must be in MSF format.
 
 AUDIOFILE
 ~~~~~~~~~
 
-Add file to current track.  ``start`` and ``length`` must be in MSF format.
-
 :Section(s): track
 :Format: ``AUDIOFILE "<filename>" <start> [length]``
+
+Add file to current track.  ``start`` and ``length`` must be in MSF format.
 
 DATAFILE
 ~~~~~~~~
 
-*TODO*
-
 :Section(s): track
+
+*TODO*
 
 FIFO
 ~~~~
 
-*TODO*
-
 :Section(s): track
+
+*TODO*
 
 START
 ~~~~~
@@ -269,62 +269,64 @@ START
 :Section(s): track
 :Format: ``START <start>``
 
+*TODO*
+
 PREGAP
 ~~~~~~
-
-Sets track pregap.  ``pregap`` must be in MSF format.
 
 Section(s): track
 Format: ``PREGAP <pregap>``
 
+Sets track pregap.  ``pregap`` must be in MSF format.
+
 INDEX
 ~~~~~
-
-Sets a track index.  ``index_number`` must be a non-negative integer.
-``index_time`` must be in MSF format.
 
 :Section(s): track
 :Format: ``INDEX <index_number> <index_time>``
 
+Sets a track index.  ``index_number`` must be a non-negative integer.
+``index_time`` must be in MSF format.
+
 CD_TEXT
 ~~~~~~~
-
-Begins a CD-TEXT block.
 
 :Section(s): any
 :Format: ``CD_TEXT {}``
 
+Begins a CD-TEXT block.
+
 LANGUAGE_MAP
 ~~~~~~~~~~~~
-
-Begins a language map block.  ``language_map`` is a mapping of an integer in
-the range 0-255 to a country code.
 
 :Section(s): global
 :Subsection(s): CD-TEXT block
 :Format: ``LANGUAGE_MAP { language_map... }``
 
+Begins a language map block.  ``language_map`` is a mapping of an integer in
+the range 0-255 to a country code.
+
 LANGUAGE
 ~~~~~~~~
-
-Begins a language block.  ``language_number`` must be an integer in the range
-0-255.  ``cd_text`` is a series of CD-TEXT keyword lines.
 
 :Section(s): track
 :Subsection(s): CD-TEXT block
 :Format: ``LANGUAGE language_number { cd_text }``
 
+Begins a language block.  ``language_number`` must be an integer in the range
+0-255.  ``cd_text`` is a series of CD-TEXT keyword lines.
+
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
-
-See `CD-TEXT`_ section for a list of CD-TEXT keywords.  Format1 is for
-character data and Format2 is for binary data.  ``CDTEXT_binary_data`` is a
-comma seperated list of integers in the range 0-255.
 
 :Section(s): any
 :Subsection(s): language block
 :Format1: ``<CDTEXT_keyword> "<CDTEXT_field>"``
 :Format2: ``<CDTEXT_keyword> { CDTEXT_binary_data }``
+
+See `CD-TEXT`_ section for a list of CD-TEXT keywords.  Format1 is for
+character data and Format2 is for binary data.  ``CDTEXT_binary_data`` is a
+comma seperated list of integers in the range 0-255.
 
 CD-TEXT
 =======
