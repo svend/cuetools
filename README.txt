@@ -6,8 +6,6 @@ cuetools README
 :Contact: sorensen@users.berlios.de
 :Website: http://cuetools.berlios.de
 
-.. contents::
-
 Description
 -----------
 
