@@ -135,6 +135,8 @@ POSTGAP
 	``postgap``
 		time in MSF format.
 
+Postgap is filled with generated silence.
+
 PREGAP
 ~~~~~~
 
