@@ -1,5 +1,5 @@
 cuetools README
-cuetools is a set of utilities for working with cue and toc files.
+cuetools - a set of utilities for working with cue and toc files.
 
 RELEASE NOTES
 * cuetools-1.x is a significant code rewrite of 0.x.  The cue/toc parsing code
