@@ -196,12 +196,25 @@ brackets.
 Comments
 --------
 
-Comments begin with ``//`` and may be placed anywhere.  Because they can be
-placed anywhere in a line, toc comments are treated as a special case (not as a
-keyword).  Any text beginning with ``//`` is stripped from each line.
+Comments begin with ``//`` and may be placed anywhere except inside quoted
+strings.  A comment beginning with ``//`` is stripped from each line.
 
 Keywords
 --------
+
+AUDIOFILE
+~~~~~~~~~
+
+:Description: Add file to current track.
+:Section(s): track
+:Format:
+	``AUDIOFILE "<filename>" <start> [length]``
+
+	``start``
+		time in MSF format.
+
+	``length``
+		time in MSF format.
 
 CATALOG
 ~~~~~~~
@@ -235,22 +248,13 @@ CD_ROM_XA
 :Section(s): global
 :Format: ``CD_ROM_XA``
 
-TRACK
-~~~~~
+CD_TEXT
+~~~~~~~
 
-:Description: Starts a new track.
-:Section(s): track
-:Format: ``TRACK <track_mode> [sub_channel_mode]``
+:Section(s): any
+:Format: ``CD_TEXT {}``
 
-NO
-~~
-:Description: Negates (clears) track flags.
-:Section(s): track
-:Format:
-	``NO <flag>``
-
-	``flag``
-		  one of: ``COPY`` or ``PRE_EMPHASIS``.
+Begins a CD-TEXT block.
 
 COPY
 ~~~~
@@ -259,27 +263,12 @@ COPY
 :Section(s): track
 :Format: ``COPY``
 
-PRE_EMPHASIS
-~~~~~~~~~~~~
+DATAFILE
+~~~~~~~~
 
-:Description: Sets the pre-emphasis flag.
 :Section(s): track
-:Format: ``PRE_EMPHASIS``
 
-TWO_CHANNEL_AUDIO
-~~~~~~~~~~~~~~~~~
-
-:Description: Sets the two channel audio flag.
-:Section(s): track
-:Format: ``TWO_CHANNEL_AUDIO``
-
-
-FOUR_CHANNEL_AUDIO
-~~~~~~~~~~~~~~~~~~
-
-:Description: Sets the four channel audio flag.
-:Section(s): track
-:Format: ``FOUR_CHANNEL_AUDIO``
+*TODO*
 
 ISRC
 ~~~~
@@ -292,14 +281,7 @@ ISRC
 	``ISRC_number``
 		a string with the format CCOOOOYYSSSSS.
 
-SILENCE
-~~~~~~~
-
-:Section(s): track
-
-*TODO*
-
-ZERO
+FIFO
 ~~~~
 
 :Section(s): track
@@ -320,52 +302,12 @@ FILE
 	``length``
 		time in MSF format.
 
-AUDIOFILE
-~~~~~~~~~
+FOUR_CHANNEL_AUDIO
+~~~~~~~~~~~~~~~~~~
 
-:Description: Add file to current track.
+:Description: Sets the four channel audio flag.
 :Section(s): track
-:Format:
-	``AUDIOFILE "<filename>" <start> [length]``
-
-	``start``
-		time in MSF format.
-
-	``length``
-		time in MSF format.
-
-DATAFILE
-~~~~~~~~
-
-:Section(s): track
-
-*TODO*
-
-FIFO
-~~~~
-
-:Section(s): track
-
-*TODO*
-
-START
-~~~~~
-
-:Section(s): track
-:Format: ``START <start>``
-
-*TODO*
-
-PREGAP
-~~~~~~
-
-:Description: Sets track pregap.
-:Section(s): track
-:Format:
-	``PREGAP <pregap>``
-
-	``pregap``
-		time in MSF format.
+:Format: ``FOUR_CHANNEL_AUDIO``
 
 INDEX
 ~~~~~
@@ -379,13 +321,15 @@ INDEX
 	``index_time``
 		time in MSF format.
 
-CD_TEXT
-~~~~~~~
+LANGUAGE
+~~~~~~~~
 
-:Section(s): any
-:Format: ``CD_TEXT {}``
+:Section(s): track
+:Subsection(s): CD-TEXT block
+:Format: ``LANGUAGE language_number { cd_text }``
 
-Begins a CD-TEXT block.
+Begins a language block.  ``language_number`` must be an integer in the range
+0-255.  ``cd_text`` is a series of CD-TEXT keyword lines.
 
 LANGUAGE_MAP
 ~~~~~~~~~~~~
@@ -397,15 +341,62 @@ LANGUAGE_MAP
 Begins a language map block.  ``language_map`` is a mapping of an integer in
 the range 0-255 to a country code.
 
-LANGUAGE
-~~~~~~~~
+NO
+~~
+:Description: Negates (clears) track flags.
+:Section(s): track
+:Format:
+	``NO <flag>``
+
+	``flag``
+		  one of: ``COPY`` or ``PRE_EMPHASIS``.
+
+PREGAP
+~~~~~~
+
+:Description: Sets track pregap.
+:Section(s): track
+:Format:
+	``PREGAP <pregap>``
+
+	``pregap``
+		time in MSF format.
+
+SILENCE
+~~~~~~~
 
 :Section(s): track
-:Subsection(s): CD-TEXT block
-:Format: ``LANGUAGE language_number { cd_text }``
 
-Begins a language block.  ``language_number`` must be an integer in the range
-0-255.  ``cd_text`` is a series of CD-TEXT keyword lines.
+*TODO*
+
+START
+~~~~~
+
+:Section(s): track
+:Format: ``START <start>``
+
+*TODO*
+
+TRACK
+~~~~~
+
+:Description: Starts a new track.
+:Section(s): track
+:Format: ``TRACK <track_mode> [sub_channel_mode]``
+
+TWO_CHANNEL_AUDIO
+~~~~~~~~~~~~~~~~~
+
+:Description: Sets the two channel audio flag.
+:Section(s): track
+:Format: ``TWO_CHANNEL_AUDIO``
+
+ZERO
+~~~~
+
+:Section(s): track
+
+*TODO*
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
