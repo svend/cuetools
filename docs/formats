@@ -382,23 +382,83 @@ CD-TEXT entries are either character or binary data.
 Keywords
 --------
 
-==========	======	==========
-Keyword		Format	Section
-==========	======	==========
-TITLE		char	disc/track
-PERFORMER	char	disc/track
-SONGWRITER	char	disc/track
-COMPOSER	char	disc/track
-ARRANGER	char	disc/track
-MESSAGE		char	disc/track
-DISC_ID		binary	disc/track
-GENRE		binary	disc/track
-TOC_INFO	binary	disc/track
-TOC_INFO2	binary	disc/track
-UPC_EAN		char	disc
-ISRC		char	track
-SIZE_INFO	binary	disc/track
-==========	======	==========
+ARRANGER
+~~~~~~~~
+
+:Section: any
+:Format: character
+
+COMPOSER
+~~~~~~~~
+
+:Section: any
+:Format: character
+
+DISC_ID
+~~~~~~~
+
+:Section: any
+:Format: binary
+
+GENRE
+~~~~~
+
+:Section: any
+:Format: binary
+
+ISRC
+~~~~~
+
+:Section: track
+:Format: character
+
+MESSAGE
+~~~~~~~
+
+:Section: any
+:Format: character
+
+PERFORMER
+~~~~~~~~~
+
+:Section: any
+:Format: character
+
+SONGWRITER
+~~~~~~~~~~
+
+:Section: any
+:Format: character
+
+TITLE
+~~~~~
+
+:Section: any
+:Format: character
+
+TOC_INFO
+~~~~~~~~~
+
+:Section: any
+:Format: binary
+
+TOC_INFO2
+~~~~~~~~~
+
+:Section: any
+:Format: binary
+
+UPC_EAN
+~~~~~~~
+
+:Section: disc
+:Format: character
+
+SIZE_INFO
+~~~~~~~~~
+
+:Section: any
+:Format: binary
 
 Definitions
 ===========
