@@ -23,6 +23,9 @@ in the global section or a track section.
 Format Notation
 ---------------
 
+A string may be enclosed in single or double quotation marks.  If the string
+contains whitespace, it must be enclosed in quotation marks.
+
 ``<field>``
 	a required field
 ``[field]``
@@ -41,83 +44,109 @@ Keywords
 REM
 ~~~
 
+Begin a comment line.  All lines beginning with ``REM`` are ignored.
+
 :Section(s): any
 :Format: ``REM [comments]``
-
-Begin a comment line.  All lines beginning with ``REM`` are ignored.
 
 CATALOG
 ~~~~~~~
 
+Sets the catalog number  of the CD.
+
 :Section(s): global
 :Format: ``CATALOG <catalog_number>``
 
-Sets the catalog number  of the CD.  The ``catalog_number`` is an integer
-consisting of exactly 13 digits.
+``catalog_number``
+	an integer consisting of exactly 13 digits.
 
 FILE
 ~~~~
 
-:Section(s): track
-:Format: ``FILE "<filename>" [file_format]``
-
 Sets a new input file.  ``FILE`` line precedes the beginning of the track
-section.  Allowable ``file_format`` entries are ``BINARY``, ``MOTOROLA``,
-``AIFF``, ``WAVE``, or ``MP3``.
+section.
+
+:Section(s): track
+:Format: ``FILE <filename> [file_format]``
+
+``filename``
+	a string.
+``file_format``
+	one of: ``BINARY``, ``MOTOROLA``, ``AIFF``, ``WAVE``, or ``MP3``.
 
 TRACK
 ~~~~~
 
+Starts a new track.
+
 :Section(s): track
 :Format: ``TRACK <track_number> <track_mode>``
 
-Starts a new track.  ``track_number`` must be a positive integer in the range
-1-99.  Allowable ``track_mode`` entries are ``MODE1/2048``, ``MODE1/2352``,
-``MODE2/2336``, ``MODE2/2048``, ``MODE2/2324``, ``MODE2/2336``, or
-``MODE2/2352``.
+``track_number``
+	a positive integer in the range 1-99.
+``track_mode``
+	one of: ``MODE1/2048``, ``MODE1/2352``, ``MODE2/2336``, ``MODE2/2048``,
+	``MODE2/2324``, ``MODE2/2336``, or ``MODE2/2352``.
 
 FLAGS
 ~~~~~
 
+Sets track flags.
+
 :Section(s): track
 :Format: ``FLAGS [flag]...``
 
-Sets track flags.  Allowable ``flag`` entries are ``PRE``, ``DCP``, ``4CH``,
-and ``SCMS``.
+``flag``
+	one of: ``PRE``, ``DCP``, ``4CH``, or ``SCMS``.
 
 ISRC
 ~~~~
 
+Sets track ISRC number.
+
 :Section(s): track
 :Format: ``ISRC <ISRC_number>``
 
-Sets track ISRC number.  ``ISRC_number`` must be of the format CCOOOOYYSSSSS.
+``ISRC_number``
+	a string with the format CCOOOOYYSSSSS.
 
 PREGAP
 ~~~~~~
 
+Sets track pregap.
+
 :Section(s): track
 :Format: ``PREGAP <pregap>``
 
-Sets track pregap.  ``pregap`` must be in MSF format.
+``pregap``
+	time in MSF format.
 
 INDEX
 ~~~~~
 
+Sets a track index.
+
 :Section(s): track
 :Format: ``INDEX <index_number> <index>``
 
-Sets a track index.  ``index_number`` must be a non-negative integer in the
-range 0-99.  ``index`` must be in MSF format.
+``index_number``
+	an integer in the range 0-99.
+``index``
+	time in MSF format.
 
 (CD-TEXT keywords)
 ~~~~~~~~~~~~~~~~~~
 
-:Section(s): any
-:Format: ``<CDTEXT_keyword> "<CDTEXT_field>"``
+Sets CD-TEXT data. The cue format does not have native support for binary
+CD-TEXT.
 
-See `CD-TEXT`_ section for a list of CD-TEXT keywords.  The cue format cannot
-handle binary CD-TEXT.
+:Section(s): any
+:Format: ``<CDTEXT_keyword> <CDTEXT_field>``
+
+``CDTEXT_keyword``
+	(see `CD-TEXT`_ section for a list of CD-TEXT keywords)
+``CDTEXT_keyword``
+	a string.
 
 TOC File Format
 ===============
