@@ -35,8 +35,7 @@ Keywords
 REM
 ~~~
 
-All lines beginning with ``REM`` are considered comments.  ``REM`` is
-considered a keyword, and lines beginning with this keyword are ignored.
+Begin a comment line.  All lines beginning with ``REM`` are ignored.
 
 :Section(s): any
 :Format: ``REM [comments]``
