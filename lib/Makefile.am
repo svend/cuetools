@@ -3,5 +3,5 @@ AM_YFLAGS = -d
 #AM_LFLAGS = -i
 AM_LFLAGS = -o lex.yy.c
 include_HEADERS = cd.h cdtext.h cuefile.h cue.h time.h toc.h
-lib_LTLIBRARIES = libcuefile.la
-libcuefile_la_SOURCES = cd.c time.c cuefile.c cue_print.c toc_print.c cue_parse.y cue_scan.l toc_parse.y toc_scan.l
+noinst_LIBRARIES = libcuefile.a
+libcuefile_a_SOURCES = cd.c time.c cuefile.c cue_print.c toc_print.c cue_parse.y cue_scan.l toc_parse.y toc_scan.l
