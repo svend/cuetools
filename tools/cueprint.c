@@ -273,45 +273,6 @@ void print_conv (char *start, int length, Cd *cd, int trackno)
 	free(conv);
 }
 
-/* print an single-character escape
- * `c' is the character after the `/'
- * NOTE: this does not handle octal and hexidecimal escapes
- *       except for \0
- */
-void print_esc (char *c)
-{
-	switch (*c) {
-	case 'a':
-		putchar('\a');
-		break;
-	case 'b':
-		putchar('\b');
-		break;
-	case 'f':
-		putchar('\f');
-		break;
-	case 'n':
-		putchar('\n');
-		break;
-	case 'r':
-		putchar('\r');
-		break;
-	case 't':
-		putchar('\t');
-		break;
-	case 'v':
-		putchar('\v');
-		break;
-	case '0':
-		putchar('\0');
-		break;
-	default:
-		/* ?, ', " are handled by the default */
-		putchar(*c);
-		break;
-	}
-}
-
 void cd_printf (char *format, Cd *cd, int trackno)
 {
 	char *c;	/* pointer into format */
@@ -319,8 +280,7 @@ void cd_printf (char *format, Cd *cd, int trackno)
 	int conv_length;
 
 	for (c = format; '\0' != *c; c++) {
-		switch (*c) {
-		case '%':
+		if ('%' == *c) {
 			conv_start = c;
 			conv_length = 1;
 			c++;
@@ -363,15 +323,8 @@ void cd_printf (char *format, Cd *cd, int trackno)
 			conv_length++;
 
 			print_conv(conv_start, conv_length, cd, trackno);
-			break;
-		case '\\':
-			c++;
-
-			print_esc(c);
-			break;
-		default:
+		} else {
 			putchar(*c);
-			break;
 		}
 	}
 }
@@ -404,6 +357,64 @@ int info (char *name, int format, int trackno, char *d_template, char *t_templat
 	}
 
 	return 0;
+}
+
+/* translate escape sequences in a string
+ * string is overwritten and terminated
+ * TODO: this does not handle octal and hexidecimal escapes
+ *       except for \0
+ */
+void translate_escapes(char *s)
+{
+	char *read;
+	char *write;
+
+	read = s;
+	write = s;
+
+	while ('\0' != *read) {
+		if ('\\' == *read) {
+			read++;
+
+			switch (*read) {
+			case 'a':
+				*write = '\a';
+				break;
+			case 'b':
+				*write = '\b';
+				break;
+			case 'f':
+				*write = '\f';
+				break;
+			case 'n':
+				*write = '\n';
+				break;
+			case 'r':
+				*write = '\r';
+				break;
+			case 't':
+				*write = '\t';
+				break;
+			case 'v':
+				*write = '\v';
+				break;
+			case '0':
+				*write = '\0';
+				break;
+			default:
+				/* ?, ', " are handled by the default */
+				*write = *read;
+				break;
+			}
+		} else {
+			*write = *read;
+		}
+
+		read++;
+		write++;
+	}
+
+	*write = '\0';
 }
 
 int main (int argc, char **argv)
@@ -447,8 +458,8 @@ int main (int argc, char **argv)
 
 	/* if no disc or track template is set, use the defaults for both */
 	if (NULL == d_template && NULL == t_template) {
-		d_template = D_TEMPLATE;
-		t_template = T_TEMPLATE;
+		d_template = strdup(D_TEMPLATE);
+		t_template = strdup(T_TEMPLATE);
 	} else {
 		if (NULL == d_template)
 			d_template = "";
@@ -456,6 +467,9 @@ int main (int argc, char **argv)
 		if (NULL == t_template)
 			t_template = "";
 	}
+
+	translate_escapes(d_template);
+	translate_escapes(t_template);
 
 	if (optind == argc) {
 		info("-", format, trackno, d_template, t_template);
