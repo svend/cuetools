@@ -1,3 +1,5 @@
+# configure.ac - process with autoconf to create configure script
+
 AC_INIT(cuetools,1.3,sorensen@users.berlios.de)
 AM_INIT_AUTOMAKE($PACKAGE_NAME,$PACKAGE_VERSION)
 # getting conflicting errors about config.h.in
