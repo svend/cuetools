@@ -129,13 +129,14 @@ int main (int argc, char **argv)
 			usage(0);
 			break;
 		case 'i':
-			if (0 == strcmp("cue", optarg))
+			if (0 == strcmp("cue", optarg)) {
 				format = CUE;
-			else if (0 == strcmp("toc", optarg))
+			} else if (0 == strcmp("toc", optarg)) {
 				format = TOC;
-			else
+			} else {
 				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
 				usage(1);
+			}
 			break;
 		case 'a':
 			gaps = APPEND;
