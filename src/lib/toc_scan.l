@@ -57,8 +57,8 @@ RW		{ yylval.ival = SUB_MODE_RW; return RW; }
 RW_RAW		{ yylval.ival = SUB_MODE_RW_RAW; return RW_RAW; }
 
 NO		{ return NO; }
-COPY		{ yylval.ival = FLAG_PRE_EMPHASIS; return COPY; }
-PRE_EMPHASIS	{ yylval.ival = FLAG_COPY_PERMITTED; return PRE_EMPHASIS; }
+COPY		{ yylval.ival = FLAG_COPY_PERMITTED; return COPY; }
+PRE_EMPHASIS	{ yylval.ival = FLAG_PRE_EMPHASIS; return PRE_EMPHASIS; }
 FOUR_CHANNEL_AUDIO	{ yylval.ival = FLAG_FOUR_CHANNEL; return FOUR_CHANNEL_AUDIO; }
 TWO_CHANNEL_AUDIO	{ yylval.ival = FLAG_FOUR_CHANNEL; return TWO_CHANNEL_AUDIO; }
 
