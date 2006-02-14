@@ -2,7 +2,7 @@
  * cue_parse_prefix.h -- yacc symbol redefinitions (for cue parser)
  *
  *
- * Copyright (C) 2004, 2005 Svend Sorensen
+ * Copyright (C) 2004, 2005, 2006 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.
  */
 
