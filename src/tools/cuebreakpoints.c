@@ -94,7 +94,7 @@ void print_breaks (Cd *cd, int gaps)
 			/* TODO:  should first track's pregap be split when appending?
 			 * this could be a suprising default
 			 */
-			if (1 < i) {
+			if (1 < i || gaps == SPLIT) {
 				b += track_get_index(track, 1) - track_get_zero_pre(track);
 				print_breakpoint(b);
 			}
