@@ -75,6 +75,7 @@ void print_breaks (Cd *cd, int gaps)
 {
 	int i;
 	long b;
+	long pg;
 	Track *track;
 
 	for (i = 1; i <= cd_get_ntrack(cd); i++) {
@@ -95,8 +96,10 @@ void print_breaks (Cd *cd, int gaps)
 			 * this could be a suprising default
 			 */
 			if (1 < i || gaps == SPLIT) {
-				b += track_get_index(track, 1) - track_get_zero_pre(track);
-				print_breakpoint(b);
+				pg = track_get_index(track, 1) - track_get_zero_pre(track);
+				if (0 < pg) {
+					print_breakpoint(b + pg);
+				}
 			}
 		}
 	}
