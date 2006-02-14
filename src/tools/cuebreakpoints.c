@@ -85,22 +85,18 @@ void print_breaks (Cd *cd, int gaps)
 		 * index 1: gap is appended to previous track
 		 */
 		b = track_get_start(track);
+		pg = track_get_index(track, 1) - track_get_zero_pre(track);
 
 		if (gaps == PREPEND || gaps == SPLIT) {
 			print_breakpoint(b);
+		/* there is no previous track to append the first tracks pregap to */
+		} else if (gaps == APPEND && 1 < i) {
+			print_breakpoint(b + pg);
 		}
 
-		if (gaps == APPEND || gaps == SPLIT) {
-			/* there is no previous track to append the first tracks pregap to */
-			/* TODO:  should first track's pregap be split when appending?
-			 * this could be a suprising default
-			 */
-			if (1 < i || gaps == SPLIT) {
-				pg = track_get_index(track, 1) - track_get_zero_pre(track);
-				if (0 < pg) {
-					print_breakpoint(b + pg);
-				}
-			}
+		/* if pregap exists, print breakpoints (in split mode) */
+		if (gaps == SPLIT && 0 < pg) {
+			print_breakpoint(b + pg);
 		}
 	}
 }
