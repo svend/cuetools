@@ -1,3 +1,11 @@
+Changes since 1.3.0
+
+* Fixed duplicate/missing breakpoints (bug #5965).
+
+* Fixed swapped flags in TOC parsing code (bug #4831).
+
+* Fixed option handling code (bug #4180).
+
 Changes since 1.2
 
 * Build system has been rewritten using automake/autoconf.
