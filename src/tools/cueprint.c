@@ -244,7 +244,8 @@ void track_field (char *conv, int length, Cd *cd, int trackno, Value *value)
 
 }
 
-/* print a % conversion specification
+/*
+ * print a % conversion specification
  * %[flag(s)][width][.precision]<conversion-char>
  */
 void print_conv (char *start, int length, Cd *cd, int trackno)
@@ -374,7 +375,8 @@ int info (char *name, int format, int trackno, char *d_template, char *t_templat
 	return 0;
 }
 
-/* translate escape sequences in a string
+/* 
+ * translate escape sequences in a string
  * string is overwritten and terminated
  * TODO: this does not handle octal and hexidecimal escapes
  *       except for \0

@@ -20,7 +20,8 @@
 
 char *progname;
 
-/* pregap correction modes
+/*
+ * pregap correction modes
  * APPEND - append pregap to previous track (except for first track)
  * PREPEND - prefix pregap to current track
  * SPLIT - print breakpoints for beginning and end of pregap
@@ -80,7 +81,8 @@ void print_breaks (Cd *cd, int gaps)
 
 	for (i = 1; i <= cd_get_ntrack(cd); i++) {
 		track = cd_get_track(cd, i);
-		/* when breakpoint is at:
+		/*
+		 * when breakpoint is at:
 		 * index 0: gap is prepended to track
 		 * index 1: gap is appended to previous track
 		 */
