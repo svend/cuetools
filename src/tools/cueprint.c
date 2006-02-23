@@ -438,8 +438,9 @@ int main (int argc, char **argv)
 	int trackno = -1;		/* track number (-1 = unspecified, 0 = disc info) */
 	char *d_template = NULL;	/* disc template */
 	char *t_template = NULL;	/* track template */
+	/* option variables */
+	int c;
 	/* getopt_long() variables */
-	char c;
 	extern char *optarg;
 	extern int optind;
 

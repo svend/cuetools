@@ -121,7 +121,7 @@ int main (int argc, char **argv)
 	int gaps = APPEND;
 
 	/* option variables */
-	char c;
+	int c;
 	/* getopt_long() variables */
 	extern char *optarg;
 	extern int optind;
