@@ -1,202 +1,195 @@
-.TH cuetools 1
-.
+.TH cueprint 1
 .SH NAME
-cueprint
-.
-.SH DESCRIPTION
-cueprint \- print disc and track infomation for a cue or toc file
-.
+cueprint \- report disc and track infomation from a CUE or TOC file
 .SH SYNOPSIS
 .B cueprint
-[option...] [file...]
-.
+[ {
+.B \-i
+.I format
+|
+.BR \-\-input\-format =\fIformat\fP
+} {
+.B \-n
+.I number
+|
+.BR \-\-track\-number =\fInumber\fP
+} {
+.B \-d
+.I template
+|
+.BR \-\-disc\-template =\fItemplate\fP
+} {
+.B \-t
+.I template
+|
+.BR \-\-track\-template =\fItemplate\fP
+} ]
+[
+.I file
+\&... ]
+.br
+.B cueprint \-\-help
+.br
+.B cueprint \-\-version
+.SH DESCRIPTION
+.B cueprint
+reports disc and track information from CUE and TOC files, which are
+typically created by compact disc ripping software.
+.PP
+By default,
+.B cueprint
+reports a default set of disc information, and a default set of information
+for each track on the disc.
+With options, the report can be restricted to a specific track, and the
+presentation of the disc and track information can be extensively
+customized using
+.BR printf (3)-style
+format strings (referred to here as \(oqtemplates\(cq to avoid confusion
+with the concept of file format).
+All characters in a template are reproduced as-is in the output except for
+conversions (which begin with
+.RB \(oq % \(cq)
+and escapes (which begin with
+.RB \(oq \e \(cq).
+.PP
+If no filenames are specified,
+.B cueprint
+reads from standard input, and an input format option
+.I must
+be specified.
+If one or more filenames is provided, but the input format option is not
+specified, the input format will be guessed based on each file's suffix
+(e.g.,
+.I .cue
+or
+.IR .toc ).
+This heuristic is case-insensitive.
+.SS Conversions
+A conversion has the form
+.RB \(oq % [ \fIflags\fP ][ \fIwidth\fP ][ .\fIprecision\fP ] \fItype\fP \(cq.
+.PP
+.I flags
+may be zero or more of the following:
+.TS
+nokeep;
+l	l.
+Character	Meaning
+_
+\-	left-justify expansion
++	place sign before numbers
+\(oq \(cq (space)	place a blank space before a positive number
+0	pad numbers with zeroes
+.TE
+.\"#	(unused)
+.PP
+.I width
+is the minimum field width.
+.I precision
+is the maximum width for strings.
+.I type
+is a single character which specifies the conversion type \(em apart from
+.BR % ,
+it is the only mandatory part of the conversion.
+.PP
+The available conversion types are presented in the table below; disc
+conversion types are presented in the left half of the table, and track
+conversion types in the right half.
+Disc template expansion characters are valid for both disc and track
+templates.
+.TS
+nokeep;
+l	l	l	l.
+Character	Conversion	Character	Conversion
+_
+A	album arranger	a	track arranger
+C	album composer	c	track composer
+G	album genre	g	track genre
+		i	track ISRC
+M	album message	m	track message
+N	number of tracks	n	track number
+P	album performer	p	track performer
+S	album songwriter
+T	album title	t	track title
+U	album UPC/EAN	u	track ISRC (CD-TEXT)
+.TE
+.PP
+Any other character used as a conversion type expands to itself.
+This is how a literal percent sign is placed in the template; i.e.,
+.RB \(oq %% \(cq
+expands to
+.RB \(oq % \(cq.
+.SS Escapes
+The recognized escapes are all single characters, and listed in the table
+below.
+.TS
+nokeep;
+l	l.
+Escape Sequence	Expansion
+_
+\ea	alert (bell)
+\eb	backspace
+\ef	formfeed
+\en	newline
+\er	carriage return
+\et	horizontal tab
+\ev	vertical tab
+\e0	null
+.TE
+.PP
+Any other character used after the
+.RB \(oq \e \(cq
+in an escape sequence expands to itself.
+This is how a literal escape character is placed in the template; i.e.,
+.RB \(oq \e\e \(cq
+expands to
+.RB \(oq \e \(cq.
 .SH OPTIONS
 .TP
-.B \-h, \--help
-print usage information
-.
+.BR \-d " \fItemplate\fP, " \-\-disc\-template=\fItemplate\fP
+set disc template (see
+.B Conversions
+)
 .TP
-.B \-i, \--input-format cue|toc
-set format of file(s)
-.
+.BR \-h ", " \-\-help
+displays a usage message and exits.
 .TP
-.B \-n, \--track-number <number>
-only print track information for single track.  The default is to print information for all tracks.
-.
+.BR \-i " \fIformat\fP, " \-\-input\-format=\fIformat\fP
+sets the expected format of the input file(s) to
+.IR format ,
+which must be either
+.B cue
+or
+.BR toc .
 .TP
-.B \-d, \--disc-template <template>
-set disc template (see TEMPLATE EXPANSION)
-.
+.BR \-n " \fInumber\fP, " \-\-track\-number=\fInumber\fP
+only print track information for a single track.
+The default is to print information for all tracks.
 .TP
-.B \-t, \--track-template <template>
-set track template (see TEMPLATE EXPANSION)
-.
+.BR \-t " \fItemplate\fP, " \-\-track\-template=\fItemplate\fP
+set track template (see
+.B Conversions
+)
 .TP
-.B \--version
-print version information
-.
-.SH TEMPLATE EXPANSION
-All characters in the template are reproduced in the output except for conversions, which begin with `%'.
-.PP
-A conversion has the form `%[flags][width][.precision]<conversion\-char>'.
-.PP
-There may be zero or more of the following flags:
-.
-.TP
-.B \-
-left justification
-.
-.TP
-.B +
-place sign before numbers
-.
-.TP
-.B ` '
-(space) place a space before a positive number
-.
-.TP
-.B 0
-pad with zeros
-.
-.TP
-.B #
-(unused)
-.
-.PP
-width is the minimum field width.  precision is the maximum width for strings.
-.PP
-Disc template expansion characters are valid for both the disc and track templates.
-.PP
-.B Disc Conversion Specifiers
-.
-.TP
-.B A
-album arranger
-.
-.TP
-.B C
-album composer
-.
-.TP
-.B G
-album genre
-.
-.TP
-.B M
-album message
-.
-.TP
-.B N
-number of tracks
-.
-.TP
-.B P
-album performer
-.
-.TP
-.B S
-album songwriter
-.
-.TP
-.B T
-album title
-.
-.TP
-.B U
-album UPC/EAN
-.
-.PP
-.B Track Conversion Specifiers
-.
-.TP
-.B a
-track arranger
-.
-.TP
-.B c
-track composer
-.
-.TP
-.B g
-track genre
-.
-.TP
-.B i
-track ISRC
-.
-.TP
-.B m
-track message
-.
-.TP
-.B n
-track number
-.
-.TP
-.B p
-track perfomer
-.
-.TP
-.B t
-track title
-.
-.TP
-.B u
-track ISRC (CD-TEXT)
-.
-.PP
-Any other character is expanded to that character.  For example, a % expands to a literal `%'.
-.
-.SH ESCAPES
-The following single-character escapes are recognized:
-.
-.TP
-.B \ea
-alert (bell)
-.
-.TP
-.B \eb
-backspace
-.
-.TP
-.B \ef
-formfeed
-.
-.TP
-.B \en
-newline
-.
-.TP
-.B \er
-carriage return
-.
-.TP
-.B \et
-horizontal tab
-.
-.TP
-.B \ev
-vertial tab
-.
-.TP
-.B \e0
-NULL
-.
-.SH NOTES
-If no files are specified, stdin is used.  If a filename is specified and the format is not specified, the format will be set based on a ".cue" or ".toc" suffix.
-.
+.B \-\-version
+displays version information and exits.
+.SH "EXIT STATUS"
+.B cueprint
+exits with status zero if it successfully reports information from each
+input file, and nonzero if there were problems.
 .SH EXAMPLES
-To display disc and track information (using the default template for both), run:
+To display disc and track information (using the default template for
+both):
 .PP
-% cueprint album.cue
+.RB "% " "cueprint album.cue"
 .PP
-To print the number of tracks in a cue file, run:
+To print the number of tracks in a CUE file:
 .PP
-% cueprint -d '%N\en' album.cue
-.
+.RB "% " "cueprint -d \(aq%N\en\(aq album.cue"
 .SH AUTHOR
-Svend Sorensen
-.
+Cuetools was written by Svend Sorensen.
+Branden Robinson contributed fixes and enhancements to the utilities and
+documentation.
 .SH "SEE ALSO"
-cueconvert(1),
-cuebreakpoints(1)
+.BR cuebreakpoints (1),
+.BR cueconvert (1),
+.BR printf(3)

@@ -1,50 +1,99 @@
-.TH cuetools 1
-.
+.TH cuebreakpoints 1
 .SH NAME
-cuebreakpoints
-.
-.SH DESCRIPTION
-cuebreakpoints \- print the breakpoints from a cue or toc file
-.
+cuebreakpoints \- print the breakpoints from a CUE or TOC file
 .SH SYNOPSIS
 .B cuebreakpoints
-[option...] [file...]
-.
+[ {
+.B \-i
+.I format
+|
+.BR \-\-input\-format =\fIformat\fP
+} {
+.B \-\-append\-gaps
+|
+.B \-\-prepend\-gaps
+|
+.B \-\-split\-gaps
+} ]
+[
+.I file
+\&... ]
+.br
+.B cuebreakpoints \-\-help
+.br
+.B cuebreakpoints \-\-version
+.SH DESCRIPTION
+.B cuebreakpoints
+reports the track breakpoints found in CUE and TOC files, which are
+typically created by compact disc ripping software.
+The breakpoints are in a format usable by
+.B shnsplit
+(part of the shntool package).
+.PP
+Three approaches to track pregaps are availabe: append (to previous track),
+prepend (to succeeding track), and split (from both preceding and
+succeeding tracks).
+The split approach can result in up to twice as many breakpoints being
+reported as there are tracks on the disc.
+.PP
+The first track's pregap cannot be appended to the previous track, so it is
+prefixed to the track in both append and prepend modes.
+If you want the track without it, use the
+.B \-\-split\-gaps
+option.
+.PP
+If no filenames are specified,
+.B cuebreakpoints
+reads from standard input, and an input format option
+.I must
+be specified.
+If one or more filenames is provided, but the input format option is not
+specified, the input format will be guessed based on each file's suffix
+(e.g.,
+.I .cue
+or
+.IR .toc ).
+This heuristic is case-insensitive.
 .SH OPTIONS
 .TP
-.B \-h, \--help
-print usage information
-.
+.BR \-h ", " \-\-help
+displays a usage message and exits.
 .TP
-.B \-i, \--input-format cue|toc
-set format of file(s)
-.
+.BR \-i " \fIformat\fP, " \-\-input\-format=\fIformat\fP
+sets the expected format of the input file(s) to
+.IR format ,
+which must be either
+.B cue
+or
+.BR toc .
 .TP
-.B \--append-gaps
-append pregaps to previous track (default)
-.
+.B \-\-append\-gaps
+appends pregaps to the end of the previous track.
+This is the default.
 .TP
-.B \--prepend-gaps
-prefix pregaps to track
-.
+.B \-\-prepend\-gaps
+prefixes pregaps to the beginning of each subsequent track.
 .TP
-.B \--split-gaps
-split at beginning and end of pregaps
-.
+.B \-\-split\-gaps
+separates pregaps from both the preceding and succeeding tracks.
 .TP
-.B \--version
-print version information
-.
-.SH NOTES
-The breakpoints are in a format usable by shnsplit (part of the shntool package).
+.B \-\-version
+displays version information and exits.
 .PP
-The first track's pregap cannot be appended to the previous track, so it is prefixed to the track in both append and prepend modes.  If you want the track without it, use the split mode.
-.PP
-If no files are specified, stdin is used.  If a filename is specified and the format is not specified, the format will be set based on a ".cue" or ".toc" suffix.
-.
+If more than one of
+.BR \-\-append\-gaps ,
+.BR \-\-prepend\-gaps ,
+and
+.B \-\-split\-gaps
+are specified, all except the last encountered are ignored.
+.SH "EXIT STATUS"
+.B cuebreakpoints
+exits with status zero if it successfully generates a report for each
+input file, and nonzero if there were problems.
 .SH AUTHOR
-Svend Sorensen
-.
+Cuetools was written by Svend Sorensen.
+Branden Robinson contributed fixes and enhancements to the utilities and
+documentation.
 .SH "SEE ALSO"
-cueconvert(1),
-cueprint(1)
+.BR cueconvert (1),
+.BR cueprint (1)

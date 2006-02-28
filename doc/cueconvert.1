@@ -1,38 +1,84 @@
-.TH cuetools 1
-.
+.TH cueconvert 1
 .SH NAME
-cueconvert
-.
-.SH DESCRIPTION
-cueconvert \- convert between the cue and toc formats
-.
+cueconvert \- convert files between CUE and TOC formats
 .SH SYNOPSIS
 .B cueconvert
-[option...] [infile [outfile]]
-.
+[
+.B \-i
+.I format
+|
+.BR \-\-input\-format =\fIformat\fP
+] [
+.B \-o
+.I format
+|
+.BR \-\-output\-format =\fIformat\fP
+] [
+.I infile
+[
+.I outfile
+] ]
+.br
+.B cueconvert \-\-help
+.br
+.B cueconvert \-\-version
+.SH DESCRIPTION
+.B cueconvert
+coverts files between the CUE and TOC formats, each of which are commonly
+used by compact disc ripping software to denote track breakpoints and other
+data.
+.PP
+The operands are optional; if
+.I infile
+is not specified,
+.B cueconvert
+reads from standard input, and if
+.I outfile
+is not specified, it writes to standard output.
+.PP
+If no filenamess are specified, standard input is used, and an input format
+option
+.I must
+be specified.
+The complementary format is used for output.
+.PP
+If filenames are provided, but format options are not specified,
+the input and output formats will be guessed based on each filename's
+suffix (e.g.,
+.I .cue
+or
+.IR .toc ).
+This heuristic is case-insensitive.
 .SH OPTIONS
 .TP
-.B \-h, \--help
-print usage information
-.
+.BR \-h ", " \-\-help
+displays a usage message and exits.
 .TP
-.B \-i, \--input-format cue|toc
-set format of input file
-.
+.BR \-i " \fIformat\fP, " \-\-input\-format=\fIformat\fP
+sets the expected format of the input file to
+.IR format .
 .TP
-.B \-o, \--output-format cue|toc
-set format of output file
-.
+.BR \-o " \fIformat\fP, " \-\-output\-format=\fIformat\fP
+sets the format of the generated output file to
+.IR format .
 .TP
-.B \--version
-print version information
-.
-.SH NOTES
-If infile or outfile is not specified, stdin and stdout are used, respectively.  If a filename is specified and the format is not specified, the format will be set based on a ".cue" or ".toc" suffix.  If the output file format is not specified, and it cannot be determined from the suffix, it will be set to the opposite of the input format.
-.
+.B \-\-version
+displays version information and exits.
+.PP
+The option argument
+.I format
+must be either
+.B cue
+or
+.BR toc .
+.SH "EXIT STATUS"
+.B cueconvert
+exits with status zero if it successfully coverts the input file, and
+nonzero if there were problems.
 .SH AUTHOR
-Svend Sorensen
-.
+Cuetools was written by Svend Sorensen.
+Branden Robinson contributed fixes and enhancements to the utilities and
+documentation.
 .SH "SEE ALSO"
-cuebreakpoints(1),
-cueprint(1)
+.BR cuebreakpoints(1),
+.BR cueprint(1)
