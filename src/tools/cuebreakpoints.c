@@ -31,8 +31,10 @@ enum GapMode {APPEND, PREPEND, SPLIT};
 void usage (int status)
 {
 	if (0 == status) {
-		printf("%s: usage: cuebreakpoints [option...] [file...]\n", progname);
-		printf("OPTIONS\n"
+		printf("Usage: %s [option...] [file...]\n", progname);
+		printf("Report track breakpoints from a CUE or TOC file.\n"
+		       "\n"
+		       "OPTIONS\n"
 		       "-h, --help			print usage\n"
 		       "-i, --input-format cue|toc	set format of file(s)\n"
 		       "--append-gaps			append pregaps to previous track (default)\n"
@@ -40,7 +42,7 @@ void usage (int status)
 		       "--split-gaps			split at beginning and end of pregaps\n"
 		       "-V, --version			print version information\n");
 	} else {
-		fprintf(stderr, "run `%s --help' for usage\n", progname);
+		fprintf(stderr, "Try `%s --help' for more information.\n", progname);
 	}
 
 	exit (status);

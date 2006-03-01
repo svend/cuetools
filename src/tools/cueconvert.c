@@ -22,14 +22,16 @@ char *progname;
 void usage (int status)
 {
 	if (0 == status) {
-		printf("%s: usage: cueconvert [option...] [infile [outfile]]\n", progname);
-		printf("OPTIONS\n"
+		printf("Usage: %s [option...] [infile [outfile]]\n", progname);
+		printf("Convert file between the CUE and TOC formats.\n"
+		       "\n"
+		       "OPTIONS\n"
 		       "-h, --help 			print usage\n"
 		       "-i, --input-format cue|toc	set format of input file\n"
 		       "-o, --output-format cue|toc	set format of output file\n"
 		       "-V, --version			print version information\n");
 	} else {
-		fprintf(stderr, "run `%s --help' for usage\n", progname);
+		fprintf(stderr, "Try `%s --help' for more information.\n", progname);
 	}
 
 	exit (status);
