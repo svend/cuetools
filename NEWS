@@ -1,5 +1,14 @@
 Changes since 1.3
 
+* Applied most of Branden Robinson's Debian patch
+  (cuetools_1.3-2.diff.gz). This included many fixes and enhancements
+  to tools and manual pages. cuebreakpoints and cueconvert will exit if
+  they fail on any of the input files. cuebreakpoints, cueconvert, and
+  cuetools will exit with a nonzero return value if there was a failure
+  on an input file.
+
+* Added version option to all tools.
+
 * Single quoted string support has been removed.  This was broken, and I am not
   sure of any software that supports single quoted strings in cue or toc files.
 
