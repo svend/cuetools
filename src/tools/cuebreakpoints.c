@@ -184,7 +184,7 @@ int main (int argc, char **argv)
 		/* Report track breakpoints for each operand. */
 		for (; optind < argc; optind++) {
 			ret = breaks(argv[optind], format, gaps);
-			/* Exit if breaks returns an error. */
+			/* Exit if breaks() returns nonzero. */
 			if (!ret) {
 				break;
 			}
