@@ -13,9 +13,9 @@
 
 #if HAVE_CONFIG_H
 #include "config.h"
-#else
+#else /* not HAVE_CONFIG_H */
 #define PACKAGE_STRING "cueconvert"
-#endif
+#endif /* HAVE_CONFIG_H */
 
 char *progname;
 
