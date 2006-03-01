@@ -14,7 +14,7 @@
 #if HAVE_CONFIG_H
 #include "config.h"
 #else
-#define PACKAGE_STRING "cuebreakpoints"
+#define PACKAGE_STRING "cueconvert"
 #endif
 
 char *progname;
