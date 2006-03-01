@@ -5,11 +5,11 @@
  * For license terms, see the file COPYING in this distribution.
  */
 
-#include <stdio.h>
-#include <stdlib.h>		/* exit() */
-#include <string.h>		/* strcmp() */
-#include <getopt.h>
-#include <ctype.h>		/* isdigit() */
+#include <ctype.h>	/* isdigit() */
+#include <getopt.h>	/* getopt_long() */
+#include <stdio.h>	/* fprintf(), printf(), snprintf(), stderr */
+#include <stdlib.h>	/* exit() */
+#include <string.h>	/* strcasecmp() */
 #include "cuefile.h"
 
 #if HAVE_CONFIG_H
@@ -51,7 +51,7 @@ ISRC (CD-TEXT):	%u\n\
 #define VALUE_UNSET ""
 
 /*
- * *_get_* functions can return an int or char *
+ * *_get_* functions can return an int or a char *
  */
 typedef union {
 	int ival;
@@ -64,45 +64,19 @@ char *progname;
 void usage (int status)
 {
 	if (0 == status) {
-		fprintf(stdout, "%s: usage: cueprint [option...] [file...]\n", progname);
-		fputs("\
-\n\
-OPTIONS\n\
--h, --help 			print usage\n\
--i, --input-format cue|toc	set format of file(s)\n\
--n, --track-number <number>	only print track information for single track\n\
--d, --disc-template <template>	set disc template (see TEMPLATE EXPANSION)\n\
--t, --track-template <template>	set track template (see TEMPLATE EXPANSION)\n\
--V, --version			print version information\n\
-\n\
-Template Expansion\n\
-Disc:\n\
-%A - album arranger\n\
-%C - album composer\n\
-%G - album genre\n\
-%M - album message\n\
-%N - number of tracks\n\
-%P - album performer\n\
-%S - album songwriter\n\
-%T - album title\n\
-%U - album UPC/EAN\n\
-Track:\n\
-%a - track arranger\n\
-%c - track composer\n\
-%g - track genre\n\
-%i - track ISRC\n\
-%m - track message\n\
-%n - track number\n\
-%p - track perfomer\n\
-%t - track title\n\
-%u - track ISRC (CD-TEXT)\n\
-\n\
-Any other %<character> is expanded to that character.  For example, to get a\n\
-'%', use %%.\n\
-\n\
-", stdout);
-		fprintf(stdout, "default disc template is:\n%s\n", D_TEMPLATE);
-		fprintf(stdout, "default track template is:\n%s\n", T_TEMPLATE);
+		printf("%s: usage: cueprint [option...] [file...]\n", progname);
+		printf("OPTIONS\n"
+		       "-h, --help 			print usage\n"
+		       "-i, --input-format cue|toc	set format of file(s)\n"
+		       "-n, --track-number <number>	only print track information for single track\n"
+		       "-d, --disc-template <template>	set disc template\n"
+		       "-t, --track-template <template>	set track template\n"
+		       "-V, --version			print version information\n"
+		       "\n"
+		       "Default disc template: %s\n"
+		       "Default track template: %s\n"
+		       "See the manual page for more information.\n",
+		       D_TEMPLATE, T_TEMPLATE);
 	} else {
 		fprintf(stderr, "run `%s --help' for usage\n", progname);
 	}
@@ -117,6 +91,10 @@ void version ()
 	exit(0);
 }
 
+/*
+ * TODO: Shouldn't we be using vprintf() to help us out with this stuff?
+ * (Branden Robinson)
+ */
 void disc_field (char *conv, int length, Cd *cd, Value *value)
 {
 	char *c;	/* pointer to conversion character */
@@ -127,7 +105,7 @@ void disc_field (char *conv, int length, Cd *cd, Value *value)
 	c = conv + length - 1;
 
 	/*
-	 * after setting value, set *c to specify value type
+	 * After setting value, set *c to specify value type:
 	 * 'd' integer
 	 * 's' string
 	 * 'c' character
@@ -245,8 +223,8 @@ void track_field (char *conv, int length, Cd *cd, int trackno, Value *value)
 }
 
 /*
- * print a % conversion specification
- * %[flag(s)][width][.precision]<conversion-char>
+ * Print a conversion specification.
+ * [flag(s)][width][.precision]<conversion-char>
  */
 void print_conv (char *start, int length, Cd *cd, int trackno)
 {
@@ -255,7 +233,7 @@ void print_conv (char *start, int length, Cd *cd, int trackno)
 	char *c;	/* pointer to conversion-char */
 
 	/* TODO: use strndup? */
-	conv = malloc ((unsigned) (length + 1));
+	conv = malloc((unsigned) (length + 1));
 	strncpy(conv, start, length);
 	conv[length] = '\0';
 
@@ -376,8 +354,8 @@ int info (char *name, int format, int trackno, char *d_template, char *t_templat
 }
 
 /* 
- * translate escape sequences in a string
- * string is overwritten and terminated
+ * Translate escape sequences in a string.
+ * The string is overwritten and terminated.
  * TODO: this does not handle octal and hexidecimal escapes
  *       except for \0
  */
@@ -437,9 +415,12 @@ void translate_escapes(char *s)
 int main (int argc, char **argv)
 {
 	int format = UNKNOWN;
-	int trackno = -1;		/* track number (-1 = unspecified, 0 = disc info) */
+	int trackno = -1;		/* track number (-1 = unspecified,
+					                  0 = disc info) */
 	char *d_template = NULL;	/* disc template */
 	char *t_template = NULL;	/* track template */
+	int ret = 0;			/* return value of info() */
+
 	/* option variables */
 	int c;
 	/* getopt_long() variables */
@@ -456,7 +437,7 @@ int main (int argc, char **argv)
 		{NULL, 0, NULL, 0}
 	};
 
-	progname = *argv;
+	progname = argv[0];
 
 	while (-1 != (c = getopt_long(argc, argv, "hi:n:d:t:V", longopts, NULL))) {
 		switch (c) {
@@ -469,7 +450,8 @@ int main (int argc, char **argv)
 			} else if (0 == strcmp("toc", optarg)) {
 				format = TOC;
 			} else {
-				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
+				fprintf(stderr, "%s: error: unknown input file "
+				                "format `%s'\n", progname, optarg);
 				usage(1);
 			}
 			break;
@@ -491,7 +473,7 @@ int main (int argc, char **argv)
 		}
 	}
 
-	/* if no disc or track template is set, use the defaults for both */
+	/* If no disc or track template is set, use the defaults for both. */
 	/* TODO: alternative to strdup to get variable strings? */
 	if (NULL == d_template && NULL == t_template) {
 		d_template = strdup(D_TEMPLATE);
@@ -506,17 +488,24 @@ int main (int argc, char **argv)
 		}
 	}
 
-	/* translate escape sequences */
+	/* Translate escape sequences. */
 	translate_escapes(d_template);
 	translate_escapes(t_template);
 
+	/* What we do depends on the number of operands. */
 	if (optind == argc) {
-		info("-", format, trackno, d_template, t_template);
+		/* No operands: report information about stdin. */
+		ret = info("-", format, trackno, d_template, t_template);
 	} else {
+		/* Report information about each operand. */
 		for (; optind < argc; optind++) {
-			info(argv[optind], format, trackno, d_template, t_template);
+			ret = info(argv[optind], format, trackno, d_template, t_template);
+			/* Exit if info() returns nonzero. */
+			if (!ret) {
+				break;
+			}
 		}
 	}
 
-	return 0;
+	return ret;
 }
