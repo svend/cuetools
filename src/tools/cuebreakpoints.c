@@ -65,7 +65,7 @@ void print_m_ss_ff (long frame)
 
 void print_breakpoint (long b)
 {
-	/* do not print zero breakpoints */
+	/* Do not print zero breakpoints. */
 	if (0 != b) {
 		print_m_ss_ff(b);
 	}
@@ -81,7 +81,7 @@ void print_breaks (Cd *cd, int gaps)
 	for (i = 1; i <= cd_get_ntrack(cd); i++) {
 		track = cd_get_track(cd, i);
 		/*
-		 * when breakpoint is at:
+		 * When breakpoint is at:
 		 * index 0: gap is prepended to track
 		 * index 1: gap is appended to previous track
 		 */
@@ -98,7 +98,7 @@ void print_breaks (Cd *cd, int gaps)
 			print_breakpoint(b + pg);
 		}
 
-		/* if pregap exists, print breakpoints (in split mode) */
+		/* If pregap exists, print breakpoints (in split mode). */
 		if (gaps == SPLIT && 0 < pg) {
 			print_breakpoint(b + pg);
 		}
