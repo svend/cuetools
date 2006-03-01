@@ -5,10 +5,10 @@
  * For license terms, see the file COPYING in this distribution.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <getopt.h>
+#include <getopt.h>	/* getopt_long() */
+#include <stdio.h>	/* fprintf(), printf(), snprintf(), stderr */
+#include <stdlib.h>	/* exit() */
+#include <string.h>	/* strcasecmp() */
 #include "cuefile.h"
 
 #if HAVE_CONFIG_H
@@ -22,15 +22,12 @@ char *progname;
 void usage (int status)
 {
 	if (0 == status) {
-		fprintf(stdout, "%s: usage: cueconvert [option...] [infile [outfile]]\n", progname);
-		fputs("\
-\n\
-OPTIONS\n\
--h, --help 			print usage\n\
--i, --input-format cue|toc	set format of input file\n\
--o, --output-format cue|toc	set format of output file\n\
--V, --version			print version information\n\
-", stdout);
+		printf("%s: usage: cueconvert [option...] [infile [outfile]]\n", progname);
+		printf("OPTIONS\n"
+		       "-h, --help 			print usage\n"
+		       "-i, --input-format cue|toc	set format of input file\n"
+		       "-o, --output-format cue|toc	set format of output file\n"
+		       "-V, --version			print version information\n");
 	} else {
 		fprintf(stderr, "run `%s --help' for usage\n", progname);
 	}
@@ -50,7 +47,8 @@ int convert (char *iname, int iformat, char *oname, int oformat)
 	Cd *cd = NULL;
 
 	if (NULL == (cd = cf_parse(iname, &iformat))) {
-		fprintf(stderr, "input file error\n");
+		fprintf(stderr, "%s: error: unable to parse input file "
+		                "`%s'\n", progname, iname);
 		return -1;
 	}
 
@@ -76,6 +74,8 @@ int main (int argc, char **argv)
 {
 	int iformat = UNKNOWN;
 	int oformat = UNKNOWN;
+	int ret = 0;		/* return value of convert() */
+
 	/* option variables */
 	int c;
 	/* getopt_long() variables */
@@ -90,7 +90,7 @@ int main (int argc, char **argv)
 		{NULL, 0, NULL, 0}
 	};
 
-	progname = *argv;
+	progname = argv[0];
 
 	while (-1 != (c = getopt_long(argc, argv, "hi:o:V", longopts, NULL))) {
 		switch (c) {
@@ -103,7 +103,8 @@ int main (int argc, char **argv)
 			} else if (0 == strcmp("toc", optarg)) {
 				iformat = TOC;
 			} else {
-				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
+				fprintf(stderr, "%s: error: unknown input file "
+				                "format `%s'\n", progname, optarg);
 				usage(1);
 			}
 			break;
@@ -113,7 +114,8 @@ int main (int argc, char **argv)
 			} else if (0 == strcmp("toc", optarg)) {
 				oformat = TOC;
 			} else {
-				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
+				fprintf(stderr, "%s: error: unknown input file "
+				                "format `%s'\n", progname, optarg);
 				usage(1);
 			}
 			break;
@@ -126,15 +128,19 @@ int main (int argc, char **argv)
 		}
 	}
 
+	/* What we do depends on the number of operands. */
 	if (optind == argc) {
-		convert("-", iformat, "-", oformat);
+		/* No operands: report breakpoints of stdin. */
+		ret = convert("-", iformat, "-", oformat);
 	} else if (optind == argc - 1) {
-		convert(argv[optind], iformat, "-", oformat);
+		/* One operand: convert operand file to stdout. */
+		ret = convert(argv[optind], iformat, "-", oformat);
 	} else if (optind == argc - 2) {
-		convert(argv[optind], iformat, argv[optind + 1], oformat);
+		/* Two operands: convert input file to output file. */
+		ret = convert(argv[optind], iformat, argv[optind + 1], oformat);
 	} else {
 		usage(1);
 	}
 
-	return 0;
+	return ret;
 }
