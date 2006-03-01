@@ -5,10 +5,10 @@
  * For license terms, see the file COPYING in this distribution.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <getopt.h>
+#include <getopt.h>	/* getopt_long() */
+#include <stdio.h>	/* fprintf(), printf(), snprintf(), stderr */
+#include <stdlib.h>	/* exit() */
+#include <string.h>	/* strcasecmp() */
 #include "cuefile.h"
 #include "time.h"
 
@@ -21,7 +21,7 @@
 char *progname;
 
 /*
- * pregap correction modes
+ * pregap correction modes:
  * APPEND - append pregap to previous track (except for first track)
  * PREPEND - prefix pregap to current track
  * SPLIT - print breakpoints for beginning and end of pregap
@@ -31,17 +31,14 @@ enum GapMode {APPEND, PREPEND, SPLIT};
 void usage (int status)
 {
 	if (0 == status) {
-		fprintf(stdout, "%s: usage: cuebreakpoints [option...] [file...]\n", progname);
-		fputs("\
-\n\
-OPTIONS\n\
--h, --help			print usage\n\
--i, --input-format cue|toc	set format of file(s)\n\
---append-gaps			append pregaps to previous track (default)\n\
---prepend-gaps			prefix pregaps to track\n\
---split-gaps			split at beginning and end of pregaps\n\
--V, --version			print version information\n\
-", stdout);
+		printf("%s: usage: cuebreakpoints [option...] [file...]\n", progname);
+		printf("OPTIONS\n"
+		       "-h, --help			print usage\n"
+		       "-i, --input-format cue|toc	set format of file(s)\n"
+		       "--append-gaps			append pregaps to previous track (default)\n"
+		       "--prepend-gaps			prefix pregaps to track\n"
+		       "--split-gaps			split at beginning and end of pregaps\n"
+		       "-V, --version			print version information\n");
 	} else {
 		fprintf(stderr, "run `%s --help' for usage\n", progname);
 	}
@@ -91,7 +88,10 @@ void print_breaks (Cd *cd, int gaps)
 
 		if (gaps == PREPEND || gaps == SPLIT) {
 			print_breakpoint(b);
-		/* there is no previous track to append the first tracks pregap to */
+		/*
+		 * There is no previous track to append the first track's
+		 * pregap to.
+		 */
 		} else if (gaps == APPEND && 1 < i) {
 			print_breakpoint(b + pg);
 		}
@@ -108,7 +108,8 @@ int breaks (char *name, int format, int gaps)
 	Cd *cd = NULL;
 
 	if (NULL == (cd = cf_parse(name, &format))) {
-		fprintf(stderr, "%s: input file error\n", name);
+		fprintf(stderr, "%s: error: unable to parse input file "
+		                "`%s'\n", progname, name);
 		return -1;
 	}
 
@@ -121,6 +122,7 @@ int main (int argc, char **argv)
 {
 	int format = UNKNOWN;
 	int gaps = APPEND;
+	int ret = 0;		/* return value of breaks() */
 
 	/* option variables */
 	int c;
@@ -138,7 +140,7 @@ int main (int argc, char **argv)
 		{NULL, 0, NULL, 0}
 	};
 
-	progname = *argv;
+	progname = argv[0];
 
 	while (-1 != (c = getopt_long(argc, argv, "hi:V", longopts, NULL))) {
 		switch (c) {
@@ -151,7 +153,8 @@ int main (int argc, char **argv)
 			} else if (0 == strcmp("toc", optarg)) {
 				format = TOC;
 			} else {
-				fprintf(stderr, "%s: illegal format `%s'\n", progname, optarg);
+				fprintf(stderr, "%s: error: unknown input file "
+				                "format `%s'\n", progname, optarg);
 				usage(1);
 			}
 			break;
@@ -173,13 +176,20 @@ int main (int argc, char **argv)
 		}
 	}
 
+	/* What we do depends on the number of operands. */
 	if (optind == argc) {
-		breaks("-", format, gaps);
+		/* No operands: report breakpoints of stdin. */
+		ret = breaks("-", format, gaps);
 	} else {
+		/* Report track breakpoints for each operand. */
 		for (; optind < argc; optind++) {
-			breaks(argv[optind], format, gaps);
+			ret = breaks(argv[optind], format, gaps);
+			/* Exit if breaks returns an error. */
+			if (!ret) {
+				break;
+			}
 		}
 	}
 
-	return 0;
+	return ret;
 }
