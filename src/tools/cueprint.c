@@ -331,7 +331,8 @@ int info (char *name, int format, int trackno, char *d_template, char *t_templat
 	int ntrack;
 
 	if (NULL == (cd = cf_parse(name, &format))) {
-		fprintf(stderr, "%s: input file error\n", name);
+		fprintf(stderr, "%s: error: unable to parse input file"
+		        " `%s'\n", progname, name);
 		return -1;
 	}
 
@@ -348,7 +349,7 @@ int info (char *name, int format, int trackno, char *d_template, char *t_templat
 	} else if (0 < trackno && ntrack >= trackno) {
 		cd_printf(t_template, cd, trackno);
 	} else {
-		fprintf(stderr, "%s: track number out of range\n", progname);
+		fprintf(stderr, "%s: error: track number out of range\n", progname);
 		return -1;
 	}
 
@@ -452,8 +453,8 @@ int main (int argc, char **argv)
 			} else if (0 == strcmp("toc", optarg)) {
 				format = TOC;
 			} else {
-				fprintf(stderr, "%s: error: unknown input file "
-				                "format `%s'\n", progname, optarg);
+				fprintf(stderr, "%s: error: unknown input file"
+				        " format `%s'\n", progname, optarg);
 				usage(1);
 			}
 			break;

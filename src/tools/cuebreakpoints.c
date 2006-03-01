@@ -110,8 +110,8 @@ int breaks (char *name, int format, int gaps)
 	Cd *cd = NULL;
 
 	if (NULL == (cd = cf_parse(name, &format))) {
-		fprintf(stderr, "%s: error: unable to parse input file "
-		                "`%s'\n", progname, name);
+		fprintf(stderr, "%s: error: unable to parse input file"
+		        " `%s'\n", progname, name);
 		return -1;
 	}
 
@@ -155,8 +155,8 @@ int main (int argc, char **argv)
 			} else if (0 == strcmp("toc", optarg)) {
 				format = TOC;
 			} else {
-				fprintf(stderr, "%s: error: unknown input file "
-				                "format `%s'\n", progname, optarg);
+				fprintf(stderr, "%s: error: unknown input file"
+				        " format `%s'\n", progname, optarg);
 				usage(1);
 			}
 			break;

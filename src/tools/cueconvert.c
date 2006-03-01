@@ -49,8 +49,8 @@ int convert (char *iname, int iformat, char *oname, int oformat)
 	Cd *cd = NULL;
 
 	if (NULL == (cd = cf_parse(iname, &iformat))) {
-		fprintf(stderr, "%s: error: unable to parse input file "
-		                "`%s'\n", progname, iname);
+		fprintf(stderr, "%s: error: unable to parse input file"
+		        " `%s'\n", progname, iname);
 		return -1;
 	}
 
@@ -105,8 +105,8 @@ int main (int argc, char **argv)
 			} else if (0 == strcmp("toc", optarg)) {
 				iformat = TOC;
 			} else {
-				fprintf(stderr, "%s: error: unknown input file "
-				                "format `%s'\n", progname, optarg);
+				fprintf(stderr, "%s: error: unknown input file"
+				        " format `%s'\n", progname, optarg);
 				usage(1);
 			}
 			break;
@@ -116,8 +116,8 @@ int main (int argc, char **argv)
 			} else if (0 == strcmp("toc", optarg)) {
 				oformat = TOC;
 			} else {
-				fprintf(stderr, "%s: error: unknown input file "
-				                "format `%s'\n", progname, optarg);
+				fprintf(stderr, "%s: error: unknown output file"
+				        " format `%s'\n", progname, optarg);
 				usage(1);
 			}
 			break;
