@@ -56,13 +56,13 @@ enum TrackSubMode {
  * Q Sub-channel Control Field (4.2.3.3, 5.29.2.2)
  */
 enum TrackFlag {
-	FLAG_NONE		=0x00,	/* no flags set */
-	FLAG_PRE_EMPHASIS	=0x01,	/* audio recorded with pre-emphasis */
-	FLAG_COPY_PERMITTED	=0x02,	/* digital copy permitted */
-	FLAG_DATA		=0x04,	/* data track */
-	FLAG_FOUR_CHANNEL	=0x08,	/* 4 audio channels */
-	FLAG_SCMS		=0x10,	/* SCMS (not Q Sub-ch.) (5.29.2.7) */
-	FLAG_ANY		=0xff	/* any flags set */
+	FLAG_NONE		= 0x00,	/* no flags set */
+	FLAG_PRE_EMPHASIS	= 0x01,	/* audio recorded with pre-emphasis */
+	FLAG_COPY_PERMITTED	= 0x02,	/* digital copy permitted */
+	FLAG_DATA		= 0x04,	/* data track */
+	FLAG_FOUR_CHANNEL	= 0x08,	/* 4 audio channels */
+	FLAG_SCMS		= 0x10,	/* SCMS (not Q Sub-ch.) (5.29.2.7) */
+	FLAG_ANY		= 0xff	/* any flags set */
 };
 
 enum DataType {
