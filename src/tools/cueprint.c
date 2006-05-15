@@ -61,6 +61,7 @@ typedef union {
 
 char *progname;
 
+/* Print usage information and exit */
 void usage (int status)
 {
 	if (0 == status) {
@@ -86,6 +87,7 @@ void usage (int status)
 	exit (status);
 }
 
+/* Print version information and exit */
 void version ()
 {
 	printf("%s\n", PACKAGE_STRING);
