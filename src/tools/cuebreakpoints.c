@@ -120,7 +120,7 @@ int breaks (char *name, int format, int gaps)
 	return 0;
 }
 
-int main (int argc, char **argv)
+int main (int argc, char *argv[])
 {
 	int format = UNKNOWN;
 	int gaps = APPEND;

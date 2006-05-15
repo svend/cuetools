@@ -415,7 +415,7 @@ void translate_escapes(char *s)
 	*write = '\0';
 }
 
-int main (int argc, char **argv)
+int main (int argc, char *argv[])
 {
 	int format = UNKNOWN;
 	int trackno = -1;		/* track number (-1 = unspecified,

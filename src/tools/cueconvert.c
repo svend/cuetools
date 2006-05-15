@@ -72,7 +72,7 @@ int convert (char *iname, int iformat, char *oname, int oformat)
 	return cf_print(oname, &oformat, cd);
 }
 
-int main (int argc, char **argv)
+int main (int argc, char *argv[])
 {
 	int iformat = UNKNOWN;
 	int oformat = UNKNOWN;
