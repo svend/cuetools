@@ -62,7 +62,7 @@ typedef union {
 char *progname;
 
 /* Print usage information and exit */
-void usage (int status)
+void usage(int status)
 {
 	if (0 == status) {
 		printf("Usage: %s [option...] [file...]\n", progname);
@@ -88,7 +88,7 @@ void usage (int status)
 }
 
 /* Print version information and exit */
-void version ()
+void version()
 {
 	printf("%s\n", PACKAGE_STRING);
 
@@ -99,7 +99,7 @@ void version ()
  * TODO: Shouldn't we be using vprintf() to help us out with this stuff?
  * (Branden Robinson)
  */
-void disc_field (char *conv, int length, Cd *cd, Value *value)
+void disc_field(char *conv, int length, Cd *cd, Value *value)
 {
 	char *c;	/* pointer to conversion character */
 
@@ -162,7 +162,7 @@ void disc_field (char *conv, int length, Cd *cd, Value *value)
 	}
 }
 
-void track_field (char *conv, int length, Cd *cd, int trackno, Value *value)
+void track_field(char *conv, int length, Cd *cd, int trackno, Value *value)
 {
 	char *c;	/* pointer to conversion character */
 
@@ -230,7 +230,7 @@ void track_field (char *conv, int length, Cd *cd, int trackno, Value *value)
  * Print a conversion specification.
  * [flag(s)][width][.precision]<conversion-char>
  */
-void print_conv (char *start, int length, Cd *cd, int trackno)
+void print_conv(char *start, int length, Cd *cd, int trackno)
 {
 	char *conv;	/* copy of conversion specification */
 	Value value;
@@ -271,7 +271,7 @@ void print_conv (char *start, int length, Cd *cd, int trackno)
 	free(conv);
 }
 
-void cd_printf (char *format, Cd *cd, int trackno)
+void cd_printf(char *format, Cd *cd, int trackno)
 {
 	char *c;	/* pointer into format */
 	char *conv_start;
@@ -327,7 +327,7 @@ void cd_printf (char *format, Cd *cd, int trackno)
 	}
 }
 
-int info (char *name, int format, int trackno, char *d_template, char *t_template)
+int info(char *name, int format, int trackno, char *d_template, char *t_template)
 {
 	Cd *cd = NULL;
 	int ntrack;
@@ -417,7 +417,7 @@ void translate_escapes(char *s)
 	*write = '\0';
 }
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int format = UNKNOWN;
 	int trackno = -1;		/* track number (-1 = unspecified,

@@ -77,85 +77,85 @@ typedef struct Cd Cd;
 typedef struct Track Track;
 
 /* return pointer to CD structure */
-Cd *cd_init ();
+Cd *cd_init();
 
 /* dump all info from CD structure
  * in human readable format (for debugging)
  */
-void cd_dump (Cd *cd);
+void cd_dump(Cd *cd);
 
 /*
  * Cd functions
  */
 
-void cd_set_mode (Cd *cd, int mode);
-int cd_get_mode (Cd *cd);
+void cd_set_mode(Cd *cd, int mode);
+int cd_get_mode(Cd *cd);
 
-void cd_set_catalog (Cd *cd, char *catalog);
-char *cd_get_catalog (Cd *cd);
+void cd_set_catalog(Cd *cd, char *catalog);
+char *cd_get_catalog(Cd *cd);
 
 /*
  * return pointer to cd's Cdtext
  */
-Cdtext *cd_get_cdtext (Cd *cd);
+Cdtext *cd_get_cdtext(Cd *cd);
 
 /*
  * add a new track to cd, increment number of tracks
  * and return pointer to new track
  */
-Track *cd_add_track (Cd *cd);
+Track *cd_add_track(Cd *cd);
 
 /*
  * return number of tracks in cd
  */
-int cd_get_ntrack (Cd *cd);
+int cd_get_ntrack(Cd *cd);
 
-Track *cd_get_track (Cd *cd, int i);
+Track *cd_get_track(Cd *cd, int i);
 
 /*
  * Track functions
  */
 
 /* filename of data file */
-void track_set_filename (Track *track, char *filename);
-char *track_get_filename (Track *track);
+void track_set_filename(Track *track, char *filename);
+char *track_get_filename(Track *track);
 
 /* track start is starting position in data file */
-void track_set_start (Track *track, long start);
-long track_get_start (Track *track);
+void track_set_start(Track *track, long start);
+long track_get_start(Track *track);
 
 /* track length is length of data file to use */
-void track_set_length (Track *track, long length);
-long track_get_length (Track *track);
+void track_set_length(Track *track, long length);
+long track_get_length(Track *track);
 
 /* see enum TrackMode */
-void track_set_mode (Track *track, int mode);
-int track_get_mode (Track *track);
+void track_set_mode(Track *track, int mode);
+int track_get_mode(Track *track);
 
 /* see enum TrackSubMode */
-void track_set_sub_mode (Track *track, int sub_mode);
-int track_get_sub_mode (Track *track);
+void track_set_sub_mode(Track *track, int sub_mode);
+int track_get_sub_mode(Track *track);
 
 /* see enum TrackFlag */
-void track_set_flag (Track *track, int flag);
-void track_clear_flag (Track *track, int flag);
-int track_is_set_flag (Track *track, int flag);
+void track_set_flag(Track *track, int flag);
+void track_clear_flag(Track *track, int flag);
+int track_is_set_flag(Track *track, int flag);
 
 /* zero data pregap */
-void track_set_zero_pre (Track *track, long length);
-long track_get_zero_pre (Track *track);
+void track_set_zero_pre(Track *track, long length);
+long track_get_zero_pre(Track *track);
 
 /* zero data postgap */
-void track_set_zero_post (Track *track, long length);
-long track_get_zero_post (Track *track);
+void track_set_zero_post(Track *track, long length);
+long track_get_zero_post(Track *track);
 
-void track_set_isrc (Track *track, char *isrc);
-char *track_get_isrc (Track *track);
+void track_set_isrc(Track *track, char *isrc);
+char *track_get_isrc(Track *track);
 
-Cdtext *track_get_cdtext (Track *track);
+Cdtext *track_get_cdtext(Track *track);
 
-void track_add_index (Track *track, long index);
-int track_get_nindex (Track *track);
-long track_get_index (Track *track, int i);
+void track_add_index(Track *track, long index);
+int track_get_nindex(Track *track);
+long track_get_index(Track *track, int i);
 
 #endif

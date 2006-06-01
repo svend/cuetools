@@ -41,31 +41,31 @@ enum PtiFormat {
 typedef struct Cdtext Cdtext;
 
 /* return a pointer to a new Cdtext */
-Cdtext *cdtext_init ();
+Cdtext *cdtext_init();
 
 /* release a Cdtext */
-void cdtext_delete (Cdtext *cdtext);
+void cdtext_delete(Cdtext *cdtext);
 
 /* returns non-zero if there are no CD-TEXT fields set, zero otherwise */
-int cdtext_is_empty (Cdtext *cdtext);
+int cdtext_is_empty(Cdtext *cdtext);
 
 /* set CD-TEXT field to value for PTI pti */
-void cdtext_set (int pti, char *value, Cdtext *cdtext);
+void cdtext_set(int pti, char *value, Cdtext *cdtext);
 
 /* returns pointer to CD-TEXT value for PTI pti */
-char *cdtext_get (int pti, Cdtext *cdtext);
+char *cdtext_get(int pti, Cdtext *cdtext);
 
 /*
  * returns appropriate string for PTI pti
  * if istrack is zero, UPC/EAN string will be returned for PTI_UPC_ISRC
  * othwise ISRC string will be returned
  */
-const char *cdtext_get_key (int pti, int istrack);
+const char *cdtext_get_key(int pti, int istrack);
 
 /*
  * dump all cdtext info
  * in human readable format (for debugging)
  */
-void cdtext_dump (Cdtext *cdtext, int istrack);
+void cdtext_dump(Cdtext *cdtext, int istrack);
 
 #endif

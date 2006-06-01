@@ -41,7 +41,7 @@ struct Cd {
 	Track *track[MAXTRACK];		/* array of tracks */
 };
 
-Cd *cd_init ()
+Cd *cd_init()
 {
 	Cd *cd = NULL;
 	cd = malloc(sizeof(Cd));
@@ -58,7 +58,7 @@ Cd *cd_init ()
 	return cd;
 }
 
-Track *track_init ()
+Track *track_init()
 {
 	Track *track = NULL;
 	track = malloc(sizeof(Track));
@@ -95,17 +95,17 @@ Track *track_init ()
 /*
  * cd structure functions
  */
-void cd_set_mode (Cd *cd, int mode)
+void cd_set_mode(Cd *cd, int mode)
 {
 	cd->mode = mode;
 }
 
-int cd_get_mode (Cd *cd)
+int cd_get_mode(Cd *cd)
 {
 	return cd->mode;
 }
 
-void cd_set_catalog (Cd *cd, char *catalog)
+void cd_set_catalog(Cd *cd, char *catalog)
 {
 	if (cd->catalog) {
 		free(cd->catalog);
@@ -114,17 +114,17 @@ void cd_set_catalog (Cd *cd, char *catalog)
 	cd->catalog = strdup(catalog);
 }
 
-char *cd_get_catalog (Cd *cd)
+char *cd_get_catalog(Cd *cd)
 {
 	return cd->catalog;
 }
 
-Cdtext *cd_get_cdtext (Cd *cd)
+Cdtext *cd_get_cdtext(Cd *cd)
 {
 	return cd->cdtext;
 }
 
-Track *cd_add_track (Cd *cd)
+Track *cd_add_track(Cd *cd)
 {
 	if (MAXTRACK - 1 > cd->ntrack) {
 		cd->ntrack++;
@@ -139,12 +139,12 @@ Track *cd_add_track (Cd *cd)
 }
 
 
-int cd_get_ntrack (Cd *cd)
+int cd_get_ntrack(Cd *cd)
 {
 	return cd->ntrack;
 }
 
-Track *cd_get_track (Cd *cd, int i)
+Track *cd_get_track(Cd *cd, int i)
 {
 	if (0 < i <= cd->ntrack) {
 		return cd->track[i - 1];
@@ -157,7 +157,7 @@ Track *cd_get_track (Cd *cd, int i)
  * track structure functions
  */
 
-void track_set_filename (Track *track, char *filename)
+void track_set_filename(Track *track, char *filename)
 {
 	if (track->file.name) {
 		free(track->file.name);
@@ -166,86 +166,86 @@ void track_set_filename (Track *track, char *filename)
 	track->file.name = strdup(filename);
 }
 
-char *track_get_filename (Track *track)
+char *track_get_filename(Track *track)
 {
 	return track->file.name;
 }
 
-void track_set_start (Track *track, long start)
+void track_set_start(Track *track, long start)
 {
 	track->file.start = start;
 }
 
-long track_get_start (Track *track)
+long track_get_start(Track *track)
 {
 	return track->file.start;
 }
 
-void track_set_length (Track *track, long length)
+void track_set_length(Track *track, long length)
 {
 	track->file.length = length;
 }
 
-long track_get_length (Track *track)
+long track_get_length(Track *track)
 {
 	return track->file.length;
 }
 
-void track_set_mode (Track *track, int mode)
+void track_set_mode(Track *track, int mode)
 {
 	track->mode = mode;
 }
 
-int track_get_mode (Track *track)
+int track_get_mode(Track *track)
 {
 	return track->mode;
 }
 
-void track_set_sub_mode (Track *track, int sub_mode)
+void track_set_sub_mode(Track *track, int sub_mode)
 {
 	track->sub_mode = sub_mode;
 }
 
-int track_get_sub_mode (Track *track)
+int track_get_sub_mode(Track *track)
 {
 	return track->sub_mode;
 }
 
-void track_set_flag (Track *track, int flag)
+void track_set_flag(Track *track, int flag)
 {
 	track->flags |= flag;
 }
 
-void track_clear_flag (Track *track, int flag)
+void track_clear_flag(Track *track, int flag)
 {
 	track->flags &= ~flag;
 }
 
-int track_is_set_flag (Track *track, int flag)
+int track_is_set_flag(Track *track, int flag)
 {
 	return track->flags & flag;
 }
 
-void track_set_zero_pre (Track *track, long length)
+void track_set_zero_pre(Track *track, long length)
 {
 	track->zero_pre.length = length;
 }
 
-long track_get_zero_pre (Track *track)
+long track_get_zero_pre(Track *track)
 {
 	return track->zero_pre.length;
 }
 
-void track_set_zero_post (Track *track, long length)
+void track_set_zero_post(Track *track, long length)
 {
 	track->zero_post.length = length;
 }
 
-long track_get_zero_post (Track *track)
+long track_get_zero_post(Track *track)
 {
 	return track->zero_post.length;
 }
-void track_set_isrc (Track *track, char *isrc)
+void track_set_isrc(Track *track, char *isrc)
 {
 	if (track->isrc) {
 		free(track->isrc);
@@ -254,17 +254,17 @@ void track_set_isrc (Track *track, char *isrc)
 	track->isrc = strdup(isrc);
 }
 
-char *track_get_isrc (Track *track)
+char *track_get_isrc(Track *track)
 {
 	return track->isrc;
 }
 
-Cdtext *track_get_cdtext (Track *track)
+Cdtext *track_get_cdtext(Track *track)
 {
 	return track->cdtext;
 }
 
-void track_add_index (Track *track, long index)
+void track_add_index(Track *track, long index)
 {
 	if (MAXTRACK - 1 > track->nindex) {
 		track->nindex++;
@@ -276,12 +276,12 @@ void track_add_index (Track *track, long index)
 	track->index[track->nindex - 1] = index;
 }
 
-int track_get_nindex (Track *track)
+int track_get_nindex(Track *track)
 {
 	return track->nindex;
 }
 
-long track_get_index (Track *track, int i)
+long track_get_index(Track *track, int i)
 {
 	if (0 <= i < track->nindex) {
 		return track->index[i];
@@ -293,7 +293,7 @@ long track_get_index (Track *track, int i)
 /*
  * dump cd information
  */
-void cd_track_dump (Track *track)
+void cd_track_dump(Track *track)
 {
 	int i;
 
@@ -318,7 +318,7 @@ void cd_track_dump (Track *track)
 	}
 }
 
-void cd_dump (Cd *cd)
+void cd_dump(Cd *cd)
 {
 	int i;
 

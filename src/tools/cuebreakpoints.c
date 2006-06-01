@@ -29,7 +29,7 @@ char *progname;
 enum GapMode {APPEND, PREPEND, SPLIT};
 
 /* Print usage information and exit */
-void usage (int status)
+void usage(int status)
 {
 	if (0 == status) {
 		printf("Usage: %s [option...] [file...]\n", progname);
@@ -50,14 +50,14 @@ void usage (int status)
 }
 
 /* Print version information and exit */
-void version ()
+void version()
 {
 	printf("%s\n", PACKAGE_STRING);
 
 	exit(0);
 }
 
-void print_m_ss_ff (long frame)
+void print_m_ss_ff(long frame)
 {
 	int m, s, f;
 
@@ -65,7 +65,7 @@ void print_m_ss_ff (long frame)
 	printf ("%d:%02d.%02d\n", m, s, f);
 }
 
-void print_breakpoint (long b)
+void print_breakpoint(long b)
 {
 	/* Do not print zero breakpoints. */
 	if (0 != b) {
@@ -73,7 +73,7 @@ void print_breakpoint (long b)
 	}
 }
 
-void print_breaks (Cd *cd, int gaps)
+void print_breaks(Cd *cd, int gaps)
 {
 	int i;
 	long b;
@@ -107,7 +107,7 @@ void print_breaks (Cd *cd, int gaps)
 	}
 }
 
-int breaks (char *name, int format, int gaps)
+int breaks(char *name, int format, int gaps)
 {
 	Cd *cd = NULL;
 
@@ -122,7 +122,7 @@ int breaks (char *name, int format, int gaps)
 	return 0;
 }
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int format = UNKNOWN;
 	int gaps = APPEND;

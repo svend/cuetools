@@ -5,5 +5,5 @@
  * For license terms, see the file COPYING in this distribution.
  */
 
-Cd *cue_parse (FILE *fp);
-void cue_print (FILE *fp, Cd *cd);
+Cd *cue_parse(FILE *fp);
+void cue_print(FILE *fp, Cd *cd);

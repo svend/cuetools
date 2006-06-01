@@ -20,7 +20,7 @@
 char *progname;
 
 /* Print usage information and exit */
-void usage (int status)
+void usage(int status)
 {
 	if (0 == status) {
 		printf("Usage: %s [option...] [infile [outfile]]\n", progname);
@@ -39,14 +39,14 @@ void usage (int status)
 }
 
 /* Print version information and exit */
-void version ()
+void version()
 {
 	printf("%s\n", PACKAGE_STRING);
 
 	exit(0);
 }
 
-int convert (char *iname, int iformat, char *oname, int oformat)
+int convert(char *iname, int iformat, char *oname, int oformat)
 {
 	Cd *cd = NULL;
 
@@ -74,7 +74,7 @@ int convert (char *iname, int iformat, char *oname, int oformat)
 	return cf_print(oname, &oformat, cd);
 }
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int iformat = UNKNOWN;
 	int oformat = UNKNOWN;

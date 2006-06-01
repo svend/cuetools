@@ -5,5 +5,5 @@
  * For license terms, see the file COPYING in this distribution.
  */
 
-Cd *toc_parse (FILE *fp);
-void toc_print (FILE *fp, Cd *cd);
+Cd *toc_parse(FILE *fp);
+void toc_print(FILE *fp, Cd *cd);

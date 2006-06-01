@@ -11,7 +11,7 @@
 #include "cue.h"
 #include "toc.h"
 
-Cd *cf_parse (char *name, int *format)
+Cd *cf_parse(char *name, int *format)
 {
 	FILE *fp = NULL;
 	Cd *cd = NULL;
@@ -46,7 +46,7 @@ Cd *cf_parse (char *name, int *format)
 	return cd;
 }
 
-int cf_print (char *name, int *format, Cd *cd)
+int cf_print(char *name, int *format, Cd *cd)
 {
 	FILE *fp = NULL;
 
@@ -80,7 +80,7 @@ int cf_print (char *name, int *format, Cd *cd)
 	return 0;
 }
 
-int cf_format_from_suffix (char *name)
+int cf_format_from_suffix(char *name)
 {
 	char *suffix;
 	if (0 != (suffix = strrchr(name, '.'))) {

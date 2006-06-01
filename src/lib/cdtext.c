@@ -16,7 +16,7 @@ struct Cdtext {
 	char *value;
 };
 
-Cdtext *cdtext_init ()
+Cdtext *cdtext_init()
 {
 	Cdtext *new_cdtext = NULL;
 
@@ -50,7 +50,7 @@ Cdtext *cdtext_init ()
 	return new_cdtext;
 }
 
-void cdtext_delete (Cdtext *cdtext)
+void cdtext_delete(Cdtext *cdtext)
 {
 	int i;
 
@@ -63,7 +63,7 @@ void cdtext_delete (Cdtext *cdtext)
 }
 
 /* return 0 if there is no cdtext, returns non-zero otherwise */
-int cdtext_is_empty (Cdtext *cdtext)
+int cdtext_is_empty(Cdtext *cdtext)
 {
 	for (; PTI_END != cdtext->pti; cdtext++) {
 		if (NULL != cdtext->value) {
@@ -75,7 +75,7 @@ int cdtext_is_empty (Cdtext *cdtext)
 }
 
 /* sets cdtext's pti entry to field */
-void cdtext_set (int pti, char *value, Cdtext *cdtext)
+void cdtext_set(int pti, char *value, Cdtext *cdtext)
 {
 	if (NULL != value) {	/* don't pass NULL to strdup */
 		for (; PTI_END != cdtext->pti; cdtext++) {
@@ -88,7 +88,7 @@ void cdtext_set (int pti, char *value, Cdtext *cdtext)
 }
 
 /* returns value for pti, NULL if pti is not found */
-char *cdtext_get (int pti, Cdtext *cdtext)
+char *cdtext_get(int pti, Cdtext *cdtext)
 {
 	for (; PTI_END != cdtext->pti; cdtext++) {
 		if (pti == cdtext->pti) {
@@ -99,7 +99,7 @@ char *cdtext_get (int pti, Cdtext *cdtext)
 	return NULL;
 }
 
-const char *cdtext_get_key (int pti, int istrack)
+const char *cdtext_get_key(int pti, int istrack)
 {
 	char *key = NULL;
 
@@ -160,7 +160,7 @@ const char *cdtext_get_key (int pti, int istrack)
 	return key;
 }
 
-void cdtext_dump (Cdtext *cdtext, int istrack)
+void cdtext_dump(Cdtext *cdtext, int istrack)
 {
 	int pti;
 	char *value = NULL;

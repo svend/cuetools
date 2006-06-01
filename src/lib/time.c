@@ -8,12 +8,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long time_msf_to_frame (int m, int s, int f)
+long time_msf_to_frame(int m, int s, int f)
 {
 	return (m * 60 + s) * 75 + f;
 }
 
-void msf_frame_to_msf (long frame, int *m, int *s, int *f)
+void msf_frame_to_msf(long frame, int *m, int *s, int *f)
 {
         *f = frame % 75;	/* 0 <= frames <= 74 */
         frame /= 75;
@@ -22,7 +22,7 @@ void msf_frame_to_msf (long frame, int *m, int *s, int *f)
         *m = frame;		/* 0 <= minutes */
 }
 
-void time_frame_to_msf (long frame, int *m, int *s, int *f)
+void time_frame_to_msf(long frame, int *m, int *s, int *f)
 {
 	*f = frame % 75;           /* 0 <= frames <= 74 */
 	frame /= 75;
@@ -32,7 +32,7 @@ void time_frame_to_msf (long frame, int *m, int *s, int *f)
 }
 
 /* print frame in mm:ss:ff format */
-char *time_frame_to_mmssff (long f)
+char *time_frame_to_mmssff(long f)
 {
 	static char msf[9];
 	int minutes, seconds, frames;

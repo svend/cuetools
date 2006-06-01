@@ -11,6 +11,6 @@ enum Format {CUE, TOC, UNKNOWN};
 
 typedef struct Cue Cue;
 
-Cd *cf_parse (char *fname, int *format);
-int cf_print (char *fname, int *format, Cd *cue);
-int cf_format_from_suffix (char *fname);
+Cd *cf_parse(char *fname, int *format);
+int cf_print(char *fname, int *format, Cd *cue);
+int cf_format_from_suffix(char *fname);
