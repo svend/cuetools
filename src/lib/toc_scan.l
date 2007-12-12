@@ -2,7 +2,7 @@
 /*
  * toc_scan.l -- lexer for toc files
  *
- * Copyright (C) 2004, 2005, 2006 Svend Sorensen
+ * Copyright (C) 2004, 2005, 2006, 2007 Svend Sorensen
  * For license terms, see the file COPYING in this distribution.
  */
 

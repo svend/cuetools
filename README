@@ -1,6 +1,6 @@
 cuetools - cue and toc file parsers and utilities
 
-Copyright (C) 2004, 2005, 2006 Svend Sorensen
+Copyright (C) 2004, 2005, 2006, 2007 Svend Sorensen
 
 cuetools is a set of utilities for working with Cue Sheet (cue) and Table of
 Contents (toc) files.
