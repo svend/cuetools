@@ -27,6 +27,10 @@ usage()
 # for FLAC and Ogg Vorbis files
 vorbis()
 {
+	trackno=$1; shift
+	file="$1"; shift
+	fields="$@"
+
 	# FLAC tagging
 	# --remove-vc-all overwrites existing comments
 	METAFLAC="metaflac --remove-all-tags --import-tags-from=-"
@@ -40,7 +44,7 @@ vorbis()
 	# TODO: this also outputs to stdout
 	TXTFILE="tee"
 
-	case "$2" in
+	case "$file" in
 	*.[Ff][Ll][Aa][Cc])
 		VORBISTAG=$METAFLAC
 		;;
@@ -55,8 +59,9 @@ vorbis()
 	# space seperated list of recomended stardard field names
 	# see http://www.xiph.org/ogg/vorbis/doc/v-comment.html
 	# TRACKTOTAL is not in the Xiph recomendation, but is in common use
-	
-	fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
+
+	[ -n "$fields" ] ||
+		fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
 
 	# fields' corresponding cueprint conversion characters
 	# seperate alternates with a space
@@ -79,16 +84,21 @@ vorbis()
 	ISRC='%i %u'
 
 	(for field in $fields; do
-		value=""
-		for conv in $(eval echo \$$field); do
-			value=$($CUEPRINT -n $1 -t "$conv\n" "$cue_file")
+		case "$field" in
+			(*=*) echo "$field";;
+			(*)
+				value=""
+				for conv in $(eval echo \$$field); do
+					value=$($CUEPRINT -n $trackno -t "$conv\n" "$cue_file")
 
-			if [ -n "$value" ]; then
-				echo "$field=$value"
-				break
-			fi
-		done
-	done) | $VORBISTAG "$2"
+					if [ -n "$value" ]; then
+						echo "$field=$value"
+						break
+					fi
+				done
+				;;
+		esac
+	done) | $VORBISTAG "$file"
 }
 
 id3()
@@ -117,14 +127,19 @@ id3()
 	TRACKNUMBER='%n'
 
 	for field in $fields; do
-		value=""
-		for conv in $(eval echo \$$field); do
-			value=$($CUEPRINT -n $1 -t "$conv\n" "$cue_file")
+		case "$field" in
+			*=*) value="${field#*=}";;
+			*)
+				value=""
+				for conv in $(eval echo \$$field); do
+					value=$($CUEPRINT -n $1 -t "$conv\n" "$cue_file")
 
-			if [ -n "$value" ]; then
-				break
-			fi
-		done
+					if [ -n "$value" ]; then
+						break
+					fi
+				done
+				;;
+		esac
 
 		if [ -n "$value" ]; then
 			case $field in
@@ -167,6 +182,15 @@ main()
 	ntrack=$(cueprint -d '%N' "$cue_file")
 	trackno=1
 
+	FILES= FIELDS=
+	for arg in "$@"; do
+		case "$arg" in
+			*.*) FILES="$FILES $arg";;
+			*) FIELDS="$FIELDS $arg";;
+		esac
+	done
+
+	set -- $FILES
 	if [ $# -ne $ntrack ]; then
 		echo "warning: number of files does not match number of tracks"
 	fi
@@ -174,13 +198,13 @@ main()
 	for file in "$@"; do
 		case $file in
 		*.[Ff][Ll][Aa][Cc])
-			vorbis $trackno "$file"
+			vorbis $trackno "$file" $FIELDS
 			;;
 		*.[Oo][Gg][Gg])
-			vorbis $trackno "$file"
+			vorbis $trackno "$file" $FIELDS
 			;;
 		*.[Mm][Pp]3)
-			id3 $trackno "$file"
+			id3 $trackno "$file" $FIELDS
 			;;
 		*.[Tt][Xx][Tt])
 			vorbis $trackno "$file"
