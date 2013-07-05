@@ -93,7 +93,12 @@ vorbis()
 
 id3()
 {
-	MP3INFO=mp3info
+	MP3TAG=$(which mid3v2) \
+	|| MP3TAG=$(which id3v2)
+	if [ -z "${MP3TAG}" ]; then
+	    echo "error: not found '(m)id3v2'."
+	    exit 1
+	fi
 
 	# space seperated list of ID3 v1.1 tags
 	# see http://id3lib.sourceforge.net/id3/idev1.html
@@ -124,25 +129,25 @@ id3()
 		if [ -n "$value" ]; then
 			case $field in
 			TITLE)
-				$MP3INFO -t "$value" "$2"
+				$MP3TAG -t "$value" "$2"
 				;;
 			ALBUM)
-				$MP3INFO -l "$value" "$2"
+				$MP3TAG -A "$value" "$2"
 				;;
 			ARTIST)
-				$MP3INFO -a "$value" "$2"
+				$MP3TAG -a "$value" "$2"
 				;;
 			YEAR)
-				$MP3INFO -y "$value" "$2"
+				$MP3TAG -y "$value" "$2"
 				;;
 			COMMENT)
-				$MP3INFO -c "$value" "$2"
+				$MP3TAG -c "$value" "$2"
 				;;
 			GENRE)
-				$MP3INFO -g "$value" "$2"
+				$MP3TAG -g "$value" "$2"
 				;;
 			TRACKNUMBER)
-				$MP3INFO -n "$value" "$2"
+				$MP3TAG -T "$value" "$2"
 				;;
 			esac
 		fi
