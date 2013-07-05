@@ -81,7 +81,7 @@ vorbis()
 	(for field in $fields; do
 		value=""
 		for conv in $(eval echo \$$field); do
-			value=$($CUEPRINT -n $1 -t "$conv\n" $cue_file)
+			value=$($CUEPRINT -n $1 -t "$conv\n" "$cue_file")
 
 			if [ -n "$value" ]; then
 				echo "$field=$value"
@@ -114,7 +114,7 @@ id3()
 	for field in $fields; do
 		value=""
 		for conv in $(eval echo \$$field); do
-			value=$($CUEPRINT -n $1 -t "$conv\n" $cue_file)
+			value=$($CUEPRINT -n $1 -t "$conv\n" "$cue_file")
 
 			if [ -n "$value" ]; then
 				break
@@ -159,14 +159,14 @@ main()
 	cue_file=$1
 	shift
 
-	ntrack=$(cueprint -d '%N' $cue_file)
+	ntrack=$(cueprint -d '%N' "$cue_file")
 	trackno=1
 
 	if [ $# -ne $ntrack ]; then
 		echo "warning: number of files does not match number of tracks"
 	fi
 
-	for file in $@; do
+	for file in "$@"; do
 		case $file in
 		*.[Ff][Ll][Aa][Cc])
 			vorbis $trackno "$file"
