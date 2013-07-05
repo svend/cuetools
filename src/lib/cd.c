@@ -126,7 +126,7 @@ Cdtext *cd_get_cdtext(Cd *cd)
 
 Track *cd_add_track(Cd *cd)
 {
-	if (MAXTRACK - 1 > cd->ntrack) {
+	if (MAXTRACK > cd->ntrack) {
 		cd->ntrack++;
 	} else {
 		fprintf(stderr, "too many tracks\n");
@@ -266,7 +266,7 @@ Cdtext *track_get_cdtext(Track *track)
 
 void track_add_index(Track *track, long index)
 {
-	if (MAXTRACK - 1 > track->nindex) {
+	if (MAXINDEX > track->nindex) {
 		track->nindex++;
 	} else {
 		fprintf(stderr, "too many indexes\n");
