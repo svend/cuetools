@@ -34,7 +34,7 @@ void time_frame_to_msf(long frame, int *m, int *s, int *f)
 /* print frame in mm:ss:ff format */
 char *time_frame_to_mmssff(long f)
 {
-	static char msf[9];
+	static char msf[10];
 	int minutes, seconds, frames;
 
 	msf_frame_to_msf(f, &minutes, &seconds, &frames);

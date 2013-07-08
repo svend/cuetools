@@ -27,9 +27,13 @@ usage()
 # for FLAC and Ogg Vorbis files
 vorbis()
 {
+	trackno=$1; shift
+	file="$1"; shift
+	fields="$@"
+
 	# FLAC tagging
 	# --remove-vc-all overwrites existing comments
-	METAFLAC="metaflac --remove-vc-all --import-vc-from=-"
+	METAFLAC="metaflac --remove-all-tags --import-tags-from=-"
 
 	# Ogg Vorbis tagging
 	# -w overwrites existing comments
@@ -40,7 +44,7 @@ vorbis()
 	# TODO: this also outputs to stdout
 	TXTFILE="tee"
 
-	case "$2" in
+	case "$file" in
 	*.[Ff][Ll][Aa][Cc])
 		VORBISTAG=$METAFLAC
 		;;
@@ -55,8 +59,9 @@ vorbis()
 	# space seperated list of recomended stardard field names
 	# see http://www.xiph.org/ogg/vorbis/doc/v-comment.html
 	# TRACKTOTAL is not in the Xiph recomendation, but is in common use
-	
-	fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
+
+	[ -n "$fields" ] ||
+		fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
 
 	# fields' corresponding cueprint conversion characters
 	# seperate alternates with a space
@@ -64,8 +69,8 @@ vorbis()
 	TITLE='%t'
 	VERSION=''
 	ALBUM='%T'
-	TRACKNUMBER='%n'
-	TRACKTOTAL='%N'
+	TRACKNUMBER='%02n'
+	TRACKTOTAL='%02N'
 	ARTIST='%c %p'
 	PERFORMER='%p'
 	COPYRIGHT=''
@@ -79,21 +84,31 @@ vorbis()
 	ISRC='%i %u'
 
 	(for field in $fields; do
-		value=""
-		for conv in $(eval echo \$$field); do
-			value=$($CUEPRINT -n $1 -t "$conv\n" $cue_file)
+		case "$field" in
+			(*=*) echo "$field";;
+			(*)
+				value=""
+				for conv in $(eval echo \$$field); do
+					value=$($CUEPRINT -n $trackno -t "$conv\n" "$cue_file")
 
-			if [ -n "$value" ]; then
-				echo "$field=$value"
-				break
-			fi
-		done
-	done) | $VORBISTAG "$2"
+					if [ -n "$value" ]; then
+						echo "$field=$value"
+						break
+					fi
+				done
+				;;
+		esac
+	done) | $VORBISTAG "$file"
 }
 
 id3()
 {
-	MP3INFO=mp3info
+	MP3TAG=$(which mid3v2) \
+	|| MP3TAG=$(which id3v2)
+	if [ -z "${MP3TAG}" ]; then
+	    echo "error: not found '(m)id3v2'."
+	    exit 1
+	fi
 
 	# space seperated list of ID3 v1.1 tags
 	# see http://id3lib.sourceforge.net/id3/idev1.html
@@ -112,37 +127,42 @@ id3()
 	TRACKNUMBER='%n'
 
 	for field in $fields; do
-		value=""
-		for conv in $(eval echo \$$field); do
-			value=$($CUEPRINT -n $1 -t "$conv\n" $cue_file)
+		case "$field" in
+			*=*) value="${field#*=}";;
+			*)
+				value=""
+				for conv in $(eval echo \$$field); do
+					value=$($CUEPRINT -n $1 -t "$conv\n" "$cue_file")
 
-			if [ -n "$value" ]; then
-				break
-			fi
-		done
+					if [ -n "$value" ]; then
+						break
+					fi
+				done
+				;;
+		esac
 
 		if [ -n "$value" ]; then
 			case $field in
 			TITLE)
-				$MP3INFO -t "$value" "$2"
+				$MP3TAG -t "$value" "$2"
 				;;
 			ALBUM)
-				$MP3INFO -l "$value" "$2"
+				$MP3TAG -A "$value" "$2"
 				;;
 			ARTIST)
-				$MP3INFO -a "$value" "$2"
+				$MP3TAG -a "$value" "$2"
 				;;
 			YEAR)
-				$MP3INFO -y "$value" "$2"
+				$MP3TAG -y "$value" "$2"
 				;;
 			COMMENT)
-				$MP3INFO -c "$value" "$2"
+				$MP3TAG -c "$value" "$2"
 				;;
 			GENRE)
-				$MP3INFO -g "$value" "$2"
+				$MP3TAG -g "$value" "$2"
 				;;
 			TRACKNUMBER)
-				$MP3INFO -n "$value" "$2"
+				$MP3TAG -T "$value" "$2"
 				;;
 			esac
 		fi
@@ -159,23 +179,32 @@ main()
 	cue_file=$1
 	shift
 
-	ntrack=$(cueprint -d '%N' $cue_file)
+	ntrack=$(cueprint -d '%N' "$cue_file")
 	trackno=1
 
+	FILES= FIELDS=
+	for arg in "$@"; do
+		case "$arg" in
+			*.*) FILES="$FILES $arg";;
+			*) FIELDS="$FIELDS $arg";;
+		esac
+	done
+
+	set -- $FILES
 	if [ $# -ne $ntrack ]; then
 		echo "warning: number of files does not match number of tracks"
 	fi
 
-	for file in $@; do
+	for file in "$@"; do
 		case $file in
 		*.[Ff][Ll][Aa][Cc])
-			vorbis $trackno "$file"
+			vorbis $trackno "$file" $FIELDS
 			;;
 		*.[Oo][Gg][Gg])
-			vorbis $trackno "$file"
+			vorbis $trackno "$file" $FIELDS
 			;;
 		*.[Mm][Pp]3)
-			id3 $trackno "$file"
+			id3 $trackno "$file" $FIELDS
 			;;
 		*.[Tt][Xx][Tt])
 			vorbis $trackno "$file"

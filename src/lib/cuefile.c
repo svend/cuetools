@@ -18,7 +18,7 @@ Cd *cf_parse(char *name, int *format)
 
 	if (UNKNOWN == *format) {
 		if (UNKNOWN == (*format = cf_format_from_suffix(name))) {
-			fprintf(stderr, "%s: unknown format\n", name);
+			fprintf(stderr, "%s: unknown file suffix\n", name);
 			return NULL;
 		}
 	}
@@ -52,7 +52,7 @@ int cf_print(char *name, int *format, Cd *cd)
 
 	if (UNKNOWN == *format) {
 		if (UNKNOWN == (*format = cf_format_from_suffix(name))) {
-			fprintf(stderr, "%s: unknown format\n", name);
+			fprintf(stderr, "%s: unknown file suffix\n", name);
 			return -1;
 		}
 	}

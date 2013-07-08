@@ -264,7 +264,7 @@ void print_conv(char *start, int length, Cd *cd, int trackno)
 			printf(conv, value.sval);
 		break;
 	default:
-		printf("%d: ", strlen(conv));
+		printf("%zu: ", strlen(conv));
 		printf("%s", conv);
 	}
 
