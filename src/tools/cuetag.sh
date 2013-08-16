@@ -33,7 +33,7 @@ vorbis()
 
 	# FLAC tagging
 	#  --remove-all-tags overwrites existing comments
-	METAFLAC="metaflac --import-tags-from=-"
+	METAFLAC="metaflac --remove-all-tags --import-tags-from=-"
 
 	# Ogg Vorbis tagging
 	# -w overwrites existing comments
