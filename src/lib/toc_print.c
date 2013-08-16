@@ -16,19 +16,19 @@ void toc_print_cdtext (Cdtext *cdtext, FILE *fp, int istrack);
 void toc_print (FILE *fp, Cd *cd)
 {
 	Cdtext *cdtext = cd_get_cdtext(cd);
-	int i; 	/* track */
+	int i;	/* track */
 	Track *track;
 
 	switch(cd_get_mode(cd)) {
 	case MODE_CD_DA:
 		fprintf(fp, "CD_DA\n");
-	       	break;
+		break;
 	case MODE_CD_ROM:
 		fprintf(fp, "CD_ROM\n");
-	       	break;
+		break;
 	case MODE_CD_ROM_XA:
 		fprintf(fp, "CD_ROM_XA\n");
-	       	break;
+		break;
 	}
 
 	if (NULL != cd_get_catalog(cd)) {
@@ -60,25 +60,25 @@ void toc_print_track (FILE *fp, Track *track)
 	switch (track_get_mode(track)) {
 	case MODE_AUDIO:
 		fprintf(fp, "AUDIO");
-	       	break;
+		break;
 	case MODE_MODE1:
 		fprintf(fp, "MODE1");
-	       	break;
+		break;
 	case MODE_MODE1_RAW:
 		fprintf(fp, "MODE1_RAW");
-	       	break;
+		break;
 	case MODE_MODE2:
 		fprintf(fp, "MODE2");
-	       	break;
+		break;
 	case MODE_MODE2_FORM1:
 		fprintf(fp, "MODE2_FORM1");
-	       	break;
+		break;
 	case MODE_MODE2_FORM2:
 		fprintf(fp, "MODE2_FORM2");
-	       	break;
+		break;
 	case MODE_MODE2_FORM_MIX:
 		fprintf(fp, "MODE2_FORM_MIX");
-	       	break;
+		break;
 	}
 	fprintf(fp, "\n");
 
@@ -109,7 +109,7 @@ void toc_print_track (FILE *fp, Track *track)
 		fprintf(fp, "%s", time_frame_to_mmssff(track_get_zero_pre(track)));
 		fprintf(fp, "\n");
 	}
-		
+
 	fprintf(fp, "FILE ");
 	fprintf(fp, "\"%s\" ", track_get_filename(track));
 	if (0 == track_get_start(track)) {
