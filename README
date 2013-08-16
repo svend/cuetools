@@ -1,4 +1,5 @@
 cuetools - cue and toc file parsers and utilities
+https://github.com/svend/cuetools
 
 Copyright (C) 2004, 2005, 2006, 2007, 2013 Svend Sorensen
 
@@ -24,5 +25,3 @@ src/lib
 	scanning, parsing, and printing library
 src/tools
 	cue and toc tools
-
-Cuetools is hosted by BerliOS (http://cuetools.berlios.de).
