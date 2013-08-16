@@ -301,7 +301,7 @@ void cd_printf(char *format, Cd *cd, int trackno)
 				conv_length++;
 				c++;
 			}
-			
+
 			/* precision */
 			/* '*' not recognized */
 			if ('.' == *c) {
