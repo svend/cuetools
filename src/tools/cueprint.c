@@ -69,7 +69,7 @@ void usage(int status)
 		printf("Report disc and track information from a CUE or TOC file.\n"
 		       "\n"
 		       "OPTIONS\n"
-		       "-h, --help 			print usage\n"
+		       "-h, --help			print usage\n"
 		       "-i, --input-format cue|toc	set format of file(s)\n"
 		       "-n, --track-number <number>	only print track information for single track\n"
 		       "-d, --disc-template <template>	set disc template\n"

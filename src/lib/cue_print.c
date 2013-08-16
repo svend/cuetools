@@ -20,7 +20,7 @@ long prev_length = 0;	/* last track length */
 void cue_print (FILE *fp, Cd *cd)
 {
 	Cdtext *cdtext = cd_get_cdtext(cd);
-	int i; 	/* track */
+	int i;	/* track */
 	Track *track = NULL;
 
 	/* print global information */
@@ -41,7 +41,7 @@ void cue_print (FILE *fp, Cd *cd)
 void cue_print_track (FILE *fp, Track *track, int trackno)
 {
 	Cdtext *cdtext = track_get_cdtext(track);
-	int i; 	/* index */
+	int i;	/* index */
 
 	if (NULL != track_get_filename(track)) {
 		/*
@@ -119,7 +119,7 @@ void cue_print_track (FILE *fp, Track *track, int trackno)
 	/* don't print index 0 if index 1 = 0 */
 	if (track_get_index(track, 1) == 0) {
 		i = 1;
-	} else { 
+	} else {
 		i = 0;
 	}
 

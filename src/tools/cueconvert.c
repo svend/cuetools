@@ -27,7 +27,7 @@ void usage(int status)
 		printf("Convert file between the CUE and TOC formats.\n"
 		       "\n"
 		       "OPTIONS\n"
-		       "-h, --help 			print usage\n"
+		       "-h, --help			print usage\n"
 		       "-i, --input-format cue|toc	set format of input file\n"
 		       "-o, --output-format cue|toc	set format of output file\n"
 		       "-V, --version			print version information\n");
