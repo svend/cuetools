@@ -1,4 +1,4 @@
-AC_INIT([cuetools], [1.4.0-dev], [svend@ciffer.net])
+AC_INIT([cuetools], [1.4.0], [svend@ciffer.net])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 AC_PROG_INSTALL
