@@ -15,11 +15,11 @@ long time_msf_to_frame(int m, int s, int f)
 
 void msf_frame_to_msf(long frame, int *m, int *s, int *f)
 {
-        *f = frame % 75;	/* 0 <= frames <= 74 */
-        frame /= 75;
-        *s = frame % 60;	/* 0 <= seconds <= 59 */
-        frame /= 60;
-        *m = frame;		/* 0 <= minutes */
+	*f = frame % 75;	/* 0 <= frames <= 74 */
+	frame /= 75;
+	*s = frame % 60;	/* 0 <= seconds <= 59 */
+	frame /= 60;
+	*m = frame;		/* 0 <= minutes */
 }
 
 void time_frame_to_msf(long frame, int *m, int *s, int *f)
