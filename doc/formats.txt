@@ -3,7 +3,7 @@ Description of the Cue Sheet/Table of Contents File Formats
 ===========================================================
 
 :Author: Svend Sorensen
-:Contact: sorensen@users.berlios.de
+:Contact: svend@ciffer.net
 :Date: $LastChangedDate$
 
 .. contents::

@@ -3,7 +3,7 @@ cuetools
 ========
 
 :Author: Svend Sorensen
-:Contact: sorensen@users.berlios.de
+:Contact: svend@ciffer.net
 
 cuetools is a set of utilites for working with Cue Sheet (cue) and Table of
 Contents (toc) files.
