@@ -127,7 +127,7 @@ disc_mode
 	| CD_ROM
 	| CD_ROM_XA
 	;
-	
+
 track_list
 	: track
 	| track_list track
@@ -149,7 +149,7 @@ new_track
 		track_add_index(track, 0);
 	}
 	;
-	
+
 track_def
 	: TRACK track_modes '\n' { track_set_mode(track, $2); }
 	;

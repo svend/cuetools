@@ -75,7 +75,7 @@ def convert(iformat, oformat, text):
 		command += " -i cue"
 	elif iformat == "toc":
 		command += " -i toc"
-	
+
 	if oformat == "cue":
 		command += " -o cue"
 	elif oformat == "toc":

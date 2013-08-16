@@ -63,7 +63,7 @@ int cf_print(char *name, int *format, Cd *cd)
 		fprintf(stderr, "%s: error opening file\n", name);
 		return -1;
 	}
-	
+
 	switch (*format) {
 	case CUE:
 		cue_print(fp, cd);
