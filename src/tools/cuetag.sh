@@ -61,7 +61,7 @@ vorbis()
 	# TRACKTOTAL is not in the Xiph recomendation, but is in common use
 
 	[ -n "$fields" ] ||
-		fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
+	fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
 
 	# fields' corresponding cueprint conversion characters
 	# seperate alternates with a space
@@ -84,30 +84,30 @@ vorbis()
 	ISRC='%i %u'
 
 	(for field in $fields; do
-		case "$field" in
-			(*=*) echo "$field";;
-			(*)
-				value=""
-				for conv in $(eval echo \$$field); do
-					value=$($CUEPRINT -n $trackno -t "$conv\n" "$cue_file")
+		 case "$field" in
+		 (*=*) echo "$field";;
+		 (*)
+			 value=""
+			 for conv in $(eval echo \$$field); do
+				 value=$($CUEPRINT -n $trackno -t "$conv\n" "$cue_file")
 
-					if [ -n "$value" ]; then
-						echo "$field=$value"
-						break
-					fi
-				done
-				;;
-		esac
-	done) | $VORBISTAG "$file"
+				 if [ -n "$value" ]; then
+					 echo "$field=$value"
+					 break
+				 fi
+			 done
+			 ;;
+		 esac
+	 done) | $VORBISTAG "$file"
 }
 
 id3()
 {
 	MP3TAG=$(which mid3v2) \
-	|| MP3TAG=$(which id3v2)
+		|| MP3TAG=$(which id3v2)
 	if [ -z "${MP3TAG}" ]; then
-	    echo "error: not found '(m)id3v2'."
-	    exit 1
+		echo "error: not found '(m)id3v2'."
+		exit 1
 	fi
 
 	# space seperated list of ID3 v1.1 tags
@@ -128,17 +128,17 @@ id3()
 
 	for field in $fields; do
 		case "$field" in
-			*=*) value="${field#*=}";;
-			*)
-				value=""
-				for conv in $(eval echo \$$field); do
-					value=$($CUEPRINT -n $1 -t "$conv\n" "$cue_file")
+		*=*) value="${field#*=}";;
+		*)
+			value=""
+			for conv in $(eval echo \$$field); do
+				value=$($CUEPRINT -n $1 -t "$conv\n" "$cue_file")
 
-					if [ -n "$value" ]; then
-						break
-					fi
-				done
-				;;
+				if [ -n "$value" ]; then
+					break
+				fi
+			done
+			;;
 		esac
 
 		if [ -n "$value" ]; then
@@ -185,8 +185,8 @@ main()
 	NUM_FILES=0 FIELDS=
 	for arg in "$@"; do
 		case "$arg" in
-			*.*) NUM_FILES=$(expr $NUM_FILES + 1);;
-			*) FIELDS="$FIELDS $arg";;
+		*.*) NUM_FILES=$(expr $NUM_FILES + 1);;
+		*) FIELDS="$FIELDS $arg";;
 		esac
 	done
 
