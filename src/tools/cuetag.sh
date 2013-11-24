@@ -182,16 +182,15 @@ main()
 	ntrack=$(cueprint -d '%N' "$cue_file")
 	trackno=1
 
-	FILES= FIELDS=
+	NUM_FILES=0 FIELDS=
 	for arg in "$@"; do
 		case "$arg" in
-			*.*) FILES="$FILES $arg";;
+			*.*) NUM_FILES=$(expr $NUM_FILES + 1);;
 			*) FIELDS="$FIELDS $arg";;
 		esac
 	done
 
-	set -- $FILES
-	if [ $# -ne $ntrack ]; then
+	if [ $NUM_FILES -ne $ntrack ]; then
 		echo "warning: number of files does not match number of tracks"
 	fi
 
@@ -209,7 +208,7 @@ main()
 		*.[Tt][Xx][Tt])
 			vorbis $trackno "$file"
 			;;
-		*)
+		*.*)
 			echo "$file: uknown file type"
 			;;
 		esac
