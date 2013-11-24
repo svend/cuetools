@@ -56,15 +56,15 @@ vorbis()
 		;;
 	esac
 
-	# space seperated list of recomended stardard field names
+	# space separated list of recommended standard field names
 	# see http://www.xiph.org/ogg/vorbis/doc/v-comment.html
-	# TRACKTOTAL is not in the Xiph recomendation, but is in common use
+	# TRACKTOTAL is not in the Xiph recommendation, but is in common use
 
 	[ -n "$fields" ] ||
 	fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
 
 	# fields' corresponding cueprint conversion characters
-	# seperate alternates with a space
+	# separate alternates with a space
 
 	TITLE='%t'
 	VERSION=''
@@ -110,13 +110,13 @@ id3()
 		exit 1
 	fi
 
-	# space seperated list of ID3 v1.1 tags
+	# space separated list of ID3 v1.1 tags
 	# see http://id3lib.sourceforge.net/id3/idev1.html
 
 	fields="TITLE ALBUM ARTIST YEAR COMMENT GENRE TRACKNUMBER"
 
 	# fields' corresponding cueprint conversion characters
-	# seperate alternates with a space
+	# separate alternates with a space
 
 	TITLE='%t'
 	ALBUM='%T'
