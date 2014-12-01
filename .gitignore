@@ -1,6 +1,18 @@
-*_scan.c
 *_parse.c
 *_parse.h
+*_scan.c
+/ar-lib
+/config.h
+/config.h.in
+/config.log
+/config.status
+/src/lib/.deps/
+/src/tools/.deps/
+/src/tools/cuebreakpoints
+/src/tools/cueconvert
+/src/tools/cueprint
+/ylwrap
+Makefile
 # Object files
 *.o
 *.ko
