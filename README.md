@@ -1,4 +1,4 @@
-# cuetools
+# cuetools [![Build Status](https://travis-ci.org/svend/cuetools.svg?branch=master)](https://travis-ci.org/svend/cuetools)
 
 cue and toc file parsers and utilities
 
