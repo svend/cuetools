@@ -1,4 +1,4 @@
-AC_INIT([cuetools], [1.4.0], [svend@ciffer.net])
+AC_INIT([cuetools], [1.4.1], [svend@ciffer.net])
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
