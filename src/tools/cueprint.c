@@ -42,7 +42,7 @@ genre:		%g\n\
 ISRC:		%i\n\
 message:	%m\n\
 track number:	%n\n\
-perfomer:	%p\n\
+performer:	%p\n\
 title:		%t\n\
 ISRC (CD-TEXT):	%u\n\
 "
