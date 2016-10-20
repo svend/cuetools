@@ -92,6 +92,10 @@ char *cdtext_get(int pti, Cdtext *cdtext)
 {
 	for (; PTI_END != cdtext->pti; cdtext++) {
 		if (pti == cdtext->pti) {
+			if (NULL != cdtext->value && '"' == cdtext->value[0] && '"' == cdtext->value[strlen(cdtext->value) - 1]) { /* Remove surrounding double quotes to prevent them appearing in fields */
+				cdtext->value++;
+				cdtext->value[strlen(cdtext->value) - 1] = 0;
+			}
 			return cdtext->value;
 		}
 	}
