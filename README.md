@@ -13,7 +13,7 @@ It includes:
 
 - `cueconvert` convert between the cue and toc formats
 - `cuebreakpoints` print the breakpoints from a cue or toc file
-- `cueprint` print disc and track infomation for a cue or toc file
+- `cueprint` print disc and track information for a cue or toc file
 
 Directory layout:
 
