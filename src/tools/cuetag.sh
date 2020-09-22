@@ -71,7 +71,7 @@ vorbis()
 	ALBUM='%T'
 	TRACKNUMBER='%02n'
 	TRACKTOTAL='%02N'
-	ARTIST='%c %p'
+	ARTIST='%p'
 	PERFORMER='%p'
 	COPYRIGHT=''
 	LICENSE=''
@@ -122,7 +122,7 @@ id3()
 	ALBUM='%T'
 	ARTIST='%p'
 	YEAR=''
-	COMMENT='%c'
+	COMMENT='%m'
 	GENRE='%g'
 	TRACKNUMBER='%n'
 
