@@ -13,8 +13,10 @@
 #include "cue_parse.h"
 
 int cue_lineno = 1;
+int cue_start_of_file = 1;
 %}
 
+bom		\xEF\xBB\xBF
 ws		[ \t\r]
 nonws		[^ \t\r\n]
 
@@ -22,8 +24,16 @@ nonws		[^ \t\r\n]
 %option prefix="cue_yy"
 
 %s NAME
+%x SOF
 
 %%
+		if (cue_start_of_file) {
+			BEGIN(SOF);
+			cue_start_of_file = 0;
+		}
+
+<SOF>^{bom}	{ yyless(3); yy_set_bol(1); BEGIN(INITIAL); /* skip BOM */ }
+<SOF>^.|\n	{ yyless(0); yy_set_bol(1); BEGIN(INITIAL); /* no BOM */ }
 
 \"([^\"]|\\\")*\"	{
 		yylval.sval = strdup(yytext + 1);
