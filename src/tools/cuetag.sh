@@ -209,7 +209,7 @@ main()
 			vorbis $trackno "$file"
 			;;
 		*.*)
-			echo "$file: uknown file type"
+			echo "$file: unknown file type"
 			;;
 		esac
 		trackno=$(($trackno + 1))
